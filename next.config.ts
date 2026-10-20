@@ -1,0 +1,59 @@
+import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+const isDev = process.env.NODE_ENV !== 'production';
+// En Vercel (HTTPS) se fuerzan las subidas a HTTPS; en local (http://localhost) no.
+const onHttps = process.env.VERCEL === '1';
+
+/**
+ * Content-Security-Policy.
+ * - No se cargan scripts, fuentes ni imágenes de terceros: todo se sirve desde el propio dominio.
+ * - 'unsafe-inline' en scripts es necesario para el script de tema (evita parpadeo) y la
+ *   hidratación de Next.js sin nonces. 'unsafe-eval' solo en desarrollo.
+ */
+const csp = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "worker-src 'self' blob:",
+  "media-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  ...(onHttps ? ['upgrade-insecure-requests'] : []),
+].join('; ');
+
+const securityHeaders = [
+  { key: 'Content-Security-Policy', value: csp },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'X-Frame-Options', value: 'DENY' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()' },
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+  ...(onHttps ? [{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }] : []),
+];
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  poweredByHeader: false,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+  async headers() {
+    return [
+      { source: '/:path*', headers: securityHeaders },
+      {
+        source: '/cv/:file*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
+      },
+    ];
+  },
+};
+
+export default withNextIntl(nextConfig);

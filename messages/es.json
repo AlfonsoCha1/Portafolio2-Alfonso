@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "title": "Alfonso Chavarín · Ingeniero en Sistemas | CHAVATRIX UNIVERSE",
+    "description": "Portafolio de Alfonso Chavarín: Ingeniero en Sistemas Computacionales enfocado en soporte TI, redes, ciberseguridad defensiva, IA y automatización. Proyectos, experiencia, certificaciones y CV.",
+    "cvTitle": "CV · Alfonso Chavarín",
+    "cvDescription": "Currículum interactivo de Alfonso Chavarín: experiencia, educación, habilidades, proyectos y certificaciones. Descarga en PDF en español o inglés.",
+    "privacyTitle": "Aviso de privacidad · Alfonso Chavarín",
+    "privacyDescription": "Qué datos recopila este portafolio, para qué se usan y cuáles son tus derechos.",
+    "projectSuffix": "Proyecto de Alfonso Chavarín",
+    "moduleSuffix": "Módulo del universo de Alfonso Chavarín"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "education": "Educación",
+    "certifications": "Certificaciones",
+    "labs": "Laboratorios",
+    "skills": "Habilidades",
+    "cv": "CV",
+    "contact": "Contacto",
+    "menu": "Menú",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "skip": "Saltar al contenido",
+    "explored": "{count} de {total} secciones exploradas",
+    "progress": "Progreso de exploración del portafolio",
+    "main": "Navegación principal",
+    "talk": "Hablemos"
+  },
+  "controls": {
+    "theme": {
+      "system": "Automático",
+      "light": "Claro",
+      "dark": "Nocturno",
+      "time": "Según la hora",
+      "systemHint": "Sigue el tema de tu dispositivo",
+      "lightHint": "Tema claro",
+      "darkHint": "Tema nocturno",
+      "timeHint": "Claro de 7:00 a 19:00, nocturno el resto",
+      "button": "Tema: {mode}. Toca para cambiar al siguiente modo",
+      "changed": "Tema: {mode}"
+    },
+    "language": "Idioma",
+    "switchTo": "Cambiar a inglés",
+    "mode": "Modo de visualización",
+    "mode3d": "3D",
+    "mode2d": "Ligero 2D",
+    "mode3dLabel": "Modo 3D: experiencia completa",
+    "mode2dLabel": "Modo ligero 2D: menos consumo de batería",
+    "motionPause": "Pausar animaciones",
+    "motionResume": "Reanudar animaciones"
+  },
+  "hero": {
+    "kicker": "Ideas · Código · Tecnología · Impacto",
+    "explore": "Explorar mi universo",
+    "viewCv": "Ver CV",
+    "location": "Ubicación",
+    "scroll": "Desliza para explorar",
+    "universeTitle": "Universo interactivo",
+    "universeDescription": "Planeta central con mi fotografía y siete islas tecnológicas. Elige una isla para ver sus proyectos.",
+    "islandsLabel": "Islas del universo",
+    "quoteBy": "— Alfonso Chavarín",
+    "socials": "Redes profesionales"
+  },
+  "universe": {
+    "enter": "Entrar",
+    "back": "Volver al universo",
+    "openModule": "Abrir módulo completo",
+    "projects": "Proyectos",
+    "projectsCount": "{count, plural, =0 {Sin proyectos documentados} one {# proyecto} other {# proyectos}}",
+    "highlights": "Experiencia y formación relacionada",
+    "loading": "Cargando universo 3D…",
+    "webglError": "Tu navegador no pudo iniciar el modo 3D. Se activó el modo ligero 2D.",
+    "lowFps": "Detectamos bajo rendimiento: se redujo la calidad del 3D.",
+    "hint": "Pasa el cursor o toca una isla · Clic para entrar",
+    "pending": "Pendiente"
+  },
+  "about": {
+    "kicker": "Sobre mí",
+    "title": "Ingeniería, soporte y seguridad con propósito",
+    "building": "Construyendo ahora",
+    "statProjects": "proyectos documentados",
+    "statCerts": "cursos y certificados",
+    "statYears": "inicio en TI",
+    "statLanguages": "idiomas",
+    "location": "Ubicación",
+    "languages": "Idiomas",
+    "education": "Formación",
+    "focus": "Enfoque",
+    "photoNote": "Fotografía del portafolio anterior"
+  },
+  "projects": {
+    "kicker": "Proyectos",
+    "title": "Lo que he construido",
+    "intro": "Proyectos reales con su estado actual. Los privados muestran solo información no confidencial y enlazan a su página pública cuando existe.",
+    "all": "Todos",
+    "practice": "Prácticas",
+    "search": "Buscar proyecto o tecnología",
+    "empty": "No hay proyectos con ese filtro.",
+    "featured": "Destacado",
+    "viewCode": "Ver código",
+    "openProject": "Abrir proyecto",
+    "viewOnGithub": "Ver en GitHub",
+    "visitProject": "Visitar proyecto",
+    "details": "Ver detalles",
+    "private": "Privado",
+    "public": "Público",
+    "privateCode": "Código privado",
+    "conceptual": "Ilustración conceptual",
+    "conceptualNote": "Ilustración conceptual generada en código; se reemplazará por capturas reales cuando estén aprobadas.",
+    "role": "Mi participación",
+    "features": "Funcionalidades principales",
+    "tech": "Tecnologías",
+    "status": "Estado",
+    "year": "Año",
+    "category": "Categoría",
+    "links": "Enlaces",
+    "noLinks": "Sin enlaces públicos por ahora.",
+    "note": "Nota",
+    "back": "Volver a proyectos",
+    "related": "Otros proyectos de la isla",
+    "count": "{count, plural, one {# proyecto} other {# proyectos}}",
+    "statuses": {
+      "live": "En línea",
+      "beta": "Beta",
+      "demo": "Demo",
+      "lab": "Laboratorio",
+      "development": "En desarrollo",
+      "archive": "Archivo",
+      "personal": "Personal"
+    }
+  },
+  "experience": {
+    "kicker": "Experiencia",
+    "title": "Trayectoria profesional",
+    "intro": "Selecciona una etapa para ver responsabilidades, tecnologías y áreas relacionadas.",
+    "responsibilities": "Responsabilidades",
+    "tech": "Herramientas y temas",
+    "related": "Islas relacionadas",
+    "select": "Ver {company}"
+  },
+  "education": {
+    "kicker": "Educación",
+    "title": "Formación académica"
+  },
+  "certifications": {
+    "kicker": "Certificaciones",
+    "title": "Cursos, certificados y diplomas",
+    "intro": "Mis cursos, certificados y diplomas con emisor, fecha y enlace de verificación cuando existe. Los cursos de Cisco NetAcad son certificados de finalización de curso, no la certificación CCNA.",
+    "all": "Todas",
+    "verify": "Verificar",
+    "hours": "{hours} h",
+    "skills": "Competencias",
+    "showAll": "Ver todas ({count})",
+    "showLess": "Ver menos"
+  },
+  "labs": {
+    "kicker": "Laboratorios SOC",
+    "title": "Laboratorio de ciberseguridad",
+    "intro": "Herramientas defensivas en Python con datos sintéticos, pruebas automáticas y guía. Son para aprender, no productos para producción.",
+    "available": "Disponible",
+    "pending": "Próximamente",
+    "terminal": "Terminal SOC",
+    "terminalIntro": "Explora el portafolio con comandos. Es una simulación segura: no ejecuta nada en tu equipo.",
+    "openTerminal": "Abrir terminal",
+    "related": "Proyectos de ciberseguridad"
+  },
+  "skills": {
+    "kicker": "Habilidades",
+    "title": "Stack técnico",
+    "intro": "Habilidades tomadas de mi CV, agrupadas por área."
+  },
+  "cvSection": {
+    "kicker": "Currículum",
+    "title": "Mi trayectoria en una página",
+    "intro": "Versión interactiva para reclutadores y PDF descargable en español o inglés.",
+    "view": "Ver CV",
+    "download": "Descargar PDF",
+    "downloadEs": "PDF en español",
+    "downloadEn": "PDF en inglés"
+  },
+  "cv": {
+    "title": "Currículum",
+    "profile": "Perfil profesional",
+    "experience": "Experiencia laboral",
+    "education": "Educación",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "certifications": "Certificaciones y diplomas",
+    "languages": "Idiomas",
+    "links": "Enlaces",
+    "print": "Imprimir",
+    "backHome": "Volver al universo",
+    "download": "Descargar PDF",
+    "pdfFrom": "El PDF es el archivo original de mi CV."
+  },
+  "contact": {
+    "kicker": "Contacto",
+    "title": "Hablemos",
+    "intro": "¿Tienes una vacante, un proyecto o una idea? Escríbeme por el formulario, por correo o en LinkedIn.",
+    "email": "Correo",
+    "name": "Nombre",
+    "emailField": "Correo electrónico",
+    "subject": "Asunto (opcional)",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "success": "¡Mensaje enviado! Te responderé lo antes posible.",
+    "notConfigured": "El envío por formulario todavía no está activado en este sitio. Tu mensaje no se envió: escríbeme directamente a {email}.",
+    "rateLimited": "Demasiados intentos. Espera {seconds} segundos e inténtalo de nuevo.",
+    "serverError": "No se pudo enviar el mensaje. Inténtalo más tarde o escríbeme a {email}.",
+    "spam": "No se pudo procesar el envío.",
+    "openMail": "Abrir mi correo",
+    "privacyNote": "Uso tus datos solo para responderte. Consulta el aviso de privacidad.",
+    "privacyLink": "aviso de privacidad",
+    "honeypot": "Deja este campo vacío",
+    "errors": {
+      "nameMin": "Escribe tu nombre (mínimo 2 caracteres).",
+      "nameMax": "El nombre es demasiado largo.",
+      "emailInvalid": "Escribe un correo válido.",
+      "subjectMax": "El asunto es demasiado largo.",
+      "messageMin": "El mensaje debe tener al menos 10 caracteres.",
+      "messageMax": "El mensaje no puede pasar de 2000 caracteres.",
+      "spam": "No se pudo procesar el envío."
+    }
+  },
+  "nexbot": {
+    "name": "NEXBOT",
+    "badge": "Guía con respuestas predefinidas",
+    "hide": "Ocultar NEXBOT",
+    "show": "Mostrar NEXBOT",
+    "close": "Cerrar mensaje",
+    "open": "Hablar con NEXBOT",
+    "next": "Otro consejo",
+    "actions": {
+      "cv": "Ver CV",
+      "projects": "Proyectos destacados",
+      "terminal": "Abrir terminal",
+      "contact": "Contactar"
+    },
+    "messages": {
+      "inicio": "¡Hola! Soy NEXBOT. Toca una isla del universo para ver los proyectos de cada área.",
+      "sobre-mi": "Aquí conoces a Alfonso: ingeniero en sistemas con base en soporte TI y redes.",
+      "proyectos": "Filtra por isla o busca una tecnología. Los proyectos privados enlazan a su página pública.",
+      "experiencia": "Selecciona una etapa de la línea del tiempo para ver sus responsabilidades.",
+      "educacion": "Ingeniería en Sistemas y Posgrado en Administración de Tecnologías, ambos en UNINTER.",
+      "certificaciones": "Las credenciales de Coursera tienen enlace de verificación oficial. ¡Pruébalo!",
+      "laboratorios": "Escribe help en la terminal SOC para explorar con comandos.",
+      "habilidades": "Python avanzado, redes Cisco, Linux y mucho más.",
+      "cv": "¿Prisa? El CV interactivo resume todo sin pasar por el 3D.",
+      "contacto": "¿Vacante o proyecto? Escríbele a Alfonso por aquí."
+    },
+    "tips": [
+      "Puedes cambiar a modo ligero 2D si tu equipo va lento.",
+      "El botón de tema tiene 4 modos: automático, claro, nocturno y según la hora.",
+      "Prueba el comando soc en la terminal.",
+      "Todo funciona también con teclado: usa Tab y Enter."
+    ]
+  },
+  "terminal": {
+    "title": "chavatrix@soc:~",
+    "label": "Terminal SOC simulada",
+    "placeholder": "Escribe un comando (help)",
+    "welcome": "CHAVATRIX SOC TERMINAL v1.0 — escribe help para empezar.",
+    "close": "Cerrar terminal",
+    "run": "Ejecutar"
+  },
+  "intro": {
+    "skip": "Saltar intro",
+    "loading": "Iniciando universo"
+  },
+  "footer": {
+    "rights": "© {year} José Alfonso Chavarín Montoya. Todos los derechos reservados.",
+    "privacy": "Aviso de privacidad",
+    "built": "Diseñado y desarrollado por Alfonso Chavarín con Next.js, React Three Fiber y GSAP.",
+    "top": "Volver arriba"
+  },
+  "modules": {
+    "kicker": "Módulo",
+    "projectsTitle": "Proyectos de esta isla",
+    "highlightsTitle": "Experiencia y formación relacionada",
+    "otherModules": "Otras islas"
+  },
+  "notFound": {
+    "title": "Esta órbita no existe",
+    "text": "La página que buscas no está en este universo.",
+    "back": "Volver al inicio"
+  },
+  "common": {
+    "newTab": "(se abre en una pestaña nueva)",
+    "close": "Cerrar",
+    "loading": "Cargando…"
+  }
+}
