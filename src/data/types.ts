@@ -117,6 +117,28 @@ export interface Education {
 
 export type CertGroup = 'networking' | 'cyber' | 'ai' | 'management' | 'dev' | 'communication';
 
+/** Ícono de la tarjeta de cada certificación (lucide-react). */
+export type CertIcon =
+  | 'shield'
+  | 'headset'
+  | 'network'
+  | 'router'
+  | 'server'
+  | 'terminal'
+  | 'landmark'
+  | 'brain'
+  | 'sparkles'
+  | 'kanban'
+  | 'users'
+  | 'git'
+  | 'coffee'
+  | 'code'
+  | 'bot'
+  | 'messages'
+  | 'globe'
+  | 'sheet'
+  | 'presentation';
+
 export interface Certification {
   id: string;
   name: L;
@@ -127,7 +149,9 @@ export interface Certification {
   kind: L;
   group: CertGroup;
   hours?: number;
-  verifyUrl?: string;
+  /** Ícono y color propios de la tarjeta. */
+  icon: CertIcon;
+  color: string;
   skills: string[];
   featured?: boolean;
   /** Aclaración importante (p. ej. "certificado de curso, no la certificación CCNA"). */

@@ -148,13 +148,17 @@
   "certifications": {
     "kicker": "Certificaciones",
     "title": "Cursos, certificados y diplomas",
-    "intro": "Mis cursos, certificados y diplomas con emisor, fecha y enlace de verificación cuando existe. Los cursos de Cisco NetAcad son certificados de finalización de curso, no la certificación CCNA.",
+    "intro": "Mis cursos, certificados y diplomas. Por seguridad no publico los documentos: los comparto directamente con los reclutadores cuando los solicitan. Los cursos de Cisco NetAcad son certificados de finalización de curso, no la certificación CCNA.",
     "all": "Todas",
-    "verify": "Verificar",
     "hours": "{hours} h",
     "skills": "Competencias",
     "showAll": "Ver todas ({count})",
-    "showLess": "Ver menos"
+    "showLess": "Ver menos",
+    "statCredentials": "credenciales",
+    "statHours": "horas de formación",
+    "statAreas": "áreas",
+    "onRequest": "Comprobante a solicitud",
+    "request": "Solicitar"
   },
   "labs": {
     "kicker": "Laboratorios SOC",
@@ -246,7 +250,7 @@
       "proyectos": "Filtra por isla o busca una tecnología. Los proyectos privados enlazan a su página pública.",
       "experiencia": "Selecciona una etapa de la línea del tiempo para ver sus responsabilidades.",
       "educacion": "Ingeniería en Sistemas y Posgrado en Administración de Tecnologías, ambos en UNINTER.",
-      "certificaciones": "Las credenciales de Coursera tienen enlace de verificación oficial. ¡Pruébalo!",
+      "certificaciones": "Cada credencial tiene su comprobante: pídeselo a Alfonso desde Contacto.",
       "laboratorios": "Escribe help en la terminal SOC para explorar con comandos.",
       "habilidades": "Python avanzado, redes Cisco, Linux y mucho más.",
       "cv": "¿Prisa? El CV interactivo resume todo sin pasar por el 3D.",

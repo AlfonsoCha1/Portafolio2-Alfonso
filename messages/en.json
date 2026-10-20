@@ -148,13 +148,17 @@
   "certifications": {
     "kicker": "Certifications",
     "title": "Courses, certificates and diplomas",
-    "intro": "My courses, certificates and diplomas with issuer, date and verification link when available. Cisco NetAcad courses are course-completion certificates, not the CCNA certification.",
+    "intro": "My courses, certificates and diplomas. For security I don’t publish the documents: I share them directly with recruiters on request. Cisco NetAcad courses are course-completion certificates, not the CCNA certification.",
     "all": "All",
-    "verify": "Verify",
     "hours": "{hours} h",
     "skills": "Skills",
     "showAll": "Show all ({count})",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "statCredentials": "credentials",
+    "statHours": "training hours",
+    "statAreas": "areas",
+    "onRequest": "Proof available on request",
+    "request": "Request"
   },
   "labs": {
     "kicker": "SOC Labs",
@@ -246,7 +250,7 @@
       "proyectos": "Filter by island or search a technology. Private projects link to their public page.",
       "experiencia": "Select a stage on the timeline to see its responsibilities.",
       "educacion": "Computer Systems Engineering and a Postgraduate in Technology Management, both at UNINTER.",
-      "certificaciones": "Coursera credentials include an official verification link. Try it!",
+      "certificaciones": "Every credential has its proof: ask Alfonso for it through Contact.",
       "laboratorios": "Type help in the SOC terminal to explore with commands.",
       "habilidades": "Advanced Python, Cisco networking, Linux and much more.",
       "cv": "In a hurry? The interactive CV sums it all up without the 3D.",

@@ -25,8 +25,8 @@ Para proyectos de drones: al agregar el primero con `category: 'drones'` puedes 
 
 ## Certificación — `src/data/certifications.ts`
 
-Agrega `id`, `name`, `issuer`, `date`, `sortDate` (`AAAA-MM`), `kind`, `group`, `skills` y, si existen, `hours` y `verifyUrl` (enlace oficial de verificación).
-**Las certificaciones se muestran solo como texto. No subas fotos ni PDF de certificados o diplomas: suelen incluir CURP, folios, firmas o códigos QR personales.** Una prueba automática lo revisa.
+Agrega `id`, `name`, `issuer`, `date`, `sortDate` (`AAAA-MM`), `kind`, `group`, `skills`, `icon` (ícono de la tarjeta, ver `CertIcon` en `src/data/types.ts`), `color` (hex) y, si existe, `hours`.
+**Las certificaciones se muestran solo como texto, cada una en su cuadro. No subas fotos ni PDF de certificados o diplomas, ni enlaces de verificación (abren el certificado completo): suelen incluir CURP, folios, firmas o códigos QR personales. Los comprobantes se envían directamente a los reclutadores a solicitud.** Una prueba automática lo revisa.
 
 ## Experiencia — `src/data/experience.ts`
 

@@ -92,19 +92,24 @@ describe('experiencia y educación (según el CV)', () => {
 });
 
 describe('certificaciones', () => {
-  it('ids únicos y enlaces de verificación de Coursera', () => {
+  it('ids únicos, ícono y color propios', () => {
     const ids = certifications.map((c) => c.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const c of certifications) {
-      if (c.verifyUrl) expect(c.verifyUrl).toMatch(/^https:\/\/coursera\.org\/verify\/[A-Z0-9]+$/);
       expect(filled(c.name)).toBe(true);
+      expect(c.icon, c.id).toBeTruthy();
+      expect(c.color, c.id).toMatch(/^#[0-9A-Fa-f]{6}$/);
     }
   });
 
-  it('privacidad: no se publican imágenes de certificados ni diplomas (CURP, folios, QR)', () => {
-    for (const c of certifications) expect('image' in c, c.id).toBe(false);
+  it('privacidad: sin imágenes ni enlaces a los certificados (CURP, folios, QR)', () => {
+    for (const c of certifications) {
+      expect('image' in c, c.id).toBe(false);
+      expect('verifyUrl' in c, c.id).toBe(false);
+    }
     for (const e of education) expect('image' in e, e.id).toBe(false);
     expect(publicFile('images/certificados')).toBe(false);
+    expect(JSON.stringify(certifications)).not.toMatch(/coursera\.org\/verify|https?:\/\//);
   });
 
   it('los cursos de Cisco NetAcad aclaran que no son la certificación CCNA', () => {

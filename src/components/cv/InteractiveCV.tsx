@@ -199,15 +199,7 @@ export function InteractiveCV() {
               <ul className="flex flex-col gap-2.5 text-sm">
                 {sortedCertifications.map((c) => (
                   <li key={c.id}>
-                    <p className="font-semibold leading-snug">
-                      {c.verifyUrl ? (
-                        <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {tx(c.name, locale)}
-                        </a>
-                      ) : (
-                        tx(c.name, locale)
-                      )}
-                    </p>
+                    <p className="font-semibold leading-snug">{tx(c.name, locale)}</p>
                     <p className="text-xs text-muted">
                       {c.issuer} · {tx(c.date, locale)}
                       {c.hours ? ` · ${c.hours} h` : ''}

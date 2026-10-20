@@ -5,7 +5,8 @@ import type { Certification, CertGroup, L } from './types';
  * Fuentes: CV (oct 2026) y perfil.toml del muro de GitHub.
  *
  * Por privacidad, los certificados se muestran SOLO como texto: no se publican imágenes de
- * los documentos (pueden contener CURP, folios, firmas o códigos QR personales).
+ * los documentos ni enlaces de verificación (abren el certificado completo con datos personales).
+ * Los comprobantes se envían directamente a los reclutadores cuando se solicitan.
  *
  * Importante: los cursos de Cisco Networking Academy son certificados de finalización de curso,
  * no la certificación CCNA. Los cursos de Coursera son cursos en línea sin créditos académicos.
@@ -23,6 +24,8 @@ export const certifications: Certification[] = [
   // Redes y sistemas
   {
     id: 'google-cyber',
+    icon: 'shield',
+    color: '#19E3B1',
     name: { es: 'Foundations of Cybersecurity', en: 'Foundations of Cybersecurity' },
     issuer: 'Google · Coursera',
     date: { es: 'oct 2026', en: 'Oct 2026' },
@@ -35,6 +38,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'helpdesk',
+    icon: 'headset',
+    color: '#A855F7',
     name: { es: 'Introduction to HelpDesk', en: 'Introduction to HelpDesk' },
     issuer: 'Udemy',
     date: { es: 'sep 2026', en: 'Sep 2026' },
@@ -45,6 +50,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'ccnav7-ensa',
+    icon: 'network',
+    color: '#00E5FF',
     name: {
       es: 'CCNAv7: Redes empresariales, Seguridad y Automatización',
       en: 'CCNAv7: Enterprise Networking, Security, and Automation',
@@ -60,6 +67,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'ccnav7-itn',
+    icon: 'router',
+    color: '#38BDF8',
     name: { es: 'CCNAv7: Introducción a Redes', en: 'CCNAv7: Introduction to Networks' },
     issuer: 'Cisco Networking Academy · UNINTER',
     date: { es: 'ene 2023', en: 'Jan 2023' },
@@ -71,6 +80,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'cisco-avanzadas',
+    icon: 'server',
+    color: '#147DFF',
     name: { es: 'CISCO: Redes Empresariales Avanzadas', en: 'CISCO: Advanced Enterprise Networks' },
     issuer: 'UNINTER',
     date: { es: 'nov 2024', en: 'Nov 2024' },
@@ -83,6 +94,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'cisco-esa',
+    icon: 'network',
+    color: '#22D3EE',
     name: {
       es: 'CISCO: Redes Empresariales, Seguridad y Automatización',
       en: 'CISCO: Enterprise Networks, Security and Automation',
@@ -97,19 +110,22 @@ export const certifications: Certification[] = [
   },
   {
     id: 'opensuse',
+    icon: 'terminal',
+    color: '#73D216',
     name: { es: 'OpenSUSE Linux OS Fundamentals', en: 'OpenSUSE Linux OS Fundamentals' },
     issuer: 'EDUCBA · Coursera',
     date: { es: 'sep 2025', en: 'Sep 2025' },
     sortDate: '2025-09',
     kind: { es: 'Curso en línea', en: 'Online course' },
     group: 'networking',
-    verifyUrl: 'https://coursera.org/verify/D66JI5C6CMUL',
     skills: ['Linux', 'OpenSUSE', 'Administración de sistemas'],
     featured: true,
     note: courseraNote,
   },
   {
     id: 'bbva-datos',
+    icon: 'landmark',
+    color: '#3B82F6',
     name: { es: 'Protección de Datos Personales', en: 'Personal Data Protection' },
     issuer: 'BBVA',
     date: { es: '2025', en: '2025' },
@@ -121,6 +137,8 @@ export const certifications: Certification[] = [
   // IA y gestión
   {
     id: 'diplomado-ia',
+    icon: 'brain',
+    color: '#9D35FF',
     name: {
       es: 'Diplomado en Inteligencia Artificial Generativa y Automatización',
       en: 'Diploma in Generative AI & Automation',
@@ -136,6 +154,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'bbva-ia',
+    icon: 'sparkles',
+    color: '#C084FC',
     name: { es: 'IA Express y Gemini Express', en: 'AI Express and Gemini Express' },
     issuer: 'BBVA',
     date: { es: '2025', en: '2025' },
@@ -146,45 +166,50 @@ export const certifications: Certification[] = [
   },
   {
     id: 'scrum-master',
+    icon: 'kanban',
+    color: '#FF943D',
     name: { es: 'Scrum Master Certification: Scrum Methodologies', en: 'Scrum Master Certification: Scrum Methodologies' },
     issuer: 'LearnQuest · Coursera',
     date: { es: 'jun 2025', en: 'Jun 2025' },
     sortDate: '2025-06',
     kind: { es: 'Curso en línea', en: 'Online course' },
     group: 'management',
-    verifyUrl: 'https://coursera.org/verify/L4123WTS5IIU',
     skills: ['Scrum', 'Agile', 'Gestión de proyectos'],
     featured: true,
     note: courseraNote,
   },
   {
     id: 'scrum-intro',
+    icon: 'users',
+    color: '#FFB547',
     name: { es: 'Introduction to Scrum Master Training', en: 'Introduction to Scrum Master Training' },
     issuer: 'LearnQuest · Coursera',
     date: { es: 'jul 2025', en: 'Jul 2025' },
     sortDate: '2025-07',
     kind: { es: 'Curso en línea', en: 'Online course' },
     group: 'management',
-    verifyUrl: 'https://coursera.org/verify/J2GU682X9PGQ',
     skills: ['Scrum', 'Agile'],
     note: courseraNote,
   },
   // Desarrollo
   {
     id: 'git-github',
+    icon: 'git',
+    color: '#F05032',
     name: { es: 'Introduction to Git and GitHub', en: 'Introduction to Git and GitHub' },
     issuer: 'Google · Coursera',
     date: { es: 'abr 2025', en: 'Apr 2025' },
     sortDate: '2025-04',
     kind: { es: 'Curso en línea', en: 'Online course' },
     group: 'dev',
-    verifyUrl: 'https://coursera.org/verify/85AUMO3S7G8Y',
     skills: ['Git', 'GitHub', 'Control de versiones'],
     featured: true,
     note: courseraNote,
   },
   {
     id: 'java-3',
+    icon: 'coffee',
+    color: '#F89820',
     name: { es: 'Java (nivel 3)', en: 'Java (level 3)' },
     issuer: 'TR Network',
     date: { es: 'feb 2026', en: 'Feb 2026' },
@@ -195,6 +220,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'python-arac',
+    icon: 'code',
+    color: '#FFD43B',
     name: { es: 'Curso de programación en Python', en: 'Python programming course' },
     issuer: 'Asociación de Robótica Aplicada y Ciencias de la Tecnología',
     date: { es: 'ene 2022', en: 'Jan 2022' },
@@ -206,6 +233,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'robotica',
+    icon: 'bot',
+    color: '#FF6B3D',
     name: { es: 'Curso de Robótica Aplicada, nivel avanzado', en: 'Applied Robotics course, advanced level' },
     issuer: 'Asociación de Robótica Aplicada y Ciencias de la Tecnología',
     date: { es: 'jun – oct 2021', en: 'Jun – Oct 2021' },
@@ -218,6 +247,8 @@ export const certifications: Certification[] = [
   // Comunicación y otras
   {
     id: 'comunicacion-digital',
+    icon: 'messages',
+    color: '#FF39C6',
     name: { es: 'Comunicación Digital con Medios Enriquecidos', en: 'Digital Communication with Rich Media' },
     issuer: 'UNINTER',
     date: { es: 'oct 2023', en: 'Oct 2023' },
@@ -229,6 +260,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'comunicacion-web',
+    icon: 'globe',
+    color: '#E879F9',
     name: { es: 'Comunicación Web Interactiva', en: 'Interactive Web Communication' },
     issuer: 'UNINTER',
     date: { es: 'nov 2022', en: 'Nov 2022' },
@@ -240,6 +273,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'ofimatica',
+    icon: 'sheet',
+    color: '#10B981',
     name: { es: 'Ofimática', en: 'Office Productivity' },
     issuer: 'UNINTER',
     date: { es: 'dic 2021', en: 'Dec 2021' },
@@ -251,6 +286,8 @@ export const certifications: Certification[] = [
   },
   {
     id: 'presentacion-proyectos',
+    icon: 'presentation',
+    color: '#F472B6',
     name: { es: '3.ª Presentación de Proyectos', en: '3rd Project Showcase' },
     issuer: 'UNINTER · ESCAT',
     date: { es: 'may 2024', en: 'May 2024' },

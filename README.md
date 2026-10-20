@@ -14,7 +14,7 @@ Diseñado y desarrollado por **Alfonso Chavarín**.
 | **Universo 3D** | Planeta central que rota (shader propio con continentes, retícula holográfica, luces de ciudad y atmósfera), mi fotografía en un círculo holográfico dentro del mundo, monograma **AC** extruido con las letras del favicon, 7 islas flotantes con estructuras propias, caminos de energía animados, naves/drones en órbita, estrellas con parpadeo y cámara que reacciona al cursor y viaja a cada isla. |
 | **Modo ligero 2D** | Mismo concepto con CSS/SVG (planeta, retrato, islas, caminos). Se activa solo si no hay WebGL, en equipos débiles, con ahorro de datos o movimiento reducido, y siempre se puede elegir a mano. |
 | **Islas** | Ciberseguridad (cian), IA (violeta), Drones y robótica (naranja), Desarrollo web (rosa), Automatización (azul), Hardware e IoT (verde turquesa), Contenido (magenta). Hover/foco: brillo, elevación, borde neón, camino iluminado y panel holográfico. Clic/toque/Enter: la cámara se acerca y se abre el módulo con proyectos reales. |
-| **Secciones** | Inicio, Sobre mí, Proyectos (filtros + búsqueda + página por proyecto), Experiencia (línea del tiempo accesible), Educación, Certificaciones (como texto, con verificación oficial cuando existe), Laboratorios SOC, Habilidades, CV, Contacto. Además, una página por módulo (`/modules/[isla]`). |
+| **Secciones** | Inicio, Sobre mí, Proyectos (filtros + búsqueda + página por proyecto), Experiencia (línea del tiempo accesible), Educación, Certificaciones (un cuadro animado por credencial, solo texto: comprobantes a solicitud), Laboratorios SOC, Habilidades, CV, Contacto. Además, una página por módulo (`/modules/[isla]`). |
 | **CV interactivo** | `/[es|en]/cv`, legible sin la escena 3D, imprimible y con los PDF reales en español e inglés. |
 | **Tema** | Un solo botón con 4 modos: **Automático** (sigue el dispositivo), **Claro**, **Nocturno** y **Según la hora** (claro de 7:00 a 19:00). Cada tema tiene su propia paleta, no es una inversión de colores. Sin parpadeo al cargar. |
 | **Idiomas** | Español e inglés completos (`/es`, `/en`), con selector ES \| EN, preferencia persistente y metadatos `hreflang`. Sin traductores externos. |
@@ -112,7 +112,7 @@ Navegación completa con teclado (islas también desde la barra de islas), enlac
 
 ## Seguridad y privacidad
 
-CSP estricta sin orígenes externos, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`, `Permissions-Policy`, COOP, HSTS en producción, validación con Zod en el servidor, escape de HTML en el correo y claves solo en variables de entorno del servidor. Sin analítica ni cookies de rastreo: solo una cookie funcional de idioma. Los certificados se muestran solo como texto: no se publican imágenes de documentos con datos personales. Aviso de privacidad en `/[es|en]/privacy`.
+CSP estricta sin orígenes externos, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`, `Permissions-Policy`, COOP, HSTS en producción, validación con Zod en el servidor, escape de HTML en el correo y claves solo en variables de entorno del servidor. Sin analítica ni cookies de rastreo: solo una cookie funcional de idioma. Los certificados se muestran solo como texto: no se publican imágenes ni enlaces a documentos con datos personales. Aviso de privacidad en `/[es|en]/privacy`.
 
 ## Pruebas
 

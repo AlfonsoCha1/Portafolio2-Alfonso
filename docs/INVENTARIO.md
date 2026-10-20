@@ -6,7 +6,7 @@
 | --- | --- |
 | `CV_Alfonso_Chavarin_Maestro.pdf` y `CV_Alfonso_Chavarin_Master_EN.pdf` | Experiencia, educación, habilidades, certificaciones, perfil y proyectos. Fuente principal. |
 | Portafolio anterior `portafolio-original-tau.vercel.app` (repo `portafolio-original`) | Fotografía (`Yo_uno.jpg`, la misma que se proporcionó), textos de perfil y lista de proyectos. |
-| README y `perfil.toml` de `github.com/AlfonsoCha1` | Proyectos con estado real, enlaces, certificados con verificación de Coursera. |
+| README y `perfil.toml` de `github.com/AlfonsoCha1` | Proyectos con estado real, enlaces y lista de certificados. |
 | Repos públicos: `Herramientas_cyberseguridad`, `Tipos-de-Proyectos`, `CyberQuest-Academy`, `Chavarin_-_Said`, `CHAVAMON_BASICO`, `Tipos-bash`, `Java`, `ESCUELA`, `SUMA`, `PROYECTOS`, `PROYECTO-INTERLIGENCIA-ARTIFICIAL`, `portafolio-alfonso`, `Portafolio` | Descripciones, tecnologías y funcionalidades. |
 | `portafolio-alfonso/Imagen_de certirficado` | Solo para confirmar nombres, emisores y fechas de los certificados (las imágenes **no** se publican). |
 | Sitios públicos: SOPHYA, English Speaking Coach, Smucky's, CyberQuest Academy, CHAVATRIX AEGIS | Confirmar que existen y qué describen públicamente. |
@@ -40,6 +40,6 @@ La imagen de referencia incluía experiencia y estudios que no aparecen en ningu
 
 ## Ajustes de privacidad aplicados
 
-- Las certificaciones y diplomas se muestran **solo como texto** (nombre, emisor, fecha, horas y verificación). No se publica ninguna imagen de los documentos.
+- Las certificaciones y diplomas se muestran **solo como texto**, cada una en su cuadro (nombre, emisor, fecha, horas y competencias). No se publican imágenes ni enlaces de verificación: el comprobante se envía a solicitud.
 - ⚠️ La imagen del certificado de Robótica Aplicada en el repositorio público `portafolio-alfonso` (carpeta `Imagen_de certirficado`) muestra la **CURP**, impresa por la institución porque el curso está registrado ante la STPS. Conviene quitarla de ese repositorio.
 - El teléfono no aparece en la página (sí en los PDF del CV, que son los archivos originales).

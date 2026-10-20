@@ -127,9 +127,11 @@ export function runCommand(raw: string, locale: Locale): TermResult {
           { text: es ? `Cursos y certificados (${sortedCertifications.length}):` : `Courses & certificates (${sortedCertifications.length}):`, tone: 'accent' },
           ...sortedCertifications.map<TermLine>((c) => ({
             text: `  ✓ ${tx(c.name, locale)} — ${c.issuer} (${tx(c.date, locale)})`,
-            href: c.verifyUrl,
-            tone: c.verifyUrl ? 'link' : 'default',
           })),
+          {
+            text: es ? 'Comprobantes disponibles a solicitud (escribe "contact").' : 'Proof available on request (type "contact").',
+            tone: 'muted',
+          },
           {
             text: es
               ? 'Los cursos de Cisco NetAcad son certificados de finalización de curso, no la certificación CCNA.'
