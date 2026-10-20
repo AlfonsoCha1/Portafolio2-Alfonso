@@ -15,7 +15,7 @@ export interface L {
 export type CategoryId =
   | 'cyber'
   | 'ai'
-  | 'drones'
+  | 'network'
   | 'web'
   | 'automation'
   | 'hardware'
@@ -87,8 +87,13 @@ export interface Project {
   note?: L;
   /** Capturas reales aprobadas. Si no hay, se usa una portada conceptual generada en código. */
   gallery?: ProjectImage[];
-  /** Motivo visual de la portada conceptual. */
-  cover: 'shield' | 'logs' | 'ai' | 'voice' | 'store' | 'loyalty' | 'web' | 'terminal' | 'video' | 'chip' | 'academy' | 'code' | 'nfc';
+  /**
+   * Vista en vivo de la página dentro del portafolio (iframe bajo demanda).
+   * Ponlo en false si el sitio no permite mostrarse dentro de otra página.
+   */
+  livePreview?: boolean;
+  /** Motivo visual de la portada animada. */
+  cover: 'shield' | 'logs' | 'ai' | 'voice' | 'store' | 'loyalty' | 'web' | 'terminal' | 'video' | 'chip' | 'academy' | 'code' | 'nfc' | 'planner';
 }
 
 export interface Experience {

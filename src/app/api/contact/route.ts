@@ -6,8 +6,9 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const MAX_BODY_BYTES = 10_000;
-// 5 envíos cada 10 minutos por IP
+// 5 envíos cada 10 minutos por IP y un tope general para frenar abusos distribuidos
 const limiter = createRateLimiter({ limit: 5, windowMs: 10 * 60 * 1000 });
+const globalLimiter = createRateLimiter({ limit: 60, windowMs: 10 * 60 * 1000 });
 
 function clientIp(req: NextRequest): string {
   const fwd = req.headers.get('x-forwarded-for');
@@ -20,15 +21,26 @@ function json(body: unknown, status: number, headers?: Record<string, string>) {
 }
 
 export async function POST(req: NextRequest) {
-  // Solo solicitudes del propio sitio
+  // Solo solicitudes enviadas desde el propio sitio (el navegador siempre envía Origin en un POST)
   const origin = req.headers.get('origin');
-  const host = req.headers.get('host');
-  if (origin && host && new URL(origin).host !== host) return json({ error: 'forbidden' }, 403);
+  const host = req.headers.get('x-forwarded-host') ?? req.headers.get('host');
+  let sameOrigin = false;
+  try {
+    sameOrigin = Boolean(origin && host && new URL(origin).host === host);
+  } catch {
+    sameOrigin = false;
+  }
+  if (!sameOrigin) return json({ error: 'forbidden' }, 403);
+  if (req.headers.get('sec-fetch-site') === 'cross-site') return json({ error: 'forbidden' }, 403);
 
   if (!req.headers.get('content-type')?.includes('application/json')) return json({ error: 'bad_request' }, 415);
+  const declared = Number(req.headers.get('content-length') ?? 0);
+  if (declared > MAX_BODY_BYTES) return json({ error: 'too_large' }, 413);
 
   const rl = limiter(clientIp(req));
   if (!rl.allowed) return json({ error: 'rate_limited', retryAfter: rl.retryAfterSeconds }, 429, { 'Retry-After': String(rl.retryAfterSeconds) });
+  const grl = globalLimiter('global');
+  if (!grl.allowed) return json({ error: 'rate_limited', retryAfter: grl.retryAfterSeconds }, 429, { 'Retry-After': String(grl.retryAfterSeconds) });
 
   const raw = await req.text();
   if (raw.length > MAX_BODY_BYTES) return json({ error: 'too_large' }, 413);
@@ -42,7 +54,10 @@ export async function POST(req: NextRequest) {
 
   const parsed = contactSchema.safeParse(payload);
   if (!parsed.success) {
-    const fields = Object.fromEntries(parsed.error.issues.map((i) => [String(i.path[0] ?? 'form'), i.message]));
+    // Solo códigos propios (sin detalles internos del validador)
+    const fields = Object.fromEntries(
+      parsed.error.issues.map((i) => [String(i.path[0] ?? 'form'), /^[a-zA-Z]+$/.test(i.message) ? i.message : 'invalid']),
+    );
     return json({ error: 'validation', fields }, 400);
   }
   const data = parsed.data;

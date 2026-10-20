@@ -1,9 +1,9 @@
-import { BrainCircuit, Clapperboard, Code2, Cpu, Drone, FlaskConical, ShieldCheck, Workflow, type LucideProps } from 'lucide-react';
+import { BrainCircuit, Clapperboard, Code2, Cpu, FlaskConical, Network, ShieldCheck, Workflow, type LucideProps } from 'lucide-react';
 
 const ICONS = {
   cyber: ShieldCheck,
   ai: BrainCircuit,
-  drones: Drone,
+  network: Network,
   web: Code2,
   automation: Workflow,
   hardware: Cpu,

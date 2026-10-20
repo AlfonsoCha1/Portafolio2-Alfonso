@@ -108,8 +108,8 @@
     "private": "Private",
     "public": "Public",
     "privateCode": "Private code",
-    "conceptual": "Conceptual illustration",
-    "conceptualNote": "Conceptual illustration generated in code; it will be replaced with real screenshots once approved.",
+    "conceptual": "Animated illustration",
+    "conceptualNote": "Animated illustration generated in code; not a screenshot of the project.",
     "role": "My role",
     "features": "Key features",
     "tech": "Technologies",
@@ -130,7 +130,16 @@
       "development": "In development",
       "archive": "Archive",
       "personal": "Personal"
-    }
+    },
+    "live": "Live view",
+    "liveTitle": "Live view",
+    "liveLoading": "Loading the page…",
+    "liveOpen": "Open in a new tab",
+    "liveClose": "Close live view",
+    "liveFallback": "If the page doesn’t load here, open it with the ↗ button above.",
+    "liveHint": "Free server: it may take a moment to wake up",
+    "liveIntro": "See the real project page without leaving the portfolio.",
+    "liveLoad": "Load live view"
   },
   "experience": {
     "kicker": "Experience",

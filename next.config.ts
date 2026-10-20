@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import { projects } from './src/data/projects';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
@@ -15,6 +16,9 @@ const noIndex = process.env.NOINDEX === '1';
  * - 'unsafe-inline' en scripts es necesario para el script de tema (evita parpadeo) y la
  *   hidratación de Next.js sin nonces. 'unsafe-eval' solo en desarrollo.
  */
+// Páginas de los proyectos que se pueden ver en vivo dentro del portafolio (solo bajo demanda).
+const frameOrigins = [...new Set(projects.filter((p) => p.demo && p.livePreview !== false).map((p) => new URL(p.demo as string).origin))];
+
 const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
@@ -23,6 +27,7 @@ const csp = [
   "font-src 'self' data:",
   "connect-src 'self'",
   "worker-src 'self' blob:",
+  `frame-src 'self' ${frameOrigins.join(' ')}`,
   "media-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
@@ -36,8 +41,15 @@ const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()' },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), browsing-topics=()',
+  },
   { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+  { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
+  { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
+  { key: 'X-DNS-Prefetch-Control', value: 'off' },
+  { key: 'Origin-Agent-Cluster', value: '?1' },
   ...(onHttps ? [{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }] : []),
   ...(noIndex ? [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] : []),
 ];

@@ -8,7 +8,7 @@ import type { CategoryId } from '@/data/types';
 import { QUALITY_PRESETS, type QualityTier } from '@/lib/capabilities';
 import { ISLAND_LAYOUT } from '../layout';
 import { EnergyPath } from './EnergyPath';
-import { Fleet } from './Fleet';
+import { DataFleet } from './Fleet';
 import { FloatingIsland, type IslandInfo } from './FloatingIsland';
 import { RotatingPlanet } from './RotatingPlanet';
 import { Sparkles, StarField } from './StarField';
@@ -140,7 +140,7 @@ function SceneContent(props: UniverseSceneProps & { preset: (typeof QUALITY_PRES
             </group>
           );
         })}
-        <Fleet count={preset.drones} light={light} speed={speed} />
+        <DataFleet count={preset.packets} light={light} speed={speed} />
       </group>
 
       <CameraRig focusPoint={focusPoint} tall={tall} reducedMotion={reducedMotion} leftPanel={leftPanel && !tall} />

@@ -4,11 +4,15 @@ import { z } from 'zod';
  * Esquema compartido por el formulario (cliente) y la API (servidor).
  * Los mensajes son claves de traducción (contact.errors.*).
  */
+/** Quita caracteres de control (evita inyección de encabezados y texto invisible). */
+const oneLine = (s: string) => s.replace(/[\u0000-\u001F\u007F\u200B-\u200F\u2028\u2029]+/g, ' ').trim();
+const multiLine = (s: string) => s.replace(/[\u0000-\u0009\u000B-\u001F\u007F\u200B-\u200F]+/g, ' ').trim();
+
 export const contactSchema = z.object({
-  name: z.string().trim().min(2, 'nameMin').max(80, 'nameMax'),
+  name: z.string().transform(oneLine).pipe(z.string().min(2, 'nameMin').max(80, 'nameMax')),
   email: z.string().trim().max(120, 'emailInvalid').pipe(z.email('emailInvalid')),
-  subject: z.string().trim().max(120, 'subjectMax').optional().default(''),
-  message: z.string().trim().min(10, 'messageMin').max(2000, 'messageMax'),
+  subject: z.string().transform(oneLine).pipe(z.string().max(120, 'subjectMax')).optional().default(''),
+  message: z.string().transform(multiLine).pipe(z.string().min(10, 'messageMin').max(2000, 'messageMax')),
   /** Campo trampa (honeypot): debe llegar vacío. */
   website: z.string().max(0, 'spam').optional().default(''),
   /** Momento en que se abrió el formulario (ms). Envíos en menos de 3 s se tratan como bots. */

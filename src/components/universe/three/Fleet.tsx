@@ -13,11 +13,14 @@ interface Orbit {
   speed: number;
   offset: number;
   color: string;
-  kind: 'ship' | 'drone';
+  kind: 'packet' | 'lock';
 }
 
-/** Pequeñas naves y drones que recorren órbitas alrededor del universo. */
-export function Fleet({ count, light, speed }: { count: number; light: boolean; speed: number }) {
+/**
+ * Paquetes de datos y candados que recorren órbitas alrededor del universo
+ * (representan tráfico de red protegido: redes, soporte y ciberseguridad).
+ */
+export function DataFleet({ count, light, speed }: { count: number; light: boolean; speed: number }) {
   const orbits = useMemo<Orbit[]>(() => {
     const colors = ['#00E5FF', '#FF943D', '#FF39C6', '#9D35FF', '#19E3B1', '#147DFF'];
     return Array.from({ length: count }).map((_, i) => ({
@@ -28,7 +31,7 @@ export function Fleet({ count, light, speed }: { count: number; light: boolean; 
       speed: (0.09 + (i % 3) * 0.035) * (i % 2 ? 1 : -1),
       offset: (i / Math.max(1, count)) * Math.PI * 2,
       color: colors[i % colors.length] as string,
-      kind: i % 2 ? 'drone' : 'ship',
+      kind: i % 2 ? 'lock' : 'packet',
     }));
   }, [count]);
 
@@ -57,37 +60,40 @@ export function Fleet({ count, light, speed }: { count: number; light: boolean; 
     <group>
       {orbits.map((o, i) => (
         <group key={i} ref={(el) => void (refs.current[i] = el)} scale={0.55}>
-          {o.kind === 'ship' ? (
-            <group rotation={[Math.PI / 2, 0, 0]}>
+          {o.kind === 'packet' ? (
+            <group>
+              {/* Paquete de datos: cubo con aristas de neón y núcleo brillante */}
               <mesh>
-                <coneGeometry args={[0.12, 0.5, 6]} />
-                <meshStandardMaterial color={light ? '#5b5f95' : '#c9d4ff'} metalness={0.7} roughness={0.25} />
+                <boxGeometry args={[0.26, 0.26, 0.26]} />
+                <meshStandardMaterial color={light ? '#3a3f7a' : '#1b2150'} metalness={0.5} roughness={0.35} transparent opacity={0.85} />
               </mesh>
-              <mesh position={[0, -0.08, 0]} rotation={[0, 0, Math.PI / 2]}>
-                <boxGeometry args={[0.04, 0.5, 0.12]} />
-                <meshStandardMaterial color="#2b3266" metalness={0.6} roughness={0.3} />
+              <mesh>
+                <boxGeometry args={[0.27, 0.27, 0.27]} />
+                <meshBasicMaterial color={o.color} wireframe toneMapped={false} />
+              </mesh>
+              <mesh>
+                <boxGeometry args={[0.1, 0.1, 0.1]} />
+                <meshBasicMaterial color={o.color} toneMapped={false} />
               </mesh>
             </group>
           ) : (
             <group>
-              <mesh>
-                <boxGeometry args={[0.22, 0.06, 0.22]} />
-                <meshStandardMaterial color="#2b3266" metalness={0.6} roughness={0.3} />
+              {/* Candado: cuerpo + arco */}
+              <mesh position={[0, -0.04, 0]}>
+                <boxGeometry args={[0.26, 0.2, 0.1]} />
+                <meshStandardMaterial color={light ? '#3a3f7a' : '#232a63'} metalness={0.6} roughness={0.3} />
               </mesh>
-              {([
-                [-0.16, -0.16],
-                [0.16, -0.16],
-                [-0.16, 0.16],
-                [0.16, 0.16],
-              ] as [number, number][]).map(([x, z], j) => (
-                <mesh key={j} position={[x, 0.04, z]}>
-                  <cylinderGeometry args={[0.08, 0.08, 0.01, 10]} />
-                  <meshBasicMaterial color={o.color} transparent opacity={0.8} toneMapped={false} />
-                </mesh>
-              ))}
+              <mesh position={[0, 0.07, 0]}>
+                <torusGeometry args={[0.08, 0.022, 8, 16, Math.PI]} />
+                <meshBasicMaterial color={o.color} toneMapped={false} />
+              </mesh>
+              <mesh position={[0, -0.04, 0.052]}>
+                <circleGeometry args={[0.03, 12]} />
+                <meshBasicMaterial color={o.color} toneMapped={false} />
+              </mesh>
             </group>
           )}
-          {/* Propulsor luminoso */}
+          {/* Estela luminosa */}
           <sprite position={[0, 0, -0.32]} scale={[0.5, 0.5, 1]}>
             <spriteMaterial map={glow} color={o.color} transparent depthWrite={false} blending={light ? THREE.NormalBlending : THREE.AdditiveBlending} />
           </sprite>

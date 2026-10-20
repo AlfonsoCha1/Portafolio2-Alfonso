@@ -81,6 +81,15 @@ describe('formulario de contacto', () => {
     expect(contactSchema.safeParse({ ...base, message: 'x'.repeat(2001) }).success).toBe(false);
   });
 
+  it('elimina caracteres de control (sin inyección de encabezados)', () => {
+    const r = contactSchema.safeParse({ ...base, name: 'Ana\r\nBcc: x@y.com', subject: 'Hola\u0000mundo' });
+    expect(r.success).toBe(true);
+    if (r.success) {
+      expect(r.data.name).not.toMatch(/[\r\n]/);
+      expect(r.data.subject).toBe('Hola mundo');
+    }
+  });
+
   it('detecta bots por velocidad de llenado', () => {
     expect(looksLikeBot({ website: '', startedAt: 10_000 }, 10_000 + MIN_FILL_MS - 1)).toBe(true);
     expect(looksLikeBot({ website: '', startedAt: 10_000 }, 10_000 + MIN_FILL_MS + 1)).toBe(false);

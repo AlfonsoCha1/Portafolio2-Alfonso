@@ -31,6 +31,10 @@ export const privacySections: { title: L; body: L[] }[] = [
         es: 'El proveedor de alojamiento (Vercel) puede registrar datos técnicos de las visitas, como la IP y el navegador, para operar y proteger el servicio conforme a sus propias políticas.',
         en: 'The hosting provider (Vercel) may log technical visit data, such as IP and browser, to operate and protect the service under its own policies.',
       },
+      {
+        es: 'Vista en vivo de proyectos: solo si pulsas "Ver en vivo" o "Cargar vista en vivo", se carga dentro del portafolio la página pública de ese proyecto (alojada en Vercel o Render), que puede recibir los mismos datos técnicos de la visita.',
+        en: 'Live project view: only if you press "Live view" or "Load live view", the public page of that project (hosted on Vercel or Render) is loaded inside the portfolio and may receive the same technical visit data.',
+      },
     ],
   },
   {

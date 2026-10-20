@@ -86,11 +86,14 @@ test.describe('Universo', () => {
     await expect(page.getByTestId('module-panel')).toBeHidden();
   });
 
-  test('la isla de drones muestra un marcador de pendiente (sin inventar proyectos)', async ({ page }) => {
+  test('la isla de redes y soporte TI muestra experiencia y proyectos reales', async ({ page }) => {
     await prepare(page);
     await page.goto('/es');
-    await page.getByTestId('island-nav-drones').click();
-    await expect(page.getByTestId('pending-placeholder')).toBeVisible();
+    await page.getByTestId('island-nav-network').click();
+    const panel = page.getByTestId('module-panel');
+    await expect(panel).toContainText('Redes y soporte TI');
+    await expect(panel).toContainText('Junta de Conciliación y Arbitraje');
+    await expect(panel).toContainText('CyberQuest Academy');
   });
 
   test('selector 3D/2D: cambia y recuerda la preferencia', async ({ page, isMobile }) => {
@@ -206,16 +209,24 @@ test.describe('Contacto', () => {
 });
 
 test.describe('API de contacto', () => {
-  test('valida, limita y responde con honestidad', async ({ request }, info) => {
+  test('valida, limita, bloquea otros orígenes y responde con honestidad', async ({ request, baseURL }, info) => {
     test.skip(info.project.name !== 'desktop', 'Una sola ejecución basta');
-    const bad = await request.post('/api/contact', { data: { name: 'A' } });
+    const headers = { Origin: baseURL as string };
+    // Sin Origin o desde otro sitio: bloqueado
+    const noOrigin = await request.post('/api/contact', { data: { name: 'X' } });
+    expect(noOrigin.status()).toBe(403);
+    const evil = await request.post('/api/contact', { data: { name: 'X' }, headers: { Origin: 'https://sitio-malicioso.example' } });
+    expect(evil.status()).toBe(403);
+    const bad = await request.post('/api/contact', { data: { name: 'A' }, headers });
     expect(bad.status()).toBe(400);
     const bot = await request.post('/api/contact', {
+      headers,
       data: { name: 'Bot', email: 'bot@example.com', message: 'Soy un bot muy rápido', startedAt: Date.now(), locale: 'es', website: '' },
     });
     expect(bot.status()).toBe(400);
     expect((await bot.json()).error).toBe('spam');
     const ok = await request.post('/api/contact', {
+      headers,
       data: { name: 'Persona', email: 'p@example.com', message: 'Mensaje válido de prueba', startedAt: Date.now() - 10_000, locale: 'es' },
     });
     expect([503, 200, 502, 429]).toContain(ok.status());
@@ -261,5 +272,10 @@ test.describe('Móvil y accesibilidad básica', () => {
     const res = await request.get('/es');
     expect(res.headers()['content-security-policy']).toContain("frame-ancestors 'none'");
     expect(res.headers()['x-content-type-options']).toBe('nosniff');
+    expect(res.headers()['x-frame-options']).toBe('DENY');
+    expect(res.headers()['cross-origin-opener-policy']).toBe('same-origin');
+    expect(res.headers()['permissions-policy']).toContain('camera=()');
+    const sec = await request.get('/.well-known/security.txt');
+    expect(await sec.text()).toContain('Contact:');
   });
 });

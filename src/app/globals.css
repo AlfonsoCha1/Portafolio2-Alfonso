@@ -627,3 +627,167 @@ html[data-intro='done'] .intro-overlay {
     transform: translateX(120%);
   }
 }
+
+/* Portadas animadas de proyectos (SVG) */
+.cover-anim * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.a-pulse {
+  animation: a-pulse 2.4s ease-in-out infinite;
+}
+.a-spin {
+  animation: spin-slow 9s linear infinite;
+}
+.a-spin-rev {
+  animation: spin-slow 12s linear infinite reverse;
+}
+.a-bar {
+  animation: a-bar 1.1s ease-in-out infinite;
+}
+.a-scan {
+  animation: a-scan 2.8s ease-in-out infinite;
+}
+.a-draw {
+  stroke-dasharray: 240;
+  animation: a-draw 3.4s ease-in-out infinite;
+}
+.a-grow {
+  transform-origin: left center !important;
+  animation: a-grow 3.6s ease-in-out infinite;
+}
+.a-wave {
+  animation: a-wave 2.2s ease-out infinite;
+}
+.a-bounce {
+  animation: a-bounce 1.8s ease-in-out infinite;
+}
+.a-flow {
+  stroke-dasharray: 6 10;
+  animation: dash-flow 2.4s linear infinite;
+}
+.a-progress {
+  transform-origin: left center !important;
+  animation: a-progress 4.5s linear infinite;
+}
+.a-blink {
+  animation: caret 1s step-end infinite;
+}
+.a-fill {
+  animation: a-fill 3.6s ease-in-out infinite;
+}
+@keyframes a-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+@keyframes a-bar {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes a-scan {
+  0% {
+    transform: translateY(-58px);
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(58px);
+    opacity: 0;
+  }
+}
+@keyframes a-draw {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -240;
+  }
+}
+@keyframes a-grow {
+  0% {
+    transform: scaleX(0);
+  }
+  35%,
+  85% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+@keyframes a-wave {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+@keyframes a-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes a-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes a-fill {
+  0%,
+  20% {
+    fill-opacity: 0;
+  }
+  35%,
+  85% {
+    fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 0;
+  }
+}
+
+/* Tarjeta de proyecto: color por dentro */
+.project-card {
+  background:
+    radial-gradient(120% 70% at 100% 100%, color-mix(in srgb, var(--accent-2, var(--accent)) 14%, transparent), transparent 60%),
+    radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%),
+    var(--surface);
+}
+.project-card .project-card__bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2, var(--accent)));
+  box-shadow: 0 0 14px var(--accent);
+}

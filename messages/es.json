@@ -108,8 +108,8 @@
     "private": "Privado",
     "public": "Público",
     "privateCode": "Código privado",
-    "conceptual": "Ilustración conceptual",
-    "conceptualNote": "Ilustración conceptual generada en código; se reemplazará por capturas reales cuando estén aprobadas.",
+    "conceptual": "Ilustración animada",
+    "conceptualNote": "Ilustración animada generada en código; no es una captura del proyecto.",
     "role": "Mi participación",
     "features": "Funcionalidades principales",
     "tech": "Tecnologías",
@@ -130,7 +130,16 @@
       "development": "En desarrollo",
       "archive": "Archivo",
       "personal": "Personal"
-    }
+    },
+    "live": "Ver en vivo",
+    "liveTitle": "Vista en vivo",
+    "liveLoading": "Cargando la página…",
+    "liveOpen": "Abrir en una pestaña nueva",
+    "liveClose": "Cerrar vista en vivo",
+    "liveFallback": "Si la página no carga aquí, ábrela con el botón ↗ de arriba.",
+    "liveHint": "Servidor gratuito: puede tardar en despertar",
+    "liveIntro": "Mira la página real del proyecto sin salir del portafolio.",
+    "liveLoad": "Cargar vista en vivo"
   },
   "experience": {
     "kicker": "Experiencia",

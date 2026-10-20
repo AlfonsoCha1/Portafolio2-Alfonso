@@ -57,32 +57,35 @@ export const categories: Category[] = [
     ],
   },
   {
-    id: 'drones',
-    name: { es: 'Drones y robótica', en: 'Drones & robotics' },
-    short: { es: 'Robótica', en: 'Robotics' },
-    tagline: { es: 'Robótica · Control · Arduino', en: 'Robotics · Control · Arduino' },
+    id: 'network',
+    name: { es: 'Redes y soporte TI', en: 'Networking & IT support' },
+    short: { es: 'Redes', en: 'Network' },
+    tagline: { es: 'Cisco · Switches · Help Desk', en: 'Cisco · Switches · Help Desk' },
     description: {
-      es: 'Formación en robótica aplicada y programación en Python, con Arduino como plataforma de prácticas.',
-      en: 'Training in applied robotics and Python programming, with Arduino as a practice platform.',
+      es: 'Conectividad, switches, cableado estructurado, Linux y soporte técnico a usuarios y a clientes internacionales.',
+      en: 'Connectivity, switches, structured cabling, Linux and technical support for users and international clients.',
     },
     color: '#FF943D',
     color2: '#FFC85C',
-    icon: 'Drone',
+    icon: 'Network',
     highlights: [
       {
-        es: 'Curso de Robótica Aplicada, nivel avanzado — 60 h, calificación final de 10 (jun–oct 2021).',
-        en: 'Applied Robotics course, advanced level — 60 h, final grade 10/10 (Jun–Oct 2021).',
+        es: 'Conectividad en más de 50 estaciones de trabajo y configuración de switches — Junta de Conciliación y Arbitraje.',
+        en: 'Connectivity across 50+ workstations and switch configuration — Junta de Conciliación y Arbitraje.',
       },
       {
-        es: 'Curso de programación en Python — 16 h (ene 2022).',
-        en: 'Python programming course — 16 h (Jan 2022).',
+        es: 'Soporte técnico a clientes de Colombia, Venezuela y España, con servicios de AWS — BBVA Technology.',
+        en: 'Technical support for clients in Colombia, Venezuela and Spain, using AWS services — BBVA Technology.',
       },
-      { es: 'Arduino IDE como herramienta de prácticas.', en: 'Arduino IDE as a practice tool.' },
+      {
+        es: 'Cableado estructurado, diagnóstico de fallas de internet, impresoras y periféricos — SEDAGRO.',
+        en: 'Structured cabling, internet fault diagnosis, printers and peripherals — SEDAGRO.',
+      },
+      {
+        es: 'Cursos Cisco CCNAv7 (Introducción a Redes; Redes Empresariales, Seguridad y Automatización) e Introduction to HelpDesk.',
+        en: 'Cisco CCNAv7 courses (Introduction to Networks; Enterprise Networking, Security and Automation) and Introduction to HelpDesk.',
+      },
     ],
-    pending: {
-      es: 'Proyectos de drones y control: pendientes de documentar. Agrega aquí tus proyectos cuando tengas capturas y descripción.',
-      en: 'Drone and control projects: pending documentation. Add your projects here once you have screenshots and a description.',
-    },
   },
   {
     id: 'web',
@@ -134,10 +137,10 @@ export const categories: Category[] = [
     id: 'hardware',
     name: { es: 'Hardware e IoT', en: 'Hardware & IoT' },
     short: { es: 'Hardware', en: 'Hardware' },
-    tagline: { es: 'PCB · Redes físicas · NFC', en: 'PCB · Physical networks · NFC' },
+    tagline: { es: 'PCB · Pruebas · NFC', en: 'PCB · Testing · NFC' },
     description: {
-      es: 'Pruebas funcionales de tarjetas electrónicas, cableado estructurado, switches y soportes NFC.',
-      en: 'Functional testing of electronic boards, structured cabling, switches and NFC stands.',
+      es: 'Pruebas funcionales de tarjetas electrónicas, respaldo de datos de producción y soportes NFC.',
+      en: 'Functional testing of electronic boards, production data backups and NFC stands.',
     },
     color: '#19E3B1',
     color2: '#00E5FF',
@@ -148,13 +151,10 @@ export const categories: Category[] = [
         en: 'Functional testing of electronic circuit boards in manufacturing — Marelli (2026).',
       },
       {
-        es: 'Conectividad en más de 50 estaciones de trabajo y configuración de switches — Junta de Conciliación y Arbitraje.',
-        en: 'Connectivity across 50+ workstations and switch configuration — Junta de Conciliación y Arbitraje.',
+        es: 'Respaldo de la información de las máquinas de prueba — Marelli.',
+        en: 'Backups of test-machine data — Marelli.',
       },
-      {
-        es: 'Cableado estructurado, ponchado y periféricos — SEDAGRO.',
-        en: 'Structured cabling, crimping and peripherals — SEDAGRO.',
-      },
+      { es: 'Arduino IDE para prácticas de electrónica.', en: 'Arduino IDE for electronics practice.' },
     ],
   },
   {

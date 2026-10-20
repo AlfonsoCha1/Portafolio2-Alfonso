@@ -128,7 +128,7 @@ export const projects: Project[] = [
     slug: 'cyberquest-academy',
     name: 'CyberQuest Academy',
     category: 'cyber',
-    alsoIn: ['web'],
+    alsoIn: ['web', 'network'],
     status: 'live',
     statusDetail: { es: 'En línea · en desarrollo activo', en: 'Live · in active development' },
     visibility: 'public',
@@ -172,6 +172,8 @@ export const projects: Project[] = [
     },
     repo: 'https://github.com/AlfonsoCha1/CyberQuest-Academy',
     demo: 'https://cyberquest-academy.vercel.app',
+    // Su configuración de seguridad (X-Frame-Options) impide mostrarla dentro de otra página.
+    livePreview: false,
     cover: 'academy',
   },
   {
@@ -212,7 +214,7 @@ export const projects: Project[] = [
     slug: 'defender-powershell',
     name: 'Scripts PowerShell · Windows Defender',
     category: 'automation',
-    alsoIn: ['cyber'],
+    alsoIn: ['cyber', 'network'],
     status: 'personal',
     statusDetail: { es: 'Herramienta personal · 2026', en: 'Personal tool · 2026' },
     visibility: 'private',
@@ -461,11 +463,48 @@ export const projects: Project[] = [
     cover: 'web',
   },
 
+  {
+    slug: 'mi-vida-personal',
+    name: 'Mi Vida Personal',
+    category: 'web',
+    status: 'development',
+    statusDetail: { es: 'En desarrollo · proyecto privado', en: 'In development · private project' },
+    visibility: 'private',
+    featured: true,
+    order: 8.5,
+    year: '2026',
+    summary: {
+      es: 'App para organizar mi vida en un solo lugar: metas, finanzas, entrenamiento, estudio y trabajo. Se instala en iPhone y Android.',
+      en: 'An app to organize my life in one place: goals, finances, training, study and work. Installs on iPhone and Android.',
+    },
+    description: {
+      es: 'Organizador personal pensado como sitio web y como aplicación instalable (PWA) en iPhone y Android. Los datos personales se quedan en el dispositivo, con respaldos que se exportan y restauran, para que cada persona use su propia copia sin mezclar información. El código es privado.',
+      en: 'A personal organizer built as a website and as an installable app (PWA) for iPhone and Android. Personal data stays on the device, with backups you can export and restore, so each person uses their own copy without mixing information. The code is private.',
+    },
+    features: [
+      {
+        es: 'Secciones: Panel de vida, Asesor financiero, Entrenador y nutriólogo, Segundo cerebro, Metas y proyectos, Forma de estudio y Trabajo.',
+        en: 'Sections: Life dashboard, Financial advisor, Coach & nutritionist, Second brain, Goals & projects, Study method and Work.',
+      },
+      { es: 'Instalable como app (PWA) en iPhone y Android.', en: 'Installable as an app (PWA) on iPhone and Android.' },
+      {
+        es: 'Datos solo en el dispositivo, con respaldo para exportar y restaurar.',
+        en: 'Data stays on the device, with export and restore backups.',
+      },
+      { es: 'Acompañante animado configurable y colores naranja y morado.', en: 'Configurable animated companion with orange and purple colors.' },
+    ],
+    tech: ['PWA', 'Web app'],
+    role: { es: 'Proyecto personal: idea, diseño y desarrollo.', en: 'Personal project: idea, design and development.' },
+    note: { es: 'Código privado.', en: 'Private code.' },
+    cover: 'planner',
+  },
+
   // ───────────────────────── Automatización ─────────────────────────
   {
     slug: 'tipos-bash',
     name: 'Tipos-bash',
     category: 'automation',
+    alsoIn: ['network'],
     status: 'archive',
     statusDetail: { es: 'Scripts publicados', en: 'Published scripts' },
     visibility: 'public',
@@ -604,27 +643,6 @@ export const projects: Project[] = [
     tech: ['Java', 'POO'],
     role: { es: 'Autor.', en: 'Author.' },
     repo: 'https://github.com/AlfonsoCha1/Java',
-    cover: 'code',
-  },
-  {
-    slug: 'escuela',
-    name: 'ESCUELA',
-    category: 'practice',
-    status: 'archive',
-    statusDetail: { es: 'Escolar', en: 'School work' },
-    visibility: 'public',
-    featured: false,
-    order: 31,
-    year: '2023',
-    summary: { es: 'Prácticas escolares en C# y ASP.NET Web Forms.', en: 'School exercises in C# and ASP.NET Web Forms.' },
-    description: {
-      es: 'Prácticas académicas de aplicaciones web con C# y ASP.NET Web Forms.',
-      en: 'Academic web application exercises with C# and ASP.NET Web Forms.',
-    },
-    features: [{ es: 'Formularios web con C#.', en: 'Web forms with C#.' }],
-    tech: ['C#', 'ASP.NET'],
-    role: { es: 'Autor.', en: 'Author.' },
-    repo: 'https://github.com/AlfonsoCha1/ESCUELA',
     cover: 'code',
   },
   {

@@ -11,10 +11,11 @@ Diseñado y desarrollado por **Alfonso Chavarín**.
 
 | Área | Detalle |
 | --- | --- |
-| **Universo 3D** | Planeta central que rota (shader propio con continentes, retícula holográfica, luces de ciudad y atmósfera), mi fotografía en un círculo holográfico dentro del mundo, monograma **AC** extruido con las letras del favicon, 7 islas flotantes con estructuras propias, caminos de energía animados, naves/drones en órbita, estrellas con parpadeo y cámara que reacciona al cursor y viaja a cada isla. |
+| **Universo 3D** | Planeta central que rota (shader propio con continentes, retícula holográfica, luces de ciudad y atmósfera), mi fotografía en un círculo holográfico dentro del mundo, monograma **AC** extruido con las letras del favicon, 7 islas flotantes con estructuras propias, caminos de energía animados, paquetes de datos y candados en órbita (tráfico de red protegido), estrellas con parpadeo y cámara que reacciona al cursor y viaja a cada isla. |
 | **Modo ligero 2D** | Mismo concepto con CSS/SVG (planeta, retrato, islas, caminos). Se activa solo si no hay WebGL, en equipos débiles, con ahorro de datos o movimiento reducido, y siempre se puede elegir a mano. |
-| **Islas** | Ciberseguridad (cian), IA (violeta), Drones y robótica (naranja), Desarrollo web (rosa), Automatización (azul), Hardware e IoT (verde turquesa), Contenido (magenta). Hover/foco: brillo, elevación, borde neón, camino iluminado y panel holográfico. Clic/toque/Enter: la cámara se acerca y se abre el módulo con proyectos reales. |
+| **Islas** | Ciberseguridad (cian), IA (violeta), Redes y soporte TI (naranja), Desarrollo web (rosa), Automatización (azul), Hardware e IoT (verde turquesa), Contenido (magenta). Hover/foco: brillo, elevación, borde neón, camino iluminado y panel holográfico. Clic/toque/Enter: la cámara se acerca y se abre el módulo con proyectos reales. |
 | **Secciones** | Inicio, Sobre mí, Proyectos (filtros + búsqueda + página por proyecto), Experiencia (línea del tiempo accesible), Educación, Certificaciones (un cuadro animado por credencial, solo texto: comprobantes a solicitud), Laboratorios SOC, Habilidades, CV, Contacto. Además, una página por módulo (`/modules/[isla]`). |
+| **Proyectos** | Tarjetas con color y portada animada propia (SVG + CSS). Los proyectos con página pública muestran **"Ver en vivo"**: la página real se carga dentro del portafolio solo cuando el visitante lo pide (iframe aislado con `sandbox`). Los privados no muestran código. |
 | **CV interactivo** | `/[es|en]/cv`, legible sin la escena 3D, imprimible y con los PDF reales en español e inglés. |
 | **Tema** | Un solo botón con 4 modos: **Automático** (sigue el dispositivo), **Claro**, **Nocturno** y **Según la hora** (claro de 7:00 a 19:00). Cada tema tiene su propia paleta, no es una inversión de colores. Sin parpadeo al cargar. |
 | **Idiomas** | Español e inglés completos (`/es`, `/en`), con selector ES \| EN, preferencia persistente y metadatos `hreflang`. Sin traductores externos. |
@@ -112,12 +113,35 @@ Navegación completa con teclado (islas también desde la barra de islas), enlac
 
 ## Seguridad y privacidad
 
-CSP estricta sin orígenes externos, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy`, `Permissions-Policy`, COOP, HSTS en producción, validación con Zod en el servidor, escape de HTML en el correo y claves solo en variables de entorno del servidor. Sin analítica ni cookies de rastreo: solo una cookie funcional de idioma. Los certificados se muestran solo como texto: no se publican imágenes ni enlaces a documentos con datos personales. Aviso de privacidad en `/[es|en]/privacy`.
+El portafolio es un sitio de solo lectura: no tiene base de datos, cuentas, panel de administración ni subida de archivos, así que no hay información guardada que se pueda robar. La única entrada de datos es el formulario de contacto.
+
+**Navegador**
+- CSP estricta: solo scripts, estilos, fuentes e imágenes del propio dominio (sin terceros ni `eval` en producción), `frame-ancestors 'none'`, `object-src 'none'`, `form-action 'self'`; los iframes solo pueden cargar las páginas públicas de los propios proyectos.
+- `X-Frame-Options: DENY` (nadie puede incrustar el portafolio para engañar con clics), `nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` que bloquea cámara, micrófono, ubicación, pagos, USB, puertos serie, HID y seguimiento por intereses.
+- Aislamiento: `Cross-Origin-Opener-Policy`, `Cross-Origin-Resource-Policy: same-site`, `Origin-Agent-Cluster`, `X-Permitted-Cross-Domain-Policies: none`, `X-DNS-Prefetch-Control: off`.
+- HTTPS obligatorio en producción (HSTS de 2 años + `upgrade-insecure-requests`).
+- La vista "Ver en vivo" usa `sandbox` y `referrerpolicy="no-referrer"`.
+
+**Formulario y API (`/api/contact`)**
+- Solo acepta `POST` en JSON desde el propio sitio: sin encabezado `Origin` o desde otro dominio → 403.
+- Cuerpo máximo de 10 KB, validación con Zod en el servidor, caracteres de control eliminados (evita inyección de encabezados en el correo) y HTML escapado.
+- Anti-spam: campo trampa (honeypot), tiempo mínimo de llenado, límite de 5 envíos cada 10 minutos por IP y un tope global.
+- Si el envío de correo no está configurado responde con honestidad (`503 not_configured`); nunca finge que se envió.
+- Las claves (Resend) viven solo en variables de entorno del servidor; nunca llegan al navegador ni al repositorio (`.env*` está en `.gitignore`).
+
+**Datos personales**
+- Sin analítica ni cookies de rastreo: solo una cookie funcional de idioma y preferencias locales.
+- Los certificados se muestran solo como texto: no se publican imágenes, PDF ni enlaces de verificación (CURP, folios, QR). Pruebas automáticas lo vigilan.
+- No se enlaza ni se muestra código de repositorios privados.
+- Aviso de privacidad en `/[es|en]/privacy` y contacto de seguridad en `/.well-known/security.txt`.
+
+**Repositorio**
+- Dependabot revisa dependencias cada semana; CI ejecuta lint, tipos, pruebas, build y `npm audit` en cada PR; CodeQL analiza el código cada semana.
 
 ## Pruebas
 
-- **Unitarias (Vitest):** integridad de los datos (sin enlaces a código privado, imágenes existentes, experiencia igual al CV y sin datos de la imagen de referencia), claves idénticas ES/EN, tema de 4 modos, detección de capacidades, rate limit, esquema del formulario y terminal segura.
-- **E2E (Playwright, escritorio y móvil):** carga sin errores de consola, intro saltable, idiomas, tema, islas con mouse y teclado, modo 3D/2D persistente, filtros y detalle de proyectos, proyectos privados sin código, línea del tiempo, CV y PDFs, terminal, NEXBOT, formulario honesto, API, menú móvil sin desplazamiento horizontal, SEO y encabezados de seguridad.
+- **Unitarias (Vitest):** integridad de los datos (sin enlaces a código privado, imágenes existentes, experiencia igual al CV y sin datos de la imagen de referencia), claves idénticas ES/EN, tema de 4 modos, detección de capacidades, rate limit, esquema del formulario (incluye eliminación de caracteres de control) y terminal segura.
+- **E2E (Playwright, escritorio y móvil):** carga sin errores de consola, intro saltable, idiomas, tema, islas con mouse y teclado, modo 3D/2D persistente, filtros y detalle de proyectos, proyectos privados sin código, línea del tiempo, CV y PDFs, terminal, NEXBOT, formulario honesto, API (bloqueo de otros orígenes), menú móvil sin desplazamiento horizontal, SEO y encabezados de seguridad.
 
 ---
 

@@ -9,6 +9,8 @@ import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { ProjectCover } from './ProjectCover';
 import { ProjectLinks } from './ProjectLinks';
+import { LivePreviewInline } from './LivePreview';
+import { canLivePreview } from '@/lib/live-preview';
 
 /** Página de presentación de un proyecto (también para proyectos privados, sin datos confidenciales). */
 export function ProjectDetail({ project }: { project: Project }) {
@@ -47,13 +49,17 @@ export function ProjectDetail({ project }: { project: Project }) {
           <p className="text-lg font-semibold text-accent">{tx(project.statusDetail, locale)}</p>
           <p className="text-lg leading-relaxed text-fg/90">{tx(project.description, locale)}</p>
 
-          <div className="neon-card overflow-hidden">
-            <ProjectCover project={project} label={t('conceptual')} className="aspect-[16/9] w-full" />
-            <p className="flex items-start gap-2 p-3 text-xs text-dim">
-              <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-              {t('conceptualNote')}
-            </p>
-          </div>
+          {canLivePreview(project) ? (
+            <LivePreviewInline project={project} />
+          ) : (
+            <div className="neon-card overflow-hidden">
+              <ProjectCover project={project} label={t('conceptual')} className="aspect-[16/9] w-full" />
+              <p className="flex items-start gap-2 p-3 text-xs text-dim">
+                <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                {t('conceptualNote')}
+              </p>
+            </div>
+          )}
 
           <section aria-labelledby="features-h">
             <h2 id="features-h" className="mb-3 font-display text-xl font-semibold">

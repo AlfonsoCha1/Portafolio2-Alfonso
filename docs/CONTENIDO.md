@@ -10,7 +10,7 @@ Copia un objeto de la lista y cambia:
 | Campo | Qué poner |
 | --- | --- |
 | `slug` | Identificador único en minúsculas con guiones (será la URL `/projects/slug`). |
-| `category` | Isla principal: `cyber`, `ai`, `drones`, `web`, `automation`, `hardware`, `content` o `practice`. |
+| `category` | Isla principal: `cyber`, `ai`, `network`, `web`, `automation`, `hardware`, `content` o `practice`. |
 | `alsoIn` | (Opcional) otras islas donde también aparece. |
 | `status` | Estado **real**: `live`, `beta`, `demo`, `lab`, `development`, `archive`, `personal`. No uses `live` si sigue en desarrollo. |
 | `statusDetail` | Detalle corto, por ejemplo "v0.2 · módulo de reportes". |
@@ -18,10 +18,10 @@ Copia un objeto de la lista y cambia:
 | `repo` / `demo` | Solo enlaces que existan. Los botones se generan solos: código + demo → "Ver código" y "Abrir proyecto"; solo código → "Ver en GitHub"; solo demo → "Visitar proyecto". |
 | `summary`, `description`, `features`, `role`, `tech` | Texto no confidencial. |
 | `gallery` | (Opcional) capturas reales aprobadas en `public/images/proyectos/...`. Mientras no haya, se muestra una portada conceptual generada en código y etiquetada como tal. |
-| `cover` | Motivo de la portada conceptual: `shield`, `logs`, `ai`, `voice`, `store`, `loyalty`, `web`, `terminal`, `video`, `chip`, `academy`, `code`, `nfc`. |
+| `cover` | Motivo de la portada conceptual: `shield`, `logs`, `ai`, `voice`, `store`, `loyalty`, `web`, `terminal`, `video`, `chip`, `academy`, `code`, `nfc`, `planner`. |
+| `livePreview` | (Opcional) `false` para no mostrar "Ver en vivo" aunque tenga `demo` (por ejemplo, si la página bloquea ser incrustada). Cada dominio de `demo` se agrega solo a la CSP. |
 | `featured`, `order` | Destacado y orden (menor = primero). |
 
-Para proyectos de drones: al agregar el primero con `category: 'drones'` puedes quitar el campo `pending` de la isla en `src/data/categories.ts`.
 
 ## Certificación — `src/data/certifications.ts`
 

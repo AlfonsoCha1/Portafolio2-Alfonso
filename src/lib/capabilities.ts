@@ -72,8 +72,8 @@ export function readDeviceSignals(): DeviceSignals {
 }
 
 /** Parámetros de render por nivel de calidad. */
-export const QUALITY_PRESETS: Record<QualityTier, { dpr: [number, number]; stars: number; particles: number; drones: number; segments: number }> = {
-  high: { dpr: [1, 1.75], stars: 2200, particles: 260, drones: 6, segments: 96 },
-  medium: { dpr: [1, 1.35], stars: 1300, particles: 140, drones: 4, segments: 64 },
-  low: { dpr: [0.8, 1], stars: 700, particles: 60, drones: 2, segments: 40 },
+export const QUALITY_PRESETS: Record<QualityTier, { dpr: [number, number]; stars: number; particles: number; packets: number; segments: number }> = {
+  high: { dpr: [1, 1.75], stars: 2200, particles: 260, packets: 6, segments: 96 },
+  medium: { dpr: [1, 1.35], stars: 1300, particles: 140, packets: 4, segments: 64 },
+  low: { dpr: [0.8, 1], stars: 700, particles: 60, packets: 2, segments: 40 },
 };

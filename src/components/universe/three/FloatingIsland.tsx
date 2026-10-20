@@ -57,14 +57,16 @@ function useRockGeometry(seed: number) {
 
 function Structure({ id, color, color2, speed }: { id: CategoryId; color: string; color2: string; speed: number }) {
   const spin = useRef<THREE.Group>(null);
-  const rotors = useRef<THREE.Group>(null);
+  const waves = useRef<THREE.Group>(null);
   useFrame((state, delta) => {
     const d = Math.min(delta, 0.5) * speed;
     if (spin.current) spin.current.rotation.y += d * 0.8;
-    if (rotors.current) {
-      rotors.current.children.forEach((drone, i) => {
-        drone.position.y = 0.75 + Math.sin(state.clock.elapsedTime * 2 * speed + i * 2) * 0.08;
-        drone.children.slice(1).forEach((r) => (r.rotation.y += d * 25));
+    if (waves.current) {
+      // Señal Wi-Fi: los arcos se encienden de adentro hacia afuera
+      const t = state.clock.elapsedTime * speed;
+      waves.current.children.forEach((child, i) => {
+        const mat = (child as THREE.Mesh).material as THREE.MeshBasicMaterial;
+        if (mat && 'opacity' in mat) mat.opacity = 0.25 + 0.75 * (0.5 + 0.5 * Math.sin(t * 3 - i * 1.1));
       });
     }
   });
@@ -120,39 +122,37 @@ function Structure({ id, color, color2, speed }: { id: CategoryId; color: string
           </group>
         </group>
       );
-    case 'drones':
+    case 'network':
       return (
         <group>
-          <mesh position={[0, 0.03, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <ringGeometry args={[0.38, 0.5, 32]} />
-            <meshBasicMaterial color={color} side={THREE.DoubleSide} toneMapped={false} />
+          {/* Router / switch con antenas y LEDs */}
+          <mesh position={[0, 0.16, 0]}>
+            <boxGeometry args={[0.78, 0.18, 0.46]} />
+            <meshStandardMaterial color="#1b2550" metalness={0.6} roughness={0.3} />
           </mesh>
-          <group ref={rotors}>
-            {(
-              [
-                [-0.25, 0],
-                [0.35, 0.3],
-              ] as [number, number][]
-            ).map(([x, z], i) => (
-              <group key={i} position={[x, 0.75, z]} scale={0.9 - i * 0.2}>
-                <mesh>
-                  <boxGeometry args={[0.32, 0.08, 0.32]} />
-                  <meshStandardMaterial color="#222a4d" metalness={0.6} roughness={0.3} />
-                </mesh>
-                {(
-                  [
-                    [-0.2, -0.2],
-                    [0.2, -0.2],
-                    [-0.2, 0.2],
-                    [0.2, 0.2],
-                  ] as [number, number][]
-                ).map(([rx, rz], j) => (
-                  <mesh key={j} position={[rx, 0.06, rz]}>
-                    <cylinderGeometry args={[0.11, 0.11, 0.01, 12]} />
-                    <meshBasicMaterial color={color} transparent opacity={0.7} toneMapped={false} />
-                  </mesh>
-                ))}
-              </group>
+          {[-0.27, -0.13, 0.01, 0.15, 0.29].map((x, i) => (
+            <mesh key={x} position={[x, 0.16, 0.235]}>
+              <boxGeometry args={[0.07, 0.05, 0.01]} />
+              <meshBasicMaterial color={i % 2 ? color2 : color} toneMapped={false} />
+            </mesh>
+          ))}
+          {[-0.28, 0.28].map((x) => (
+            <mesh key={x} position={[x, 0.48, -0.15]} rotation={[0, 0, x > 0 ? -0.18 : 0.18]}>
+              <cylinderGeometry args={[0.025, 0.025, 0.5, 8]} />
+              <meshStandardMaterial color="#2a3366" metalness={0.5} roughness={0.4} />
+            </mesh>
+          ))}
+          {/* Señal Wi-Fi (arcos que laten) */}
+          <group ref={waves} position={[0, 0.42, 0.05]}>
+            <mesh>
+              <sphereGeometry args={[0.055, 16, 16]} />
+              <meshBasicMaterial color={color} transparent opacity={1} toneMapped={false} />
+            </mesh>
+            {[0.16, 0.3, 0.44].map((r, i) => (
+              <mesh key={r} rotation={[0, 0, Math.PI / 4]}>
+                <torusGeometry args={[r, 0.022, 8, 32, Math.PI / 2]} />
+                <meshBasicMaterial color={i % 2 ? color2 : color} transparent opacity={0.9} toneMapped={false} />
+              </mesh>
             ))}
           </group>
         </group>

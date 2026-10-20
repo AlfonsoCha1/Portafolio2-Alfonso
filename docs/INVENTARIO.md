@@ -7,7 +7,7 @@
 | `CV_Alfonso_Chavarin_Maestro.pdf` y `CV_Alfonso_Chavarin_Master_EN.pdf` | Experiencia, educación, habilidades, certificaciones, perfil y proyectos. Fuente principal. |
 | Portafolio anterior `portafolio-original-tau.vercel.app` (repo `portafolio-original`) | Fotografía (`Yo_uno.jpg`, la misma que se proporcionó), textos de perfil y lista de proyectos. |
 | README y `perfil.toml` de `github.com/AlfonsoCha1` | Proyectos con estado real, enlaces y lista de certificados. |
-| Repos públicos: `Herramientas_cyberseguridad`, `Tipos-de-Proyectos`, `CyberQuest-Academy`, `Chavarin_-_Said`, `CHAVAMON_BASICO`, `Tipos-bash`, `Java`, `ESCUELA`, `SUMA`, `PROYECTOS`, `PROYECTO-INTERLIGENCIA-ARTIFICIAL`, `portafolio-alfonso`, `Portafolio` | Descripciones, tecnologías y funcionalidades. |
+| Repos públicos: `Herramientas_cyberseguridad`, `Tipos-de-Proyectos`, `CyberQuest-Academy`, `Chavarin_-_Said`, `CHAVAMON_BASICO`, `Tipos-bash`, `Java`, `SUMA`, `PROYECTOS`, `PROYECTO-INTERLIGENCIA-ARTIFICIAL`, `portafolio-alfonso`, `Portafolio` | Descripciones, tecnologías y funcionalidades. |
 | `portafolio-alfonso/Imagen_de certirficado` | Solo para confirmar nombres, emisores y fechas de los certificados (las imágenes **no** se publican). |
 | Sitios públicos: SOPHYA, English Speaking Coach, Smucky's, CyberQuest Academy, CHAVATRIX AEGIS | Confirmar que existen y qué describen públicamente. |
 
@@ -15,7 +15,7 @@ Los repositorios privados (CHAVATRIX-AEGIS, CHAVAMON-ORIGINAL, SOPHYA, English S
 
 ## Datos de la imagen de referencia que NO se usaron
 
-La imagen de referencia incluía experiencia y estudios que no aparecen en ninguna fuente de Alfonso: Space AI, Huawei, IT Basari, Continental, IENTC Telecom, MSc Space Engineering (University of Surrey), Ingeniería Mecatrónica (Tecnológico de Monterrey), ubicación en Querétaro, disponibilidad "Remoto/Híbrido" y proyectos ALBA como "asistente de voz", Luna y Lumo y NEXO. Se sustituyeron por los datos del CV. Una prueba automática impide que vuelvan a aparecer.
+La imagen de referencia incluía experiencia y estudios que no aparecen en ninguna fuente de Alfonso: Space AI, Huawei, IT Basari, Continental, IENTC Telecom, MSc Space Engineering (University of Surrey), Ingeniería Mecatrónica (Tecnológico de Monterrey), ubicación en Querétaro, disponibilidad "Remoto/Híbrido" y proyectos ALBA como "asistente de voz", Luna y Lumo, NEXO y la isla de drones y satélites. Alfonso confirmó que no son suyos; se sustituyeron por los datos del CV (la isla naranja es ahora Redes y soporte TI). Una prueba automática impide que vuelvan a aparecer.
 
 ## Proyectos incluidos
 
@@ -36,7 +36,10 @@ La imagen de referencia incluía experiencia y estudios que no aparecen en ningu
 | Soportes NFC para reseñas | Hardware | En desarrollo | — |
 | CHAVAMON | Contenido | En desarrollo (básico público) | Repo |
 | EL CHAVATRIX | Contenido | Activo | — (por confirmar) |
-| Java, ESCUELA, SUMA, PROYECTOS | Prácticas | Archivo | Repo |
+| Mi Vida Personal | Web | En desarrollo · privado | — |
+| Java, SUMA, PROYECTOS | Prácticas | Archivo | Repo |
+
+`ESCUELA` (prácticas de C#/ASP.NET Web Forms) se retiró: Alfonso indicó que no es suyo.
 
 ## Ajustes de privacidad aplicados
 

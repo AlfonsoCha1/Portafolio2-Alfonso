@@ -11,6 +11,7 @@ import { CategoryIcon } from '@/components/ui/CategoryIcon';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { ProjectCover } from './ProjectCover';
 import { ProjectLinks } from './ProjectLinks';
+import { LivePreviewButton } from './LivePreview';
 
 /** Tarjeta de proyecto con brillo por categoría, inclinación 3D ligera y zoom de imagen. */
 export function NeonCard({ project }: { project: Project }) {
@@ -40,7 +41,7 @@ export function NeonCard({ project }: { project: Project }) {
       ref={ref}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
-      className="neon-card group flex h-full flex-col overflow-hidden will-change-transform"
+      className="cert-card project-card group flex h-full flex-col overflow-hidden will-change-transform"
       style={{ '--accent': color, '--accent-2': color2 } as React.CSSProperties}
       data-testid="project-card"
       data-category={project.category}
@@ -48,8 +49,9 @@ export function NeonCard({ project }: { project: Project }) {
       <div className="relative aspect-[16/9] overflow-hidden rounded-t-[1.2rem]">
         <ProjectCover project={project} label={t('conceptual')} className="h-full w-full transition-transform duration-700 group-hover:scale-[1.05]" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: 'radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.12), transparent 50%)' }} />
+        <div aria-hidden="true" className="project-card__bar absolute inset-x-0 bottom-0" />
         {project.featured ? (
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/55 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur">
+          <span className={`absolute left-3 inline-flex items-center gap-1 rounded-full bg-black/55 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur ${project.demo ? 'top-11' : 'top-3'}`}>
             <Star className="h-3 w-3 fill-current text-[var(--accent)]" aria-hidden="true" />
             {t('featured')}
           </span>
@@ -78,7 +80,10 @@ export function NeonCard({ project }: { project: Project }) {
           ))}
         </ul>
         <div className="relative z-[3] mt-auto flex flex-wrap items-center justify-between gap-2 pt-2">
-          <ProjectLinks project={project} size="sm" />
+          <div className="flex flex-wrap items-center gap-2">
+            <LivePreviewButton project={project} />
+            <ProjectLinks project={project} size="sm" />
+          </div>
           <Link href={`/projects/${project.slug}`} className="inline-flex h-10 items-center gap-1 rounded-lg px-2 text-xs font-bold text-accent hover:underline" aria-label={`${t('details')} — ${project.name}`}>
             {t('details')}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

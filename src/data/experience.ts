@@ -63,7 +63,7 @@ export const experience: Experience[] = [
       },
     ],
     tech: ['AWS', 'Linux', 'Java', 'Autenticación biométrica', 'Soporte TI'],
-    relatedCategories: ['cyber', 'ai'],
+    relatedCategories: ['network', 'cyber', 'ai'],
   },
   {
     id: 'hayward',
@@ -111,7 +111,7 @@ export const experience: Experience[] = [
       },
     ],
     tech: ['Redes', 'Switches', 'Soporte TI', 'Mantenimiento'],
-    relatedCategories: ['hardware', 'cyber'],
+    relatedCategories: ['network', 'cyber'],
   },
   {
     id: 'sedagro',
@@ -137,6 +137,6 @@ export const experience: Experience[] = [
       },
     ],
     tech: ['Cableado estructurado', 'Redes', 'Periféricos'],
-    relatedCategories: ['hardware'],
+    relatedCategories: ['network'],
   },
 ];
