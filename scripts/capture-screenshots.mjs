@@ -7,7 +7,8 @@ import { mkdir } from 'node:fs/promises';
 import { chromium } from '@playwright/test';
 
 const { projects } = await import('../src/data/projects.ts');
-const targets = projects.filter((p) => p.demo);
+const only = (process.env.ONLY ?? '').split(',').filter(Boolean);
+const targets = projects.filter((p) => p.demo && (only.length === 0 || only.includes(p.slug)));
 const OUT = 'capturas';
 await mkdir(OUT, { recursive: true });
 
@@ -41,7 +42,8 @@ for (const p of targets) {
       }
     }
     await page.waitForTimeout(5000);
-    await page.screenshot({ path: `${OUT}/${p.slug}.png` });
+    // animations: 'disabled' termina transiciones (carruseles, fundidos) para no capturar un cuadro a medias
+    await page.screenshot({ path: `${OUT}/${p.slug}.png`, animations: 'disabled' });
     console.log('ok', p.slug, page.url());
     ok++;
   } catch (e) {
