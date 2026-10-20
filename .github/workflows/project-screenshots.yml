@@ -1,0 +1,35 @@
+name: Capturas de proyectos
+
+# Toma capturas reales de las páginas públicas de los proyectos.
+# Las deja en la rama temporal "capturas-tmp" para revisarlas antes de usarlas.
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/chavatrix-universe]
+    paths: [scripts/capture-screenshots.mjs]
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node --experimental-strip-types scripts/capture-screenshots.mjs
+      - name: Publicar capturas en una rama temporal
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan capturas-tmp
+          git rm -rq --cached .
+          git add -f capturas/*.png
+          git commit -qm "Capturas de proyectos (temporal)"
+          git push -qf origin capturas-tmp
