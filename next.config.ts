@@ -6,6 +6,8 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const isDev = process.env.NODE_ENV !== 'production';
 // En Vercel (HTTPS) se fuerzan las subidas a HTTPS; en local (http://localhost) no.
 const onHttps = process.env.VERCEL === '1';
+// Vistas previas (por ejemplo en Render): NOINDEX=1 evita que los buscadores las indexen.
+const noIndex = process.env.NOINDEX === '1';
 
 /**
  * Content-Security-Policy.
@@ -37,6 +39,7 @@ const securityHeaders = [
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()' },
   { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
   ...(onHttps ? [{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }] : []),
+  ...(noIndex ? [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] : []),
 ];
 
 const nextConfig: NextConfig = {
