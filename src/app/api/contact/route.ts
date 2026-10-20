@@ -10,6 +10,14 @@ const MAX_BODY_BYTES = 10_000;
 const limiter = createRateLimiter({ limit: 5, windowMs: 10 * 60 * 1000 });
 const globalLimiter = createRateLimiter({ limit: 60, windowMs: 10 * 60 * 1000 });
 
+function siteHost(): string | null {
+  try {
+    return process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL).host : null;
+  } catch {
+    return null;
+  }
+}
+
 function clientIp(req: NextRequest): string {
   const fwd = req.headers.get('x-forwarded-for');
   if (fwd) return fwd.split(',')[0]?.trim() || 'unknown';
@@ -22,11 +30,14 @@ function json(body: unknown, status: number, headers?: Record<string, string>) {
 
 export async function POST(req: NextRequest) {
   // Solo solicitudes enviadas desde el propio sitio (el navegador siempre envía Origin en un POST)
+  // (un navegador no puede falsificar Host ni X-Forwarded-Host, así que esto frena el envío desde otros sitios)
   const origin = req.headers.get('origin');
-  const host = req.headers.get('x-forwarded-host') ?? req.headers.get('host');
+  const allowedHosts = new Set(
+    [req.headers.get('host'), req.headers.get('x-forwarded-host'), siteHost()].filter((h): h is string => Boolean(h)),
+  );
   let sameOrigin = false;
   try {
-    sameOrigin = Boolean(origin && host && new URL(origin).host === host);
+    sameOrigin = Boolean(origin && allowedHosts.has(new URL(origin).host));
   } catch {
     sameOrigin = false;
   }
