@@ -43,6 +43,6 @@ La imagen de referencia incluía experiencia y estudios que no aparecen en ningu
 
 ## Ajustes de privacidad aplicados
 
-- Las certificaciones y diplomas se muestran **solo como texto**, cada una en su cuadro (nombre, emisor, fecha, horas y competencias). No se publican imágenes ni enlaces de verificación: el comprobante se envía a solicitud.
+- Las certificaciones y diplomas se muestran **solo como texto**, cada una en su cuadro (nombre, de qué trata, emisor, fecha y horas). No se publican imágenes ni enlaces de verificación.
 - ⚠️ La imagen del certificado de Robótica Aplicada en el repositorio público `portafolio-alfonso` (carpeta `Imagen_de certirficado`) muestra la **CURP**, impresa por la institución porque el curso está registrado ante la STPS. Conviene quitarla de ese repositorio.
 - El teléfono no aparece en la página (sí en los PDF del CV, que son los archivos originales).

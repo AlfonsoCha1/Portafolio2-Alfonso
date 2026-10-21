@@ -25,8 +25,8 @@ Copia un objeto de la lista y cambia:
 
 ## Certificación — `src/data/certifications.ts`
 
-Agrega `id`, `name`, `issuer`, `date`, `sortDate` (`AAAA-MM`), `kind`, `group`, `skills`, `icon` (ícono de la tarjeta, ver `CertIcon` en `src/data/types.ts`), `color` (hex) y, si existe, `hours`.
-**Las certificaciones se muestran solo como texto, cada una en su cuadro. No subas fotos ni PDF de certificados o diplomas, ni enlaces de verificación (abren el certificado completo): suelen incluir CURP, folios, firmas o códigos QR personales. Los comprobantes se envían directamente a los reclutadores a solicitud.** Una prueba automática lo revisa.
+Agrega `id`, `name`, `summary` (de qué trata, una línea), `issuer`, `date`, `sortDate` (`AAAA-MM`), `kind`, `group`, `skills`, `icon` (ícono de la tarjeta, ver `CertIcon` en `src/data/types.ts`), `color` (hex) y, si existe, `hours`.
+**Las certificaciones se muestran solo como texto, cada una en su cuadro. No subas fotos ni PDF de certificados o diplomas, ni enlaces de verificación (abren el certificado completo): suelen incluir datos personales, folios, firmas o códigos QR.** Una prueba automática lo revisa.
 
 ## Experiencia — `src/data/experience.ts`
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion, useInView, useReducedMotion } from 'motion/react';
-import { Clock, Lock, Mail } from 'lucide-react';
+import { CalendarDays, Clock } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { certGroups, certifications, sortedCertifications } from '@/data/certifications';
@@ -45,7 +45,7 @@ function CountUp({ to, suffix = '' }: { to: number; suffix?: string }) {
 
 /**
  * Certificaciones: un cuadro por credencial con su ícono y color.
- * Por privacidad no se muestran imágenes ni enlaces al certificado: el comprobante se envía a solicitud.
+ * Solo texto: nombre, de qué trata, fecha y horas (sin imágenes ni enlaces a los documentos).
  */
 export function CertificationGallery() {
   const t = useTranslations('certifications');
@@ -122,41 +122,27 @@ export function CertificationGallery() {
                     <span className="cert-icon" style={{ animationDelay: `${(i % 4) * 0.6}s` }}>
                       <CertIcon name={c.icon} className="h-6 w-6" />
                     </span>
-                    <div className="flex flex-col items-end gap-1.5">
-                      <span className="chip chip-accent">{tx(c.kind, locale)}</span>
-                      {c.hours ? (
-                        <span className="chip">
-                          <Clock className="h-3 w-3" aria-hidden="true" />
-                          {t('hours', { hours: c.hours })}
-                        </span>
-                      ) : null}
-                    </div>
+                    <span className="chip chip-accent">{tx(c.kind, locale)}</span>
                   </div>
 
-                  <div className="relative z-[2]">
+                  <div className="relative z-[2] flex flex-1 flex-col">
                     <p className="font-mono text-[11px] font-bold uppercase tracking-wider text-accent">{c.issuer}</p>
                     <h3 className="mt-1 font-display text-lg font-semibold leading-snug">{tx(c.name, locale)}</h3>
-                    <p className="mt-1 text-xs text-muted">{tx(c.date, locale)}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{tx(c.summary, locale)}</p>
                     {c.note ? <p className="mt-2 text-[11px] italic leading-snug text-dim">{tx(c.note, locale)}</p> : null}
                   </div>
 
-                  <ul className="relative z-[2] flex flex-wrap gap-1.5" aria-label={t('skills')}>
-                    {c.skills.map((s) => (
-                      <li key={s} className="chip">
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="relative z-[2] mt-auto flex items-center justify-between gap-2 border-t border-line pt-3 text-[11px]">
-                    <span className="inline-flex items-center gap-1.5 text-dim">
-                      <Lock className="h-3.5 w-3.5" aria-hidden="true" />
-                      {t('onRequest')}
+                  <div className="relative z-[2] mt-auto flex flex-wrap items-center gap-x-4 gap-y-1.5 border-t border-line pt-3 text-xs text-muted">
+                    <span className="inline-flex items-center gap-1.5">
+                      <CalendarDays className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                      {tx(c.date, locale)}
                     </span>
-                    <a href="#contacto" className="inline-flex items-center gap-1 font-bold text-accent hover:underline">
-                      <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-                      {t('request')}
-                    </a>
+                    {c.hours ? (
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                        {t('hours', { hours: c.hours })}
+                      </span>
+                    ) : null}
                   </div>
                 </article>
               </motion.li>

@@ -8,7 +8,7 @@ Cada punto tiene un marcador visible o un valor vacío en el código hasta que l
 4. **Disponibilidad profesional** (por ejemplo, "Remoto · Híbrido · Abierto a oportunidades"): está en `profile.availability = null` hasta que la confirmes.
 5. **EL CHAVATRIX:** confirma si quieres enlazar el canal (YouTube/TikTok/Instagram) en el portafolio profesional.
 6. **CHAVATRIX AEGIS:** tecnologías que se pueden divulgar y estado de la app de escritorio.
-7. **Certificados:** se muestran solo como texto y sin enlaces; los comprobantes los envías tú a cada reclutador cuando los pidan.
+7. **Certificados:** se muestran solo como texto (nombre, de qué trata, fecha y horas). Si conoces las horas de los cursos que no las tienen, agrégalas en `hours`.
 8. **Curso de Python y Robótica:** el CV dice "UNAM (2021–2022)" y el certificado dice "Asociación de Robótica Aplicada y Ciencias de la Tecnología". Se usa el nombre del certificado; confirma cuál prefieres.
 9. **Formulario:** crear cuenta en Resend, verificar un dominio y configurar `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` y `CONTACT_TO_EMAIL`.
 10. **Dominio final** para `NEXT_PUBLIC_SITE_URL`.

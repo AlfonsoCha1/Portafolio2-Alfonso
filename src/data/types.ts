@@ -147,6 +147,8 @@ export type CertIcon =
 export interface Certification {
   id: string;
   name: L;
+  /** De qué trata el curso, en una línea. */
+  summary: L;
   issuer: string;
   date: L;
   /** Para ordenar: YYYY-MM */

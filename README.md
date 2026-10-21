@@ -16,7 +16,7 @@ Diseñado y desarrollado por **Alfonso Chavarín**.
 | **Universo 3D** | Planeta central que rota (shader propio con continentes, retícula holográfica, luces de ciudad y atmósfera), mi fotografía en un círculo holográfico dentro del mundo, monograma **AC** extruido con las letras del favicon, 7 islas flotantes con estructuras propias, caminos de energía animados, paquetes de datos y candados en órbita (tráfico de red protegido), estrellas con parpadeo y cámara que reacciona al cursor y viaja a cada isla. |
 | **Modo ligero 2D** | Mismo concepto con CSS/SVG (planeta, retrato, islas, caminos). Se activa solo si no hay WebGL, en equipos débiles, con ahorro de datos o movimiento reducido, y siempre se puede elegir a mano. |
 | **Islas** | Ciberseguridad (cian), IA (violeta), Redes y soporte TI (naranja), Desarrollo web (rosa), Automatización (azul), Hardware e IoT (verde turquesa), Contenido (magenta). Hover/foco: brillo, elevación, borde neón, camino iluminado y panel holográfico. Clic/toque/Enter: la cámara se acerca y se abre el módulo con proyectos reales. |
-| **Secciones** | Inicio, Sobre mí, Proyectos (filtros + búsqueda + página por proyecto), Experiencia (línea del tiempo accesible), Educación, Certificaciones (un cuadro animado por credencial, solo texto: comprobantes a solicitud), Laboratorios SOC, Habilidades, CV, Contacto. Además, una página por módulo (`/modules/[isla]`). |
+| **Secciones** | Inicio, Sobre mí, Proyectos (filtros + búsqueda + página por proyecto), Experiencia (línea del tiempo accesible), Educación, Certificaciones (un cuadro animado por credencial, solo texto: nombre, de qué trata, fecha y horas), Laboratorios SOC, Habilidades, CV, Contacto. Además, una página por módulo (`/modules/[isla]`). |
 | **Proyectos** | Los proyectos con página pública muestran una **captura real** de su página (tomada con Playwright en GitHub Actions y revisada); los demás, una portada animada propia (SVG + CSS). Además muestran **"Ver en vivo"**: la página real se carga dentro del portafolio solo cuando el visitante lo pide (iframe aislado con `sandbox`). Los privados no muestran código. |
 | **CV interactivo** | `/[es|en]/cv`, legible sin la escena 3D, imprimible y con los PDF reales en español e inglés. |
 | **Tema** | Un solo botón con 4 modos: **Automático** (sigue el dispositivo), **Claro**, **Nocturno** y **Según la hora** (claro de 7:00 a 19:00). Cada tema tiene su propia paleta, no es una inversión de colores. Sin parpadeo al cargar. |
@@ -133,7 +133,7 @@ El portafolio es un sitio de solo lectura: no tiene base de datos, cuentas, pane
 
 **Datos personales**
 - Sin analítica ni cookies de rastreo: solo una cookie funcional de idioma y preferencias locales.
-- Los certificados se muestran solo como texto: no se publican imágenes, PDF ni enlaces de verificación (CURP, folios, QR). Pruebas automáticas lo vigilan.
+- Los certificados se muestran solo como texto (nombre, de qué trata, fecha y horas): no se publican imágenes, PDF ni enlaces de verificación. Pruebas automáticas lo vigilan.
 - No se enlaza ni se muestra código de repositorios privados.
 - Aviso de privacidad en `/[es|en]/privacy` y contacto de seguridad en `/.well-known/security.txt`.
 
