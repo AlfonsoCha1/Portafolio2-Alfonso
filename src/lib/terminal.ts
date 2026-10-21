@@ -130,8 +130,8 @@ export function runCommand(raw: string, locale: Locale): TermResult {
           })),
           {
             text: es
-              ? 'Los cursos de Cisco NetAcad son certificados de finalización de curso, no la certificación CCNA.'
-              : 'Cisco NetAcad courses are course-completion certificates, not the CCNA certification.',
+              ? 'Los cursos CCNAv7 de Cisco Networking Academy son certificados de finalización.'
+              : 'The Cisco Networking Academy CCNAv7 courses are completion certificates.',
             tone: 'muted',
           },
         ],

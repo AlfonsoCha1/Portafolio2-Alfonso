@@ -161,7 +161,7 @@ export interface Certification {
   color: string;
   skills: string[];
   featured?: boolean;
-  /** Aclaración importante (p. ej. "certificado de curso, no la certificación CCNA"). */
+  /** Aclaración breve (p. ej. "certificado de finalización de Cisco Networking Academy"). */
   note?: L;
 }
 

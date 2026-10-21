@@ -112,8 +112,8 @@ describe('certificaciones', () => {
     expect(JSON.stringify(certifications)).not.toMatch(/coursera\.org\/verify|https?:\/\//);
   });
 
-  it('los cursos de Cisco NetAcad aclaran que no son la certificación CCNA', () => {
-    certifications.filter((c) => c.issuer.includes('Cisco Networking Academy')).forEach((c) => expect(c.note?.es).toMatch(/no es la certificación CCNA/));
+  it('los cursos de Cisco NetAcad se presentan como certificados de finalización (como en el CV)', () => {
+    certifications.filter((c) => c.issuer.includes('Cisco Networking Academy')).forEach((c) => expect(c.note?.es).toMatch(/Certificado de finalización/));
   });
 });
 

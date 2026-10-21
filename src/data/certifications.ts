@@ -7,12 +7,11 @@ import type { Certification, CertGroup, L } from './types';
  * Los certificados se muestran SOLO como texto (nombre, de qué trata, fecha y horas): no se publican
  * imágenes de los documentos ni enlaces de verificación, porque incluyen datos personales.
  *
- * Importante: los cursos de Cisco Networking Academy son certificados de finalización de curso,
- * no la certificación CCNA.
+ * Los cursos CCNAv7 de Cisco Networking Academy son certificados de finalización (así lo dice el CV).
  */
 const ccnaNote: L = {
-  es: 'Certificado de finalización de curso de Cisco Networking Academy; no es la certificación CCNA.',
-  en: 'Cisco Networking Academy course completion certificate; not the CCNA certification.',
+  es: 'Certificado de finalización de Cisco Networking Academy.',
+  en: 'Cisco Networking Academy completion certificate.',
 };
 
 export const certifications: Certification[] = [

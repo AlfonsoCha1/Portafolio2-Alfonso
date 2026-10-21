@@ -159,7 +159,7 @@
   "certifications": {
     "kicker": "Certificaciones",
     "title": "Cursos, certificados y diplomas",
-    "intro": "Mis cursos, certificados y diplomas: de qué trata cada uno, cuándo lo terminé y cuántas horas duró. Los cursos de Cisco NetAcad son certificados de finalización de curso, no la certificación CCNA.",
+    "intro": "Mis cursos, certificados y diplomas: de qué trata cada uno, cuándo lo terminé y cuántas horas duró.",
     "all": "Todas",
     "hours": "{hours} h",
     "skills": "Competencias",
