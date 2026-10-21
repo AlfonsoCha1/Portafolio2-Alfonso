@@ -251,6 +251,35 @@ test.describe('Móvil y accesibilidad básica', () => {
     await expect(page.locator('#certificaciones')).toBeInViewport();
   });
 
+  for (const mode of ['2d', '3d'] as const) {
+    test(`se puede bajar con el dedo desde el universo (${mode}) y no regresa al inicio`, async ({ page, context, isMobile }) => {
+      test.skip(!isMobile, 'Solo móvil');
+      await prepare(page, { mode, nexbot: false });
+      await page.goto('/es');
+      await page.waitForTimeout(mode === '3d' ? 6000 : 1000);
+      const cdp = await context.newCDPSession(page);
+      const swipe = async (x: number, from: number, to: number) => {
+        await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y: from }] });
+        for (let i = 1; i <= 10; i++) {
+          await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x, y: from + ((to - from) * i) / 10 }] });
+          await page.waitForTimeout(16);
+        }
+        await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+        await page.waitForTimeout(700);
+      };
+      const box = page.viewportSize() ?? { width: 390, height: 800 };
+      // El dedo empieza sobre el universo (parte superior de la pantalla)
+      await swipe(box.width / 2, 420, 120);
+      await swipe(box.width / 2, 420, 120);
+      const y1 = await page.evaluate(() => window.scrollY);
+      expect(y1).toBeGreaterThan(300);
+      // Sigue abajo después de unos segundos (no hay saltos al inicio)
+      await page.waitForTimeout(2500);
+      const y2 = await page.evaluate(() => window.scrollY);
+      expect(Math.abs(y2 - y1)).toBeLessThan(40);
+    });
+  }
+
   test('enlace para saltar al contenido y títulos jerárquicos', async ({ page }) => {
     await prepare(page);
     await page.goto('/es');

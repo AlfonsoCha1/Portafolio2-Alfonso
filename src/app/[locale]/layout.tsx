@@ -13,6 +13,7 @@ import { AppProvider } from '@/components/providers/AppProvider';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { FloatingDock } from '@/components/layout/FloatingDock';
+import { OffscreenAnimations } from '@/components/layout/OffscreenAnimations';
 import { NexbotAssistant } from '@/components/nexbot/NexbotAssistant';
 import { TerminalDialog } from '@/components/terminal/TerminalDialog';
 import { introInitScript } from '@/lib/intro';
@@ -113,6 +114,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
             </main>
             <SiteFooter />
             <FloatingDock />
+            <OffscreenAnimations />
             <NexbotAssistant />
             <TerminalDialog />
           </AppProvider>

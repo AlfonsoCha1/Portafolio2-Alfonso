@@ -172,6 +172,12 @@ export const projects: Project[] = [
     },
     repo: 'https://github.com/AlfonsoCha1/CyberQuest-Academy',
     demo: 'https://cyberquest-academy.vercel.app',
+    gallery: [
+      {
+        src: '/images/proyectos/cyberquest-academy.webp',
+        alt: { es: 'Captura real de la página de CyberQuest Academy', en: 'Real screenshot of the CyberQuest Academy page' },
+      },
+    ],
     // Su configuración de seguridad (X-Frame-Options) impide mostrarla dentro de otra página.
     livePreview: false,
     cover: 'academy',
@@ -204,6 +210,12 @@ export const projects: Project[] = [
     tech: ['IA local', 'Web', 'App de escritorio'],
     role: { es: 'Proyecto personal: concepto y desarrollo.', en: 'Personal project: concept and development.' },
     demo: 'https://chavatrix-aegis.vercel.app',
+    gallery: [
+      {
+        src: '/images/proyectos/chavatrix-aegis.webp',
+        alt: { es: 'Captura real de la página de CHAVATRIX AEGIS', en: 'Real screenshot of the CHAVATRIX AEGIS page' },
+      },
+    ],
     note: {
       es: 'Código privado. Las funciones listadas son las que describe su sitio público; los detalles técnicos se publicarán cuando el proyecto lo permita.',
       en: 'Private code. The listed features are the ones described on its public site; technical details will be published when the project allows.',
@@ -276,6 +288,12 @@ export const projects: Project[] = [
       en: 'Personal project: backend, frontend and AI integration.',
     },
     demo: 'https://ia-sophya.vercel.app/',
+    gallery: [
+      {
+        src: '/images/proyectos/sophya.webp',
+        alt: { es: 'Captura real de la página de SOPHYA — Asistente de IA', en: 'Real screenshot of the SOPHYA AI assistant page' },
+      },
+    ],
     note: { es: 'Código privado: el enlace lleva a la aplicación.', en: 'Private code: the link goes to the app.' },
     cover: 'ai',
   },
@@ -321,6 +339,12 @@ export const projects: Project[] = [
       en: 'Personal project: product, development and deployment.',
     },
     demo: 'https://english-speaking-coach-nine.vercel.app/',
+    gallery: [
+      {
+        src: '/images/proyectos/english-speaking-coach.webp',
+        alt: { es: 'Captura real de la página de English Speaking Coach', en: 'Real screenshot of the English Speaking Coach page' },
+      },
+    ],
     note: { es: 'Código privado: el enlace lleva a la aplicación.', en: 'Private code: the link goes to the app.' },
     cover: 'voice',
   },
@@ -361,6 +385,12 @@ export const projects: Project[] = [
       en: 'Founder: brand, website development, sales and operations.',
     },
     demo: 'https://smuckys-bychavamon.vercel.app/',
+    gallery: [
+      {
+        src: '/images/proyectos/smuckys-by-chavamon.webp',
+        alt: { es: "Captura real de la página de Smucky's by Chavamon", en: "Real screenshot of the Smucky's by Chavamon page" },
+      },
+    ],
     note: { es: 'Código privado: el enlace lleva a la tienda.', en: 'Private code: the link goes to the store.' },
     cover: 'store',
   },
@@ -400,6 +430,12 @@ export const projects: Project[] = [
     },
     repo: 'https://github.com/AlfonsoCha1/Chavarin_-_Said',
     demo: 'https://chavarin-said-lealtad.onrender.com/',
+    gallery: [
+      {
+        src: '/images/proyectos/chavarin-said-lealtad.webp',
+        alt: { es: 'Captura real de la página de Chavarín & Said — Lealtad', en: 'Real screenshot of the Chavarín & Said — Lealtad page' },
+      },
+    ],
     note: {
       es: 'La demo está en un servidor gratuito: puede tardar alrededor de un minuto en despertar.',
       en: 'The demo runs on a free server: it may take about a minute to wake up.',
@@ -432,6 +468,12 @@ export const projects: Project[] = [
     role: { es: 'Desarrollo completo (práctica).', en: 'Full development (practice).' },
     repo: 'https://github.com/AlfonsoCha1/PROYECTO-INTERLIGENCIA-ARTIFICIAL',
     demo: 'https://proyecto-interligencia-artificial.vercel.app/',
+    gallery: [
+      {
+        src: '/images/proyectos/restaurante-smuckys.webp',
+        alt: { es: "Captura real de la página de Restaurante Smucky's", en: "Real screenshot of the Restaurante Smucky's page" },
+      },
+    ],
     cover: 'web',
   },
   {
@@ -460,6 +502,12 @@ export const projects: Project[] = [
     role: { es: 'Diseño y desarrollo.', en: 'Design and development.' },
     repo: 'https://github.com/AlfonsoCha1/portafolio-original',
     demo: 'https://portafolio-original-tau.vercel.app/',
+    gallery: [
+      {
+        src: '/images/proyectos/portafolio-anterior.webp',
+        alt: { es: 'Captura real de la página de Portafolio web (versión anterior)', en: 'Real screenshot of the previous portfolio website' },
+      },
+    ],
     cover: 'web',
   },
 

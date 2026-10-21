@@ -344,7 +344,7 @@ function IslandLabel({ info, hovered, compact }: { info: IslandInfo; hovered: bo
       style={{ '--accent': info.color, transform: `scale(${hovered ? 1.06 : 1})`, opacity: compact && !hovered ? 0.85 : 1 } as React.CSSProperties}
     >
       <div
-        className="glass-strong rounded-xl px-3 py-2 text-left"
+        className="glass-strong no-blur rounded-xl px-3 py-2 text-left"
         style={{
           borderColor: `color-mix(in srgb, ${info.color} ${hovered ? 80 : 35}%, transparent)`,
           boxShadow: hovered ? `0 0 30px -6px ${info.color}` : undefined,

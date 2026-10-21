@@ -197,8 +197,6 @@
     border-radius: 1.25rem;
     background: var(--surface);
     border: 1px solid color-mix(in srgb, var(--accent, var(--violet)) 22%, var(--border));
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
     box-shadow: var(--shadow);
     transition:
       border-color 0.3s ease,
@@ -281,8 +279,6 @@
     color: var(--text);
     background: var(--surface);
     border: 1px solid var(--border-strong);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
   }
   .btn-ghost:hover {
     border-color: color-mix(in srgb, var(--accent, var(--cyan)) 60%, transparent);
@@ -341,7 +337,7 @@
 
   .section {
     position: relative;
-    padding: clamp(4.5rem, 10vw, 8rem) 0;
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0;
     overflow-x: clip;
   }
   .container-x {
@@ -550,8 +546,6 @@ html[data-intro='done'] .intro-overlay {
     radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
     var(--surface);
   border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
   box-shadow: var(--shadow);
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -790,4 +784,56 @@ html[data-intro='done'] .intro-overlay {
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2, var(--accent)));
   box-shadow: 0 0 14px var(--accent);
+}
+
+/* Captura real de proyecto: zoom suave al pasar el cursor y un destello que recorre la imagen */
+.project-shot__img {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .project-shot__img {
+  transform: scale(1.045);
+}
+.project-shot__shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: shot-shine 6s ease-in-out infinite;
+}
+@keyframes shot-shine {
+  0%, 70% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+/*
+ * Rendimiento en celulares: el desenfoque de fondo (backdrop-filter) es de lo más pesado para la GPU
+ * del teléfono; con muchas capas puede trabar el scroll o hacer que el navegador recargue la página.
+ * En pantallas táctiles o pequeñas solo lo conserva la barra de navegación (.glass-keep).
+ */
+.no-blur {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+@media (hover: none), (max-width: 767px) {
+  .glass,
+  .glass-strong {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--surface-strong);
+  }
+  .glass.glass-keep {
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+}
+
+/* Animaciones que no están en pantalla se pausan (ahorra batería y mantiene fluido el scroll). */
+[data-offscreen='true'],
+[data-offscreen='true'] *,
+[data-offscreen='true']::before,
+[data-offscreen='true']::after,
+[data-offscreen='true'] *::before,
+[data-offscreen='true'] *::after {
+  animation-play-state: paused !important;
 }

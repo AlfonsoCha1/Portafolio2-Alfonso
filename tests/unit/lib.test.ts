@@ -43,6 +43,11 @@ describe('detección de capacidades', () => {
   it('equipos modestos usan 3D en calidad media', () => {
     expect(evaluateCapabilities({ webgl: true, cores: 4, memoryGB: 4 })).toMatchObject({ recommended: '3d', quality: 'medium' });
   });
+  it('celulares usan 3D en calidad baja, o 2D si tienen poca memoria', () => {
+    expect(evaluateCapabilities({ webgl: true, cores: 8, memoryGB: 8, coarsePointer: true, smallScreen: true })).toMatchObject({ recommended: '3d', quality: 'low' });
+    expect(evaluateCapabilities({ webgl: true, cores: 8, memoryGB: 3, coarsePointer: true, smallScreen: true }).recommended).toBe('2d');
+    expect(evaluateCapabilities({ webgl: true, cores: 4, memoryGB: 8, coarsePointer: true, smallScreen: true }).recommended).toBe('2d');
+  });
   it('equipos débiles, ahorro de datos o movimiento reducido usan 2D', () => {
     expect(evaluateCapabilities({ webgl: true, cores: 2, memoryGB: 8 }).recommended).toBe('2d');
     expect(evaluateCapabilities({ webgl: true, cores: 8, saveData: true }).recommended).toBe('2d');

@@ -74,6 +74,7 @@
     "loading": "Loading 3D universe…",
     "webglError": "Your browser could not start 3D mode. Light 2D mode was enabled.",
     "lowFps": "Low performance detected: 3D quality was reduced.",
+    "slowFallback": "3D was running very slowly on this device, so light 2D mode was enabled. You can switch back with the 3D button.",
     "hint": "Hover or tap an island · Click to enter",
     "pending": "Pending"
   },
@@ -109,6 +110,7 @@
     "public": "Public",
     "privateCode": "Private code",
     "conceptual": "Animated illustration",
+    "screenshot": "Real screenshot",
     "conceptualNote": "Animated illustration generated in code; not a screenshot of the project.",
     "role": "My role",
     "features": "Key features",

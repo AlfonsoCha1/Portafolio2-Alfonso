@@ -2,11 +2,13 @@
 
 import { AnimatePresence, motion } from 'motion/react';
 import { ExternalLink, Loader2, MonitorPlay, X } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Project } from '@/data/types';
-import { canLivePreview } from '@/lib/live-preview';
+import { canLivePreview, realShot } from '@/lib/live-preview';
+import { tx } from '@/lib/i18n';
+import { ProjectShot } from './ProjectShot';
 
 /** Marco con la página real del proyecto. Solo se carga cuando la persona lo pide. */
 function LiveFrame({ project, className = '' }: { project: Project; className?: string }) {
@@ -116,13 +118,25 @@ export function LivePreviewButton({ project, className = '' }: { project: Projec
 /** Vista en vivo dentro de la página del proyecto (se carga con un clic). */
 export function LivePreviewInline({ project }: { project: Project }) {
   const t = useTranslations('projects');
+  const locale = useLocale();
   const [active, setActive] = useState(false);
   if (!canLivePreview(project)) return null;
+  const shot = realShot(project);
   return (
     <div className="neon-card overflow-hidden" data-testid="live-preview-inline">
       <Chrome project={project} />
       {active ? (
         <LiveFrame project={project} className="aspect-[16/10] w-full" />
+      ) : shot ? (
+        <div className="group relative aspect-[16/10] w-full">
+          <ProjectShot project={project} shot={shot} alt={tx(shot.alt, locale)} label={t('screenshot')} className="h-full w-full [&>div:first-child]:hidden" sizes="(min-width: 1024px) 760px, 100vw" priority />
+          <div className="absolute inset-0 grid place-items-center bg-gradient-to-t from-black/70 via-black/20 to-transparent p-6">
+            <button type="button" onClick={() => setActive(true)} className="btn btn-primary shadow-lg">
+              <MonitorPlay className="h-4 w-4" aria-hidden="true" />
+              {t('liveLoad')}
+            </button>
+          </div>
+        </div>
       ) : (
         <div className="grid aspect-[16/10] w-full place-items-center bg-[radial-gradient(circle_at_50%_40%,color-mix(in_srgb,var(--accent)_20%,transparent),transparent_70%)] p-6 text-center">
           <div className="flex flex-col items-center gap-3">

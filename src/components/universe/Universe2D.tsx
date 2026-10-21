@@ -54,7 +54,7 @@ export function Universe2D({ islands, hovered, onHover, onSelect, portraitUrl, p
   }, []);
   const pos = (l: (typeof ISLAND_LAYOUT)[number]) => (tall ? l.flatTall : l.flat);
   return (
-    <div ref={ref} className={`absolute inset-0 overflow-hidden [container-type:size] ${leftPanel ? 'lg:bottom-20 lg:left-[38%]' : ''}`} data-testid="universe-2d">
+    <div ref={ref} className={`absolute inset-0 overflow-hidden [container-type:size] ${leftPanel ? 'lg:bottom-20 lg:left-[38%]' : ''}`} data-testid="universe-2d" data-pause-offscreen="">
       {/* Estrellas */}
       <div aria-hidden="true" className="absolute inset-0 dark:opacity-100 light:opacity-40">
         {stars.map((s, i) => (
@@ -159,7 +159,7 @@ export function Universe2D({ islands, hovered, onHover, onSelect, portraitUrl, p
                 <CategoryIcon id={l.id} className="relative -mt-2 h-[38%] w-[38%] text-white" style={{ filter: `drop-shadow(0 0 6px ${info.color})` }} />
               </span>
               <span
-                className="glass-strong mt-1.5 max-w-[110px] rounded-lg px-2 py-1 text-center font-display text-[10px] font-semibold leading-tight text-fg transition-shadow sm:max-w-none sm:text-xs"
+                className="glass-strong no-blur mt-1.5 max-w-[110px] rounded-lg px-2 py-1 text-center font-display text-[10px] font-semibold leading-tight text-fg transition-shadow sm:max-w-none sm:text-xs"
                 style={{ borderColor: `color-mix(in srgb, ${info.color} ${active ? 80 : 35}%, transparent)`, boxShadow: active ? `0 0 24px -6px ${info.color}` : undefined }}
               >
                 {info.name}

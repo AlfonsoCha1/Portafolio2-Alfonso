@@ -10,12 +10,14 @@ import { StatusBadge } from '@/components/ui/StatusBadge';
 import { ProjectCover } from './ProjectCover';
 import { ProjectLinks } from './ProjectLinks';
 import { LivePreviewInline } from './LivePreview';
-import { canLivePreview } from '@/lib/live-preview';
+import { canLivePreview, realShot } from '@/lib/live-preview';
+import { ProjectShot } from './ProjectShot';
 
 /** Página de presentación de un proyecto (también para proyectos privados, sin datos confidenciales). */
 export function ProjectDetail({ project }: { project: Project }) {
   const t = useTranslations('projects');
   const locale = useLocale();
+  const shot = realShot(project);
   const color = categoryColor(project.category);
   const color2 = project.category !== 'practice' ? categoryMap[project.category].color2 : '#5d6b94';
   const catName = project.category === 'practice' ? tx(practiceCategory.name, locale) : tx(categoryMap[project.category].name, locale);
@@ -53,11 +55,17 @@ export function ProjectDetail({ project }: { project: Project }) {
             <LivePreviewInline project={project} />
           ) : (
             <div className="neon-card overflow-hidden">
-              <ProjectCover project={project} label={t('conceptual')} className="aspect-[16/9] w-full" />
-              <p className="flex items-start gap-2 p-3 text-xs text-dim">
-                <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                {t('conceptualNote')}
-              </p>
+              {shot ? (
+                <ProjectShot project={project} shot={shot} alt={tx(shot.alt, locale)} label={t('screenshot')} className="aspect-[16/9] w-full" sizes="(min-width: 1024px) 760px, 100vw" priority />
+              ) : (
+                <ProjectCover project={project} label={t('conceptual')} className="aspect-[16/9] w-full" />
+              )}
+              {shot ? null : (
+                <p className="flex items-start gap-2 p-3 text-xs text-dim">
+                  <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                  {t('conceptualNote')}
+                </p>
+              )}
             </div>
           )}
 

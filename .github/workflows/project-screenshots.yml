@@ -2,11 +2,9 @@ name: Capturas de proyectos
 
 # Toma capturas reales de las páginas públicas de los proyectos.
 # Las deja en la rama temporal "capturas-tmp" para revisarlas antes de usarlas.
+# Se ejecuta solo a mano (Actions → Capturas de proyectos → Run workflow).
 on:
   workflow_dispatch:
-  push:
-    branches: [feat/chavatrix-universe]
-    paths: [scripts/capture-screenshots.mjs]
 
 permissions:
   contents: write

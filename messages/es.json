@@ -74,6 +74,7 @@
     "loading": "Cargando universo 3D…",
     "webglError": "Tu navegador no pudo iniciar el modo 3D. Se activó el modo ligero 2D.",
     "lowFps": "Detectamos bajo rendimiento: se redujo la calidad del 3D.",
+    "slowFallback": "El 3D iba muy lento en este equipo: se activó el modo ligero 2D. Puedes volver al 3D con el botón 3D.",
     "hint": "Pasa el cursor o toca una isla · Clic para entrar",
     "pending": "Pendiente"
   },
@@ -109,6 +110,7 @@
     "public": "Público",
     "privateCode": "Código privado",
     "conceptual": "Ilustración animada",
+    "screenshot": "Captura real",
     "conceptualNote": "Ilustración animada generada en código; no es una captura del proyecto.",
     "role": "Mi participación",
     "features": "Funcionalidades principales",

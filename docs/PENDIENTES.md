@@ -4,7 +4,7 @@ Cada punto tiene un marcador visible o un valor vacío en el código hasta que l
 
 1. **Mi Vida Personal:** si tiene enlace público, compártelo para activar "Ver en vivo" (ahora se muestra como proyecto privado en desarrollo).
 2. **SUMA** (práctica en C#/ASP.NET): confirma si es tuya o si también se retira, como ESCUELA.
-3. **Capturas reales** de cada proyecto (ahora se muestran portadas conceptuales etiquetadas). Ideal: 1600×900 en PNG/WebP.
+3. **Capturas reales** de los proyectos sin página pública (ALBA, Cybersecurity Python Lab, CHAVAMON, NFC, scripts): siguen con portada animada. Los 8 proyectos con página ya muestran su captura real.
 4. **Disponibilidad profesional** (por ejemplo, "Remoto · Híbrido · Abierto a oportunidades"): está en `profile.availability = null` hasta que la confirmes.
 5. **EL CHAVATRIX:** confirma si quieres enlazar el canal (YouTube/TikTok/Instagram) en el portafolio profesional.
 6. **CHAVATRIX AEGIS:** tecnologías que se pueden divulgar y estado de la app de escritorio.

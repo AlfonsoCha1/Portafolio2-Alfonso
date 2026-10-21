@@ -67,7 +67,7 @@ export function SiteHeader() {
       <ScrollProgress />
       <div className={`transition-all duration-300 ${scrolled || open ? 'py-2' : 'py-3 md:py-4'}`}>
         <div className="mx-auto flex max-w-[1480px] items-center gap-3 px-3 sm:px-5">
-          <div className={`glass flex w-full items-center gap-2 rounded-2xl py-1.5 pl-2 pr-1.5 transition-shadow ${scrolled ? 'glass-strong' : ''}`}>
+          <div className={`glass glass-keep flex w-full items-center gap-2 rounded-2xl py-1.5 pl-2 pr-1.5 transition-shadow ${scrolled ? 'glass-strong' : ''}`}>
             <Link href="/" className="group flex shrink-0 items-center gap-2.5 rounded-xl px-1.5 py-1" aria-label={`${profile.name} — ${t('home')}`}>
               <span className="grid h-10 w-12 place-items-center rounded-xl bg-[var(--night)] ring-1 ring-white/10 transition-shadow group-hover:shadow-[0_0_22px_-4px_var(--violet)]">
                 <AcLogo className="h-7 w-10" />

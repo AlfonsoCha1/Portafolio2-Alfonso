@@ -26,7 +26,8 @@ export interface UniverseSceneProps {
   onHover: (id: CategoryId | null) => void;
   onSelect: (id: CategoryId) => void;
   onReady?: () => void;
-  onQualityDrop?: (q: QualityTier | 'fallback') => void;
+  /** 'fallback' = el 3D falló (contexto perdido); 'slow' = va demasiado lento incluso en calidad baja. */
+  onQualityDrop?: (q: QualityTier | 'fallback' | 'slow') => void;
   /** Deja espacio a la izquierda para el texto del hero en pantallas anchas. */
   leftPanel: boolean;
 }
@@ -148,11 +149,40 @@ function SceneContent(props: UniverseSceneProps & { preset: (typeof QUALITY_PRES
   );
 }
 
+/**
+ * Detecta un 3D realmente inutilizable (por ejemplo, render por software): menos de 12 fps
+ * de promedio durante ~12 s seguidos en calidad baja. Solo se monta mientras el universo está activo.
+ */
+function SlowGuard({ onSlow }: { onSlow: () => void }) {
+  const acc = useRef({ frames: 0, time: 0, strikes: 0, skip: 3 });
+  useFrame((_, delta) => {
+    const a = acc.current;
+    if (a.skip > 0) {
+      a.skip -= 1; // los primeros cuadros tras reanudar traen deltas grandes
+      return;
+    }
+    a.frames += 1;
+    a.time += Math.min(delta, 2);
+    if (a.time < 4) return;
+    const fps = a.frames / a.time;
+    a.strikes = fps < 12 ? a.strikes + 1 : 0;
+    a.frames = 0;
+    a.time = 0;
+    if (a.strikes >= 3) {
+      a.strikes = 0;
+      onSlow();
+    }
+  });
+  return null;
+}
+
 export default function UniverseScene(props: UniverseSceneProps) {
   const [tier, setTier] = useState<QualityTier>(props.quality);
   const preset = QUALITY_PRESETS[tier];
   const [dpr, setDpr] = useState(preset.dpr[1]);
 
+  // Solo se baja la calidad cuando el equipo va lento de verdad (< 30 fps sostenidos).
+  // Nunca se cambia a 2D por variaciones normales de fps (pantallas de 120/144 Hz, GPU integrada, etc.).
   const decline = () => {
     if (tier === 'high') {
       setTier('medium');
@@ -176,16 +206,23 @@ export default function UniverseScene(props: UniverseSceneProps) {
       gl={{ antialias: tier !== 'low', alpha: true, powerPreference: 'high-performance', stencil: false }}
       onCreated={({ gl }) => {
         gl.setClearColor(0x000000, 0);
+        // Si el navegador pierde el contexto WebGL (cambio de GPU, suspensión, muchas pestañas),
+        // se espera a que lo recupere; solo si no vuelve en 6 s se pasa al modo 2D.
+        let lostTimer: number | undefined;
         gl.domElement.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
-          props.onQualityDrop?.('fallback');
+          window.clearTimeout(lostTimer);
+          lostTimer = window.setTimeout(() => props.onQualityDrop?.('fallback'), 6000);
         });
+        gl.domElement.addEventListener('webglcontextrestored', () => window.clearTimeout(lostTimer));
         props.onReady?.();
       }}
       onPointerMissed={() => props.onHover(null)}
       aria-hidden="true"
     >
-      <PerformanceMonitor onDecline={decline} flipflops={4} onFallback={() => props.onQualityDrop?.('fallback')} />
+      {/* El monitor solo mide mientras el universo está en pantalla: fuera de ella no hay cuadros y daría lecturas falsas. */}
+      {props.active ? <PerformanceMonitor bounds={() => [30, 1000]} onDecline={decline} /> : null}
+      {props.active && tier === 'low' ? <SlowGuard onSlow={() => props.onQualityDrop?.('slow')} /> : null}
       <AdaptiveEvents />
       <SceneContent {...props} preset={preset} />
     </Canvas>

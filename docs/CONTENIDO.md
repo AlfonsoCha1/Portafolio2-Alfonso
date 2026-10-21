@@ -17,7 +17,7 @@ Copia un objeto de la lista y cambia:
 | `visibility` | `public` o `private`. Si es privado **no** pongas `repo`. |
 | `repo` / `demo` | Solo enlaces que existan. Los botones se generan solos: código + demo → "Ver código" y "Abrir proyecto"; solo código → "Ver en GitHub"; solo demo → "Visitar proyecto". |
 | `summary`, `description`, `features`, `role`, `tech` | Texto no confidencial. |
-| `gallery` | (Opcional) capturas reales aprobadas en `public/images/proyectos/...`. Mientras no haya, se muestra una portada conceptual generada en código y etiquetada como tal. |
+| `gallery` | (Opcional) capturas reales aprobadas en `public/images/proyectos/<slug>.webp`. La primera se muestra en la tarjeta y en la página del proyecto dentro de una ventana de navegador ("Captura real"). Si no hay, se muestra la portada animada generada en código. |
 | `cover` | Motivo de la portada conceptual: `shield`, `logs`, `ai`, `voice`, `store`, `loyalty`, `web`, `terminal`, `video`, `chip`, `academy`, `code`, `nfc`, `planner`. |
 | `livePreview` | (Opcional) `false` para no mostrar "Ver en vivo" aunque tenga `demo` (por ejemplo, si la página bloquea ser incrustada). Cada dominio de `demo` se agrega solo a la CSP. |
 | `featured`, `order` | Destacado y orden (menor = primero). |
@@ -43,3 +43,11 @@ Reemplaza `public/cv/CV_Alfonso_Chavarin_ES.pdf` y `public/cv/CV_Alfonso_Chavari
 ## Textos de la interfaz
 
 `messages/es.json` y `messages/en.json` deben tener las mismas claves (lo revisa `messages.test.ts`).
+
+## Capturas reales de los proyectos
+
+Las capturas de las páginas públicas se toman con la acción de GitHub **"Capturas de proyectos"** (`.github/workflows/project-screenshots.yml`), porque abre cada `demo` con un navegador real (espera a que despierten los servicios de Render y cierra avisos de cookies).
+
+1. En GitHub → Actions → "Capturas de proyectos" → Run workflow (o cambia `scripts/capture-screenshots.mjs`).
+2. Las imágenes quedan en la rama temporal `capturas-tmp`. **Revísalas** (que no muestren datos personales ni cuentas abiertas).
+3. Conviértelas a WebP (1200 × 750) en `public/images/proyectos/<slug>.webp` y agrega la entrada `gallery` al proyecto.

@@ -15,7 +15,7 @@ Diseñado y desarrollado por **Alfonso Chavarín**.
 | **Modo ligero 2D** | Mismo concepto con CSS/SVG (planeta, retrato, islas, caminos). Se activa solo si no hay WebGL, en equipos débiles, con ahorro de datos o movimiento reducido, y siempre se puede elegir a mano. |
 | **Islas** | Ciberseguridad (cian), IA (violeta), Redes y soporte TI (naranja), Desarrollo web (rosa), Automatización (azul), Hardware e IoT (verde turquesa), Contenido (magenta). Hover/foco: brillo, elevación, borde neón, camino iluminado y panel holográfico. Clic/toque/Enter: la cámara se acerca y se abre el módulo con proyectos reales. |
 | **Secciones** | Inicio, Sobre mí, Proyectos (filtros + búsqueda + página por proyecto), Experiencia (línea del tiempo accesible), Educación, Certificaciones (un cuadro animado por credencial, solo texto: comprobantes a solicitud), Laboratorios SOC, Habilidades, CV, Contacto. Además, una página por módulo (`/modules/[isla]`). |
-| **Proyectos** | Tarjetas con color y portada animada propia (SVG + CSS). Los proyectos con página pública muestran **"Ver en vivo"**: la página real se carga dentro del portafolio solo cuando el visitante lo pide (iframe aislado con `sandbox`). Los privados no muestran código. |
+| **Proyectos** | Los proyectos con página pública muestran una **captura real** de su página (tomada con Playwright en GitHub Actions y revisada); los demás, una portada animada propia (SVG + CSS). Además muestran **"Ver en vivo"**: la página real se carga dentro del portafolio solo cuando el visitante lo pide (iframe aislado con `sandbox`). Los privados no muestran código. |
 | **CV interactivo** | `/[es|en]/cv`, legible sin la escena 3D, imprimible y con los PDF reales en español e inglés. |
 | **Tema** | Un solo botón con 4 modos: **Automático** (sigue el dispositivo), **Claro**, **Nocturno** y **Según la hora** (claro de 7:00 a 19:00). Cada tema tiene su propia paleta, no es una inversión de colores. Sin parpadeo al cargar. |
 | **Idiomas** | Español e inglés completos (`/es`, `/en`), con selector ES \| EN, preferencia persistente y metadatos `hreflang`. Sin traductores externos. |
@@ -104,6 +104,8 @@ Presupuestos medidos en la compilación de producción:
 | Escena 3D (chunk aparte, solo en modo 3D) | ≤ 280 KB gzip | ~256 KB |
 | Pixel ratio máximo | alto 1.75 · medio 1.35 · bajo 1.0 | — |
 | Estrellas | 1 sola llamada de dibujo (shader propio) | — |
+
+En celulares el 3D va en calidad baja (o en modo ligero si el teléfono tiene poca memoria), el desenfoque de fondo solo se usa en la barra de navegación y las animaciones que no están en pantalla se pausan, para que el scroll sea fluido y el navegador no recargue la página por falta de memoria. El 3D solo pasa a 2D por sí solo si WebGL falla de verdad o si el equipo no llega a 12 fps sostenidos (y nunca si el visitante eligió 3D).
 
 Medidas aplicadas: code splitting de la escena 3D y del formulario, carga progresiva (el 2D se pinta de inmediato y el 3D aparece con transición), texturas generadas en código, geometrías ligeras, sin postprocesado, `PerformanceMonitor` que baja la calidad y vuelve a 2D si el equipo no puede, render pausado cuando el universo no está en pantalla, la pestaña está oculta o el usuario pausa las animaciones, y `prefers-reduced-motion`.
 

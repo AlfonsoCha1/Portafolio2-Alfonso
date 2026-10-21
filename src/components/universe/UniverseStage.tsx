@@ -8,6 +8,7 @@ import { projectsInCategory } from '@/data/projects';
 import { profile } from '@/data/profile';
 import type { CategoryId } from '@/data/types';
 import { tx } from '@/lib/i18n';
+import { readStorage, STORAGE_KEYS } from '@/lib/storage';
 import { usePreferences, useUI } from '@/components/providers/AppProvider';
 import { Universe2D } from './Universe2D';
 import type { IslandInfo } from './three/FloatingIsland';
@@ -85,10 +86,11 @@ export function UniverseStage() {
   const use3d = prefs.ready && prefs.renderMode === '3d' && prefs.webglAvailable;
   const select = (id: CategoryId) => openModule(id);
 
-  const fallbackTo2d = () => {
+  const fallbackTo2d = (reason: 'error' | 'slow' = 'error') => {
     prefs.setRenderMode('2d', false);
-    setNotice(t('webglError'));
+    setNotice(t(reason === 'slow' ? 'slowFallback' : 'webglError'));
   };
+  const lowFpsShown = useRef(false);
 
   return (
     <div
@@ -116,7 +118,7 @@ export function UniverseStage() {
 
       {use3d ? (
         <div className={`absolute inset-0 transition-opacity duration-1000 ${ready3d ? 'opacity-100' : 'opacity-0'}`} data-testid="universe-3d">
-          <SceneBoundary onError={fallbackTo2d}>
+          <SceneBoundary onError={() => fallbackTo2d('error')}>
             <UniverseScene
               islands={islands}
               light={prefs.theme === 'light'}
@@ -131,8 +133,14 @@ export function UniverseStage() {
               onReady={() => setReady3d(true)}
               leftPanel={leftPanel}
               onQualityDrop={(q) => {
-                if (q === 'fallback') fallbackTo2d();
-                else setNotice(t('lowFps'));
+                if (q === 'fallback') fallbackTo2d('error');
+                else if (q === 'slow') {
+                  // Si la persona eligió 3D a mano, se respeta su elección.
+                  if (readStorage(STORAGE_KEYS.mode) !== '3d') fallbackTo2d('slow');
+                } else if (!lowFpsShown.current) {
+                  lowFpsShown.current = true;
+                  setNotice(t('lowFps'));
+                }
               }}
             />
           </SceneBoundary>

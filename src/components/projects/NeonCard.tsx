@@ -12,6 +12,8 @@ import { StatusBadge } from '@/components/ui/StatusBadge';
 import { ProjectCover } from './ProjectCover';
 import { ProjectLinks } from './ProjectLinks';
 import { LivePreviewButton } from './LivePreview';
+import { ProjectShot } from './ProjectShot';
+import { realShot } from '@/lib/live-preview';
 
 /** Tarjeta de proyecto con brillo por categoría, inclinación 3D ligera y zoom de imagen. */
 export function NeonCard({ project }: { project: Project }) {
@@ -20,6 +22,7 @@ export function NeonCard({ project }: { project: Project }) {
   const ref = useRef<HTMLElement>(null);
   const color = categoryColor(project.category);
   const color2 = project.category !== 'practice' ? categoryMap[project.category].color2 : '#5d6b94';
+  const shot = realShot(project);
   const catName = project.category === 'practice' ? tx(practiceCategory.name, locale) : tx(categoryMap[project.category].name, locale);
 
   const onMove = (e: React.PointerEvent) => {
@@ -47,7 +50,11 @@ export function NeonCard({ project }: { project: Project }) {
       data-category={project.category}
     >
       <div className="relative aspect-[16/9] overflow-hidden rounded-t-[1.2rem]">
-        <ProjectCover project={project} label={t('conceptual')} className="h-full w-full transition-transform duration-700 group-hover:scale-[1.05]" />
+        {shot ? (
+          <ProjectShot project={project} shot={shot} alt={tx(shot.alt, locale)} label={t('screenshot')} className="h-full w-full" />
+        ) : (
+          <ProjectCover project={project} label={t('conceptual')} className="h-full w-full transition-transform duration-700 group-hover:scale-[1.05]" />
+        )}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: 'radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.12), transparent 50%)' }} />
         <div aria-hidden="true" className="project-card__bar absolute inset-x-0 bottom-0" />
         {project.featured ? (

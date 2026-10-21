@@ -30,14 +30,18 @@ export function evaluateCapabilities(s: DeviceSignals): CapabilityResult {
 
   const cores = s.cores ?? 4;
   const memory = s.memoryGB ?? 4;
-  const weak = cores <= 2 || memory <= 2;
-  const modest = cores <= 4 || memory <= 4 || Boolean(s.coarsePointer && s.smallScreen);
+  // Celular: pantalla táctil y pequeña. Su GPU y su memoria son mucho más limitadas que las de una PC,
+  // así que el 3D va en calidad baja y los teléfonos con poca memoria usan el modo ligero.
+  const phone = Boolean(s.coarsePointer && s.smallScreen);
+  const weak = cores <= 2 || memory <= 2 || (phone && (memory <= 3 || cores <= 4));
+  const modest = cores <= 4 || memory <= 4;
 
   if (weak) reasons.push('low-power');
+  if (phone) reasons.push('phone');
   if (s.saveData || s.reducedMotion || weak) {
     return { recommended: '2d', quality: 'low', reasons };
   }
-  return { recommended: '3d', quality: modest ? 'medium' : 'high', reasons };
+  return { recommended: '3d', quality: phone ? 'low' : modest ? 'medium' : 'high', reasons };
 }
 
 export function hasWebGL(): boolean {
