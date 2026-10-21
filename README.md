@@ -5,6 +5,8 @@
 
 Diseñado y desarrollado por **Alfonso Chavarín**.
 
+🌐 **En línea:** https://portafolio2-alfonso.vercel.app
+
 ---
 
 ## Qué incluye
@@ -86,13 +88,11 @@ Funciona con [Resend](https://resend.com). Configura en Vercel (Project → Sett
 
 Sin esas variables la API responde `503 not_configured` y la interfaz muestra que **el mensaje no se envió** junto con el botón para escribir por correo. El límite de frecuencia es en memoria por instancia; si se necesita un límite global estricto se puede cambiar por Redis/Upstash sin tocar la interfaz.
 
-## Despliegue en Vercel (cuando lo apruebes)
+## Despliegue
 
-1. Importa el repositorio en Vercel (framework detectado: Next.js; sin configuración extra).
-2. Agrega las variables de entorno de la tabla anterior.
-3. Despliega. En Vercel se activan HSTS y `upgrade-insecure-requests` automáticamente (HTTPS).
+Publicado en Vercel (plan Hobby, no se duerme) desde la rama `main`: cada cambio que llega a `main` se publica solo en https://portafolio2-alfonso.vercel.app. En Vercel se activan HSTS y `upgrade-insecure-requests` automáticamente (HTTPS). Para activar el formulario, agrega en Vercel las variables de entorno de la tabla anterior.
 
-> Este PR **no** despliega ni reemplaza el portafolio actual (`portafolio-original-tau.vercel.app`).
+El portafolio anterior (`portafolio-original-tau.vercel.app`) es otro proyecto y no se modificó.
 
 ## Rendimiento
 
