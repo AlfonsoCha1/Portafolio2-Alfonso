@@ -1,0 +1,159 @@
+import type { Lab, SkillGroup } from './types';
+
+/** Habilidades — fuente: sección HABILIDADES del CV (oct 2026) y muro de GitHub. */
+export const skillGroups: SkillGroup[] = [
+  {
+    id: 'support',
+    name: { es: 'Soporte y redes', en: 'Support & networking' },
+    color: '#00E5FF',
+    items: [
+      { name: 'Help Desk' },
+      { name: { es: 'Diagnóstico de incidentes', en: 'Incident diagnosis' } },
+      { name: 'Cisco CCNAv7 (OSPF, NAT, ACL)' },
+      { name: 'Packet Tracer' },
+      { name: 'TCP/IP' },
+      { name: 'Switches' },
+      { name: { es: 'Cableado estructurado', en: 'Structured cabling' } },
+      { name: 'Windows' },
+      { name: 'Linux' },
+      { name: 'OpenSUSE' },
+      { name: 'AWS (EC2)' },
+    ],
+  },
+  {
+    id: 'cyber',
+    name: { es: 'Ciberseguridad', en: 'Cybersecurity' },
+    color: '#19E3B1',
+    items: [
+      { name: { es: 'Control de accesos', en: 'Access control' } },
+      { name: { es: 'Autenticación biométrica', en: 'Biometric authentication' } },
+      { name: { es: 'Gestión de credenciales', en: 'Credential management' } },
+      { name: { es: 'Protección de datos personales', en: 'Personal data protection' } },
+      { name: { es: 'Seguridad de red', en: 'Network security' } },
+      { name: { es: 'Análisis de logs', en: 'Log analysis' } },
+    ],
+  },
+  {
+    id: 'dev',
+    name: { es: 'IA y desarrollo', en: 'AI & development' },
+    color: '#9D35FF',
+    items: [
+      { name: 'Python', level: { es: 'Avanzado', en: 'Advanced' } },
+      { name: { es: 'Ingeniería de prompts', en: 'Prompt engineering' } },
+      { name: { es: 'IA generativa (texto, imagen, video)', en: 'Generative AI (text, image, video)' } },
+      { name: 'PowerShell' },
+      { name: 'Java' },
+      { name: 'JavaScript' },
+      { name: 'TypeScript' },
+      { name: 'PHP' },
+      { name: 'HTML/CSS' },
+      { name: 'C++' },
+      { name: 'C#' },
+      { name: 'FastAPI' },
+      { name: 'Node.js' },
+      { name: 'Firebase' },
+      { name: { es: 'Bases de datos relacionales', en: 'Relational databases' } },
+      { name: { es: 'Git y GitHub', en: 'Git & GitHub' } },
+      { name: 'VS Code' },
+    ],
+  },
+  {
+    id: 'management',
+    name: { es: 'Gestión y marketing', en: 'Management & marketing' },
+    color: '#FF943D',
+    items: [
+      { name: 'Scrum / Agile' },
+      { name: { es: 'Planeación por fases', en: 'Phased planning' } },
+      { name: { es: 'Métricas en Excel', en: 'Excel metrics' } },
+      { name: { es: 'Contenido para redes', en: 'Social media content' } },
+      { name: 'Marketplace' },
+      { name: 'CapCut' },
+      { name: 'Canva' },
+      { name: 'Figma' },
+      { name: 'Photoshop' },
+      { name: 'Illustrator' },
+      { name: 'Office', level: { es: 'Avanzado', en: 'Advanced' } },
+    ],
+  },
+  {
+    id: 'learning',
+    name: { es: 'Aprendiendo ahora', en: 'Currently learning' },
+    color: '#FF39C6',
+    items: [
+      { name: 'React' },
+      { name: 'Next.js' },
+      { name: 'Tailwind CSS' },
+      { name: 'Docker' },
+      { name: 'Azure' },
+      { name: 'Blue team' },
+    ],
+  },
+];
+
+/** Laboratorios — fuente: README de Tipos-de-Proyectos/ciberseguridad y perfil.toml. */
+export const labs: Lab[] = [
+  {
+    id: 'lab-08',
+    name: { es: '08 · Generador de reportes de seguridad', en: '08 · Security report generator' },
+    status: 'available',
+    detail: {
+      es: 'Convierte eventos JSON, JSON Lines o CSV en reportes Markdown y HTML, y lista las filas que no pudo usar.',
+      en: 'Turns JSON, JSON Lines or CSV events into Markdown and HTML reports, and lists rows it could not use.',
+    },
+    tech: ['Python', 'pytest'],
+    link: 'https://github.com/AlfonsoCha1/Tipos-de-Proyectos/tree/main/ciberseguridad/08-generador-reportes',
+  },
+  {
+    id: 'lab-09',
+    name: { es: '09 · Contador de intentos de login', en: '09 · Login attempt counter' },
+    status: 'available',
+    detail: {
+      es: 'Cuenta accesos exitosos y fallidos por usuario e IP en registros de OpenSSH y otros formatos.',
+      en: 'Counts successful and failed logins by user and IP in OpenSSH logs and other formats.',
+    },
+    tech: ['Python', 'Regex'],
+    link: 'https://github.com/AlfonsoCha1/Tipos-de-Proyectos/tree/main/ciberseguridad/09-contador-logins',
+  },
+  {
+    id: 'lab-11',
+    name: { es: '11 · Buscador en logs', en: '11 · Log searcher' },
+    status: 'available',
+    detail: {
+      es: 'Busca palabras, IPs, rangos de red (CIDR) y fechas con líneas de contexto, sin cargar el archivo completo.',
+      en: 'Searches keywords, IPs, network ranges (CIDR) and dates with context lines, without loading the whole file.',
+    },
+    tech: ['Python', 'CIDR'],
+    link: 'https://github.com/AlfonsoCha1/Tipos-de-Proyectos/tree/main/ciberseguridad/11-buscador-logs',
+  },
+  {
+    id: 'lab-12',
+    name: { es: '12 · Detector de múltiples accesos', en: '12 · Multiple-access detector' },
+    status: 'available',
+    detail: {
+      es: 'Alerta cuando una cuenta o IP acumula demasiados fallos en una ventana de tiempo, con evidencia.',
+      en: 'Alerts when an account or IP accumulates too many failures within a time window, with evidence.',
+    },
+    tech: ['Python', 'Detección'],
+    link: 'https://github.com/AlfonsoCha1/Tipos-de-Proyectos/tree/main/ciberseguridad/12-detector-accesos',
+  },
+  {
+    id: 'lab-next',
+    name: { es: 'Siguientes entregas del laboratorio', en: 'Upcoming lab releases' },
+    status: 'pending',
+    detail: {
+      es: 'Códigos 2FA (TOTP), analizador de correos con indicadores de phishing, verificador de archivos sospechosos, checklist de seguridad y seis herramientas más.',
+      en: '2FA codes (TOTP), email analyzer with phishing indicators, suspicious file checker, security checklist and six more tools.',
+    },
+    tech: ['Python'],
+  },
+  {
+    id: 'alba-2',
+    name: { es: 'ALBA · etapa 2', en: 'ALBA · stage 2' },
+    status: 'pending',
+    detail: {
+      es: 'Diagnóstico de sistemas en modo de solo lectura, flujo de BitLocker y recuperación de memorias USB.',
+      en: 'Read-only system diagnostics, BitLocker workflow and USB drive recovery.',
+    },
+    tech: ['Python', 'Linux', 'Windows'],
+  },
+];
