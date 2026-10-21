@@ -2,7 +2,7 @@
 
 import { AdaptiveEvents, PerformanceMonitor } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Suspense, useMemo, useRef, useState } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState, type MutableRefObject } from 'react';
 import * as THREE from 'three';
 import type { CategoryId } from '@/data/types';
 import { QUALITY_PRESETS, type QualityTier } from '@/lib/capabilities';
@@ -30,6 +30,8 @@ export interface UniverseSceneProps {
   onQualityDrop?: (q: QualityTier | 'fallback' | 'slow') => void;
   /** Deja espacio a la izquierda para el texto del hero en pantallas anchas. */
   leftPanel: boolean;
+  /** Elementos del DOM con las etiquetas de las islas (fuera del canvas). */
+  labelEls: MutableRefObject<Partial<Record<CategoryId, HTMLDivElement | null>>>;
 }
 
 const tmpTarget = new THREE.Vector3();
@@ -134,7 +136,7 @@ function SceneContent(props: UniverseSceneProps & { preset: (typeof QUALITY_PRES
                 light={light}
                 speed={speed}
                 showLabel={!focused}
-                compactLabel
+                labelEls={props.labelEls}
                 onHover={onHover}
                 onSelect={onSelect}
               />
@@ -177,6 +179,15 @@ function SlowGuard({ onSlow }: { onSlow: () => void }) {
 }
 
 export default function UniverseScene(props: UniverseSceneProps) {
+  const alive = useRef(true);
+  const lostTimer = useRef<number | undefined>(undefined);
+  useEffect(() => {
+    alive.current = true;
+    return () => {
+      alive.current = false;
+      window.clearTimeout(lostTimer.current);
+    };
+  }, []);
   const [tier, setTier] = useState<QualityTier>(props.quality);
   const preset = QUALITY_PRESETS[tier];
   const [dpr, setDpr] = useState(preset.dpr[1]);
@@ -208,13 +219,16 @@ export default function UniverseScene(props: UniverseSceneProps) {
         gl.setClearColor(0x000000, 0);
         // Si el navegador pierde el contexto WebGL (cambio de GPU, suspensión, muchas pestañas),
         // se espera a que lo recupere; solo si no vuelve en 6 s se pasa al modo 2D.
-        let lostTimer: number | undefined;
+        // Al desmontar la escena (por ejemplo, al elegir 2D) la pérdida es intencional y se ignora.
         gl.domElement.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
-          window.clearTimeout(lostTimer);
-          lostTimer = window.setTimeout(() => props.onQualityDrop?.('fallback'), 6000);
+          if (!alive.current) return;
+          window.clearTimeout(lostTimer.current);
+          lostTimer.current = window.setTimeout(() => {
+            if (alive.current) props.onQualityDrop?.('fallback');
+          }, 6000);
         });
-        gl.domElement.addEventListener('webglcontextrestored', () => window.clearTimeout(lostTimer));
+        gl.domElement.addEventListener('webglcontextrestored', () => window.clearTimeout(lostTimer.current));
         props.onReady?.();
       }}
       onPointerMissed={() => props.onHover(null)}

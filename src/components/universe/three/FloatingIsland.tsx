@@ -1,8 +1,7 @@
 'use client';
 
-import { Html } from '@react-three/drei';
 import { useFrame, type ThreeEvent } from '@react-three/fiber';
-import { useEffect, useMemo, useRef, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, type MutableRefObject } from 'react';
 import * as THREE from 'three';
 import type { CategoryId } from '@/data/types';
 import { getGlowTexture, getScreenTexture } from './textures';
@@ -27,7 +26,8 @@ interface Props {
   light: boolean;
   speed: number;
   showLabel: boolean;
-  compactLabel: boolean;
+  /** Etiquetas (capa del DOM fuera del canvas) por isla; se posicionan en cada cuadro. */
+  labelEls: MutableRefObject<Partial<Record<CategoryId, HTMLDivElement | null>>>;
   onHover: (id: CategoryId | null) => void;
   onSelect: (id: CategoryId) => void;
 }
@@ -246,7 +246,9 @@ function Structure({ id, color, color2, speed }: { id: CategoryId; color: string
 }
 
 /** Isla flotante interactiva: brillo, elevación, borde neón y panel holográfico al pasar el cursor. */
-export function FloatingIsland({ info, position, scale, hovered, dimmed, light, speed, showLabel, compactLabel, onHover, onSelect }: Props) {
+const LABEL_ANCHOR = new THREE.Vector3(0, 1.75, 0);
+
+export function FloatingIsland({ info, position, scale, hovered, dimmed, light, speed, showLabel, labelEls, onHover, onSelect }: Props) {
   const group = useRef<THREE.Group>(null);
   const rimMat = useRef<THREE.MeshBasicMaterial>(null);
   const glowMat = useRef<THREE.SpriteMaterial>(null);
@@ -254,6 +256,7 @@ export function FloatingIsland({ info, position, scale, hovered, dimmed, light, 
   const rock = useRockGeometry(seed);
   const glow = useMemo(() => getGlowTexture(), []);
   const phase = seed * 0.37;
+  const anchor = useMemo(() => new THREE.Vector3(), []);
 
   useEffect(() => () => rock.dispose(), [rock]);
 
@@ -273,6 +276,19 @@ export function FloatingIsland({ info, position, scale, hovered, dimmed, light, 
     g.rotation.y += d * 0.06 * speed;
     if (rimMat.current) rimMat.current.opacity = THREE.MathUtils.damp(rimMat.current.opacity, hovered ? 1 : dimmed ? 0.35 : 0.7, 6, d);
     if (glowMat.current) glowMat.current.opacity = THREE.MathUtils.damp(glowMat.current.opacity, hovered ? 0.95 : dimmed ? 0.25 : 0.5, 6, d);
+
+    // Etiqueta: se proyecta la posición 3D a la pantalla y se mueve el elemento del DOM (sin React extra).
+    const el = labelEls.current[info.id];
+    if (el) {
+      g.updateWorldMatrix(true, false);
+      anchor.copy(LABEL_ANCHOR);
+      g.localToWorld(anchor).project(state.camera);
+      const visible = showLabel && anchor.z < 1 && anchor.z > -1;
+      const x = (anchor.x * 0.5 + 0.5) * state.size.width;
+      const y = (-anchor.y * 0.5 + 0.5) * state.size.height;
+      el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, -50%)`;
+      el.style.opacity = visible ? '1' : '0';
+    }
   });
 
   const over = (e: ThreeEvent<PointerEvent>) => {
@@ -327,44 +343,6 @@ export function FloatingIsland({ info, position, scale, hovered, dimmed, light, 
         <Structure id={info.id} color={info.color} color2={info.color2} speed={speed} />
       </group>
 
-      {showLabel ? (
-        <Html position={[0, 1.75, 0]} center zIndexRange={[20, 0]} style={{ pointerEvents: 'none' }}>
-          <IslandLabel info={info} hovered={hovered} compact={compactLabel} />
-        </Html>
-      ) : null}
     </group>
-  );
-}
-
-function IslandLabel({ info, hovered, compact }: { info: IslandInfo; hovered: boolean; compact: boolean }): ReactNode {
-  return (
-    <div
-      aria-hidden="true"
-      className="select-none whitespace-nowrap transition-all duration-300"
-      style={{ '--accent': info.color, transform: `scale(${hovered ? 1.06 : 1})`, opacity: compact && !hovered ? 0.85 : 1 } as React.CSSProperties}
-    >
-      <div
-        className="glass-strong no-blur rounded-xl px-3 py-2 text-left"
-        style={{
-          borderColor: `color-mix(in srgb, ${info.color} ${hovered ? 80 : 35}%, transparent)`,
-          boxShadow: hovered ? `0 0 30px -6px ${info.color}` : undefined,
-        }}
-      >
-        <p className="flex items-center gap-2 font-display text-[11px] font-semibold tracking-tight text-fg sm:text-[13px]">
-          <span className="h-2 w-2 rounded-full" style={{ background: info.color, boxShadow: `0 0 10px ${info.color}` }} />
-          {info.name}
-        </p>
-        {!compact || hovered ? <p className="mt-0.5 font-mono text-[10px] text-muted">{info.tagline}</p> : null}
-        {hovered ? (
-          <div className="mt-1.5 max-w-[220px] whitespace-normal">
-            <p className="text-[11px] leading-snug text-muted">{info.description}</p>
-            <p className="mt-1.5 flex items-center justify-between gap-3 text-[11px] font-bold">
-              <span className="text-dim">{info.count}</span>
-              <span className="text-accent">{info.enterLabel} →</span>
-            </p>
-          </div>
-        ) : null}
-      </div>
-    </div>
   );
 }

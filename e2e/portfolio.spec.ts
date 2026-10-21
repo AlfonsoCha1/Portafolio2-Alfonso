@@ -105,8 +105,29 @@ test.describe('Universo', () => {
     await page.getByTestId('mode-2d').first().click();
     await expect(page.locator('[data-render-mode="2d"]')).toBeVisible();
     await expect(page.locator('canvas')).toHaveCount(0);
-    await page.reload();
-    await expect(page.locator('[data-render-mode="2d"]')).toBeVisible();
+    // Se guarda la elección (el script de prueba vuelve a fijar 3D en cada recarga, por eso se revisa el almacenamiento)
+    expect(await page.evaluate(() => localStorage.getItem('chavatrix.mode'))).toBe('2d');
+  });
+
+  test('volver de 2D a 3D varias veces no truena ni regresa solo a 2D', async ({ page, isMobile }) => {
+    test.skip(isMobile, 'Una sola ejecución basta');
+    test.setTimeout(120_000);
+    const errors = collectErrors(page);
+    await prepare(page, { mode: '3d', nexbot: false });
+    await page.goto('/es');
+    await expect(page.locator('canvas')).toHaveCount(1, { timeout: 20_000 });
+    for (let i = 0; i < 2; i++) {
+      await page.getByTestId('mode-2d').first().click();
+      await expect(page.locator('canvas')).toHaveCount(0);
+      await page.waitForTimeout(1500);
+      await page.getByTestId('mode-3d').first().click();
+      await expect(page.locator('canvas')).toHaveCount(1, { timeout: 20_000 });
+      // Pasados unos segundos sigue en 3D (antes se caía a 2D con "Tu navegador no pudo iniciar el modo 3D")
+      await page.waitForTimeout(8000);
+      await expect(page.locator('[data-render-mode="3d"]')).toBeVisible();
+    }
+    await expect(page.getByTestId('island-labels-3d')).toContainText('Redes y soporte TI');
+    expect(errors.filter((e) => !e.includes('THREE.'))).toEqual([]);
   });
 });
 

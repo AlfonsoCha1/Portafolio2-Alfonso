@@ -11,6 +11,7 @@ import { tx } from '@/lib/i18n';
 import { readStorage, STORAGE_KEYS } from '@/lib/storage';
 import { usePreferences, useUI } from '@/components/providers/AppProvider';
 import { Universe2D } from './Universe2D';
+import { IslandLabel } from './IslandLabel';
 import type { IslandInfo } from './three/FloatingIsland';
 
 // La escena 3D se carga aparte (code splitting) y solo en el cliente.
@@ -21,7 +22,9 @@ class SceneBoundary extends Component<{ onError: () => void; children: ReactNode
   static getDerivedStateFromError() {
     return { failed: true };
   }
-  componentDidCatch() {
+  componentDidCatch(error: unknown) {
+    // Queda en la consola para poder diagnosticar si algún equipo falla de verdad.
+    console.error('[CHAVATRIX] El 3D falló y se activó el modo 2D:', error);
     this.props.onError();
   }
   render() {
@@ -40,6 +43,8 @@ export function UniverseStage() {
   const [inView, setInView] = useState(true);
   const [pageVisible, setPageVisible] = useState(true);
   const [ready3d, setReady3d] = useState(false);
+  // Etiquetas de las islas en el 3D: capa normal del DOM que la escena posiciona en cada cuadro.
+  const labelEls = useRef<Partial<Record<CategoryId, HTMLDivElement | null>>>({});
   const [notice, setNotice] = useState<string | null>(null);
   const [leftPanel, setLeftPanel] = useState(false);
 
@@ -85,6 +90,13 @@ export function UniverseStage() {
 
   const use3d = prefs.ready && prefs.renderMode === '3d' && prefs.webglAvailable;
   const select = (id: CategoryId) => openModule(id);
+
+  // Al salir del 3D se reinicia "listo", para que al volver se vea el 2D mientras carga (sin parpadeos ni huecos).
+  const [prevUse3d, setPrevUse3d] = useState(use3d);
+  if (prevUse3d !== use3d) {
+    setPrevUse3d(use3d);
+    if (!use3d) setReady3d(false);
+  }
 
   const fallbackTo2d = (reason: 'error' | 'slow' = 'error') => {
     prefs.setRenderMode('2d', false);
@@ -132,6 +144,7 @@ export function UniverseStage() {
               onSelect={select}
               onReady={() => setReady3d(true)}
               leftPanel={leftPanel}
+              labelEls={labelEls}
               onQualityDrop={(q) => {
                 if (q === 'fallback') fallbackTo2d('error');
                 else if (q === 'slow') {
@@ -147,13 +160,29 @@ export function UniverseStage() {
         </div>
       ) : null}
 
+      {use3d ? (
+        <div aria-hidden="true" className={`pointer-events-none absolute inset-0 z-10 overflow-hidden transition-opacity duration-700 ${ready3d && !activeModule ? 'opacity-100' : 'opacity-0'}`} data-testid="island-labels-3d">
+          {islands.map((info) => (
+            <div
+              key={info.id}
+              ref={(el) => {
+                labelEls.current[info.id] = el;
+              }}
+              className="absolute left-0 top-0 opacity-0 will-change-transform"
+            >
+              <IslandLabel info={info} hovered={hoveredIsland === info.id || activeModule === info.id} compact />
+            </div>
+          ))}
+        </div>
+      ) : null}
+
       {use3d && !ready3d ? (
-        <p className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full glass px-4 py-2 font-mono text-xs text-muted" role="status">
+        <p className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full glass px-4 py-2 font-mono text-xs text-muted" role="status">
           {t('loading')}
         </p>
       ) : null}
 
-      <div aria-live="polite" className="pointer-events-none absolute inset-x-0 bottom-24 flex justify-center px-4">
+      <div aria-live="polite" className="pointer-events-none absolute inset-x-0 bottom-24 z-20 flex justify-center px-4">
         {notice ? <p className="glass-strong rounded-xl px-4 py-2 text-center text-xs font-semibold">{notice}</p> : null}
       </div>
     </div>
