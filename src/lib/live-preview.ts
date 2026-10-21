@@ -9,3 +9,14 @@ export function canLivePreview(p: Project): boolean {
 export function realShot(p: Project): ProjectImage | undefined {
   return p.gallery?.find((g) => !g.conceptual);
 }
+
+/** ¿La página del proyecto está en Render (puede tardar en despertar)? Compara el dominio exacto. */
+export function isRenderHosted(url?: string): boolean {
+  if (!url) return false;
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return host === 'onrender.com' || host.endsWith('.onrender.com');
+  } catch {
+    return false;
+  }
+}

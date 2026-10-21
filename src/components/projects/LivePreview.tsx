@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Project } from '@/data/types';
-import { canLivePreview, realShot } from '@/lib/live-preview';
+import { canLivePreview, isRenderHosted, realShot } from '@/lib/live-preview';
 import { tx } from '@/lib/i18n';
 import { ProjectShot } from './ProjectShot';
 
@@ -103,7 +103,7 @@ export function LivePreviewButton({ project, className = '' }: { project: Projec
             >
               <Chrome project={project} onClose={() => setOpen(false)} />
               <LiveFrame project={project} className="flex-1" />
-              <p className="border-t border-line px-3 py-2 text-center text-[11px] text-dim">{project.demo?.includes('onrender.com') ? `${t('liveHint')} · ` : ''}{t('liveFallback')}</p>
+              <p className="border-t border-line px-3 py-2 text-center text-[11px] text-dim">{isRenderHosted(project.demo) ? `${t('liveHint')} · ` : ''}{t('liveFallback')}</p>
             </motion.div>
           </motion.div>
         ) : null}

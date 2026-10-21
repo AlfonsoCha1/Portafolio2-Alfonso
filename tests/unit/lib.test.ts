@@ -4,6 +4,7 @@ import { evaluateCapabilities } from '@/lib/capabilities';
 import { createRateLimiter } from '@/lib/rate-limit';
 import { contactSchema, escapeHtml, looksLikeBot, MIN_FILL_MS } from '@/lib/contact-schema';
 import { tx } from '@/lib/i18n';
+import { isRenderHosted } from '@/lib/live-preview';
 
 describe('tema (4 modos)', () => {
   it('el botón recorre Automático → Claro → Nocturno → Según la hora → Automático', () => {
@@ -111,5 +112,14 @@ describe('i18n', () => {
     expect(tx({ es: 'Hola', en: 'Hi' }, 'es')).toBe('Hola');
     expect(tx('Python', 'en')).toBe('Python');
     expect(tx(null, 'es')).toBe('');
+  });
+});
+
+describe('detección de páginas en Render', () => {
+  it('solo acepta el dominio exacto de Render', () => {
+    expect(isRenderHosted('https://chavarin-said-lealtad.onrender.com')).toBe(true);
+    expect(isRenderHosted('https://onrender.com.sitio-falso.example')).toBe(false);
+    expect(isRenderHosted('https://sitio.example/?x=onrender.com')).toBe(false);
+    expect(isRenderHosted(undefined)).toBe(false);
   });
 });
