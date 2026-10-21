@@ -126,8 +126,13 @@ describe('perfil', () => {
     expect(publicFile(profile.cv.en)).toBe(true);
   });
 
-  it('no publica disponibilidad sin confirmar', () => {
-    expect(profile.availability).toBeNull();
+  it('la disponibilidad coincide con la del CV (confirmada por Alfonso)', () => {
+    expect(profile.availability).toEqual({ es: 'Disponibilidad inmediata · presencial o remoto', en: 'Available immediately · on-site or remote' });
+  });
+
+  it('el nivel de inglés coincide con el CV vigente (B1)', () => {
+    const english = profile.languages.find((l) => l.name.es === 'Inglés');
+    expect(english?.level.es).toContain('B1');
   });
 
   it('siete islas con colores distintos', () => {

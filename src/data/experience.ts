@@ -1,35 +1,38 @@
 import type { Experience } from './types';
 
 /**
- * Experiencia laboral — fuente: CV de octubre de 2026 (ES/EN).
+ * Experiencia laboral — fuente: CV del 21 de octubre de 2026 (ES/EN).
  * Ordenada de la más reciente a la más antigua.
  */
 export const experience: Experience[] = [
   {
     id: 'marelli',
     company: 'Marelli',
-    role: { es: 'Técnico de Pruebas', en: 'Testing Technician' },
+    role: { es: 'Técnico de Pruebas', en: 'Test Technician' },
     start: '2026-05',
     end: '2026-07',
     period: { es: 'may 2026 – jul 2026', en: 'May 2026 – Jul 2026' },
     location: { es: 'Tepotzotlán, Estado de México', en: 'Tepotzotlán, State of Mexico' },
     color: '#FF943D',
     summary: {
-      es: 'Pruebas funcionales de tarjetas electrónicas y bases de datos de resultados.',
-      en: 'Functional testing of circuit boards and test-result databases.',
+      es: 'Pruebas funcionales de tarjetas electrónicas, base de datos de resultados y página web de entrenamiento.',
+      en: 'Functional testing of circuit boards, a test-results database and a training web page.',
     },
     bullets: [
       {
-        es: 'Pruebas funcionales a tarjetas electrónicas en manufactura, previo a la entrega y en verificación posterior.',
-        en: 'Ran functional tests on electronic circuit boards during manufacturing, before customer delivery and in post-delivery verification.',
+        es: 'Ejecuté pruebas funcionales a tarjetas electrónicas en manufactura, antes de la entrega al cliente y en la verificación posterior.',
+        en: 'Ran functional tests on electronic circuit boards before customer delivery and during post-delivery verification.',
       },
       {
-        es: 'Desarrollé y administré bases de datos de seguimiento de resultados y de materiales reparados, con visión de escalarlas a otros departamentos.',
-        en: 'Built and administered databases to track test results and repaired materials, designed to scale to other plant departments.',
+        es: 'Creé y administré una base de datos en Excel de resultados de prueba y materiales reparados; respaldé datos de producción.',
+        en: 'Built and maintained an Excel database to track test results and repaired materials; backed up production data.',
       },
-      { es: 'Respaldo de datos de producción.', en: 'Backed up production data.' },
+      {
+        es: 'Desarrollé una página web de componentes para el entrenamiento del área.',
+        en: 'Created a component training web page for the team.',
+      },
     ],
-    tech: ['Bases de datos', 'Pruebas funcionales', 'Respaldos', 'Electrónica'],
+    tech: ['Pruebas funcionales', 'Excel', 'Bases de datos', 'Respaldos', 'Desarrollo web'],
     relatedCategories: ['hardware', 'automation'],
   },
   {
@@ -40,29 +43,33 @@ export const experience: Experience[] = [
     end: '2025-10',
     period: { es: 'ago 2025 – oct 2025', en: 'Aug 2025 – Oct 2025' },
     location: {
-      es: 'Ciudad de México · clientes en Colombia, Venezuela y España',
-      en: 'Mexico City · clients in Colombia, Venezuela and Spain',
+      es: 'Ciudad de México · clientes en Colombia, España y Venezuela',
+      en: 'Mexico City · clients in Colombia, Spain and Venezuela',
     },
     color: '#147DFF',
     summary: {
-      es: 'Soporte a clientes internacionales, autenticación biométrica y credenciales en Linux.',
-      en: 'International client support, biometric authentication and Linux credentials.',
+      es: 'Autenticación biométrica, seguridad de licencias y credenciales en Linux para clientes internacionales.',
+      en: 'Biometric authentication, license security and Linux credentials for international clients.',
     },
     bullets: [
       {
-        es: 'Soporte técnico a clientes de Colombia, Venezuela y España en un equipo de 2 personas; servicios de AWS para infraestructura y despliegue.',
-        en: 'Provided technical support to clients in Colombia, Venezuela and Spain in a 2-person team; used AWS services for infrastructure and deployment.',
+        es: 'Desarrollé funciones de autenticación biométrica (reconocimiento facial y de huella) para Colombia, España y Venezuela.',
+        en: 'Developed biometric authentication features (face and fingerprint recognition) for Colombia, Spain and Venezuela.',
       },
       {
-        es: 'Implementé autenticación biométrica (Face ID y huella) y gestioné credenciales de usuario en Linux para mantener accesos seguros.',
-        en: 'Implemented biometric authentication (Face ID and fingerprint) and managed Linux user credentials to keep access secure.',
+        es: 'Corregí vulnerabilidades en el manejo de licencias para evitar su uso no autorizado.',
+        en: 'Fixed licensing vulnerabilities to prevent unauthorized use.',
       },
       {
-        es: 'Contribuí al desarrollo en Java del asistente digital "Blue"; capacitación en IA, Gemini, protección de datos y código de conducta.',
-        en: 'Contributed to Java development of the "Blue" digital assistant; trained in AI, Gemini, data protection and code of conduct.',
+        es: 'Administré credenciales de usuarios en Linux y di soporte a clientes internacionales en un equipo de 2 personas.',
+        en: 'Managed user credentials on Linux and supported international clients in a two-person team.',
+      },
+      {
+        es: 'Participé en parte del desarrollo en Java del asistente digital "Blue".',
+        en: 'Contributed to the Java development of the "Blue" digital assistant.',
       },
     ],
-    tech: ['AWS', 'Linux', 'Java', 'Autenticación biométrica', 'Soporte TI'],
+    tech: ['Autenticación biométrica', 'Linux', 'Java', 'Seguridad de licencias', 'Soporte TI'],
     relatedCategories: ['network', 'cyber', 'ai'],
   },
   {
@@ -80,8 +87,8 @@ export const experience: Experience[] = [
     },
     bullets: [
       {
-        es: 'Mantenimiento general de instalaciones en un entorno de habla inglesa.',
-        en: 'General facility maintenance in a fully English-speaking environment.',
+        es: 'Mantenimiento de instalaciones en un entorno de trabajo en inglés.',
+        en: 'Facility maintenance in an English-only workplace.',
       },
     ],
     tech: ['Inglés', 'Trabajo en equipo'],
@@ -97,17 +104,17 @@ export const experience: Experience[] = [
     location: { es: 'Cuernavaca, Morelos', en: 'Cuernavaca, Morelos' },
     color: '#00E5FF',
     summary: {
-      es: 'Conectividad en más de 50 estaciones, switches y soporte de primer nivel.',
-      en: 'Connectivity across 50+ workstations, switches and first-level support.',
+      es: 'Soporte de primer nivel, conectividad en más de 50 estaciones, switches y recuperación de la red.',
+      en: 'First-level support, connectivity across 50+ workstations, switches and network recovery.',
     },
     bullets: [
       {
-        es: 'Resolví problemas de conectividad en más de 50 estaciones de trabajo y configuré switches.',
-        en: 'Resolved network connectivity issues across 50+ workstations and configured switches.',
+        es: 'Di soporte de primer nivel y mantenimiento a equipos; resolví fallas de conexión en más de 50 estaciones y configuré switches.',
+        en: 'Provided first-level support and equipment maintenance; fixed connectivity issues on 50+ workstations and configured switches.',
       },
       {
-        es: 'Mantenimiento preventivo y correctivo, y soporte de primer nivel.',
-        en: 'Preventive and corrective maintenance, and first-level support.',
+        es: 'Ayudé a restablecer la red de la oficina después de una caída del servicio.',
+        en: 'Helped restore the office network after an outage.',
       },
     ],
     tech: ['Redes', 'Switches', 'Soporte TI', 'Mantenimiento'],
@@ -128,12 +135,8 @@ export const experience: Experience[] = [
     },
     bullets: [
       {
-        es: 'Cableado estructurado hacia switches y diagnóstico de fallas de internet.',
-        en: 'Structured cabling to switches and internet fault diagnosis.',
-      },
-      {
-        es: 'Configuración de impresoras y periféricos.',
-        en: 'Printer and peripheral setup.',
+        es: 'Instalé cableado estructurado, diagnostiqué fallas de internet y configuré impresoras y periféricos.',
+        en: 'Installed structured cabling, diagnosed internet outages and set up printers and peripherals.',
       },
     ],
     tech: ['Cableado estructurado', 'Redes', 'Periféricos'],

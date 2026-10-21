@@ -23,8 +23,8 @@ export const categories: Category[] = [
         en: 'Foundations of Cybersecurity — Google · Coursera (Oct 2026).',
       },
       {
-        es: 'Autenticación biométrica y gestión de credenciales en Linux en BBVA Technology.',
-        en: 'Biometric authentication and Linux credential management at BBVA Technology.',
+        es: 'Funciones de autenticación biométrica, corrección de vulnerabilidades en licencias y credenciales en Linux — BBVA Technology.',
+        en: 'Biometric authentication features, license vulnerability fixes and Linux credentials — BBVA Technology.',
       },
       {
         es: 'Seguridad de red vista en CCNAv7: mitigación de amenazas, ACL y acceso administrativo seguro.',
@@ -74,8 +74,12 @@ export const categories: Category[] = [
         en: 'Connectivity across 50+ workstations and switch configuration — Junta de Conciliación y Arbitraje.',
       },
       {
-        es: 'Soporte técnico a clientes de Colombia, Venezuela y España, con servicios de AWS — BBVA Technology.',
-        en: 'Technical support for clients in Colombia, Venezuela and Spain, using AWS services — BBVA Technology.',
+        es: 'Credenciales de usuarios en Linux y soporte a clientes de Colombia, España y Venezuela — BBVA Technology.',
+        en: 'Linux user credentials and support for clients in Colombia, Spain and Venezuela — BBVA Technology.',
+      },
+      {
+        es: 'Ayudé a restablecer la red de la oficina después de una caída del servicio — Junta de Conciliación y Arbitraje.',
+        en: 'Helped restore the office network after an outage — Junta de Conciliación y Arbitraje.',
       },
       {
         es: 'Cableado estructurado, diagnóstico de fallas de internet, impresoras y periféricos — SEDAGRO.',
@@ -105,6 +109,10 @@ export const categories: Category[] = [
         en: 'Deployments on Vercel (frontend) and Render (backend) on free plans.',
       },
       {
+        es: 'Página web de componentes para el entrenamiento del área — Marelli.',
+        en: 'Component training web page for the team — Marelli.',
+      },
+      {
         es: 'Comunicación Web Interactiva — UNINTER, 54 h (nov 2022).',
         en: 'Interactive Web Communication — UNINTER, 54 h (Nov 2022).',
       },
@@ -124,8 +132,8 @@ export const categories: Category[] = [
     icon: 'Workflow',
     highlights: [
       {
-        es: 'Bases de datos para el seguimiento de resultados de pruebas y respaldo de datos de producción en Marelli.',
-        en: 'Databases to track test results and back up production data at Marelli.',
+        es: 'Base de datos en Excel de resultados de prueba y materiales reparados, y respaldo de datos de producción — Marelli.',
+        en: 'Excel database of test results and repaired materials, plus production data backups — Marelli.',
       },
       {
         es: 'Flujo local "AI_Video_Studio" para automatizar la edición de video.',

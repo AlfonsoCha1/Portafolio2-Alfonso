@@ -1,6 +1,6 @@
 import type { Lab, SkillGroup } from './types';
 
-/** Habilidades — fuente: sección HABILIDADES del CV (oct 2026) y muro de GitHub. */
+/** Habilidades — fuente: sección HABILIDADES del CV (21 oct 2026) y muro de GitHub. */
 export const skillGroups: SkillGroup[] = [
   {
     id: 'support',
@@ -17,7 +17,7 @@ export const skillGroups: SkillGroup[] = [
       { name: 'Windows' },
       { name: 'Linux' },
       { name: 'OpenSUSE' },
-      { name: 'AWS (EC2)' },
+      { name: { es: 'AWS (fundamentos)', en: 'AWS fundamentals' } },
     ],
   },
   {
@@ -31,6 +31,8 @@ export const skillGroups: SkillGroup[] = [
       { name: { es: 'Protección de datos personales', en: 'Personal data protection' } },
       { name: { es: 'Seguridad de red', en: 'Network security' } },
       { name: { es: 'Análisis de logs', en: 'Log analysis' } },
+      { name: { es: 'Detección de fuerza bruta', en: 'Brute-force detection' } },
+      { name: { es: 'Detección de secretos (Gitleaks)', en: 'Secret scanning (Gitleaks)' } },
     ],
   },
   {
@@ -38,7 +40,7 @@ export const skillGroups: SkillGroup[] = [
     name: { es: 'IA y desarrollo', en: 'AI & development' },
     color: '#9D35FF',
     items: [
-      { name: 'Python', level: { es: 'Avanzado', en: 'Advanced' } },
+      { name: 'Python', level: { es: 'Intermedio', en: 'Intermediate' } },
       { name: { es: 'Ingeniería de prompts', en: 'Prompt engineering' } },
       { name: { es: 'IA generativa (texto, imagen, video)', en: 'Generative AI (text, image, video)' } },
       { name: 'PowerShell' },
@@ -49,6 +51,7 @@ export const skillGroups: SkillGroup[] = [
       { name: 'HTML/CSS' },
       { name: 'C++' },
       { name: 'C#' },
+      { name: 'SQL' },
       { name: 'FastAPI' },
       { name: 'Node.js' },
       { name: 'Firebase' },
@@ -64,7 +67,7 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: 'Scrum / Agile' },
       { name: { es: 'Planeación por fases', en: 'Phased planning' } },
-      { name: { es: 'Métricas en Excel', en: 'Excel metrics' } },
+      { name: { es: 'Excel (bases de datos y métricas)', en: 'Excel (databases and metrics)' } },
       { name: { es: 'Contenido para redes', en: 'Social media content' } },
       { name: 'Marketplace' },
       { name: 'CapCut' },
@@ -72,7 +75,7 @@ export const skillGroups: SkillGroup[] = [
       { name: 'Figma' },
       { name: 'Photoshop' },
       { name: 'Illustrator' },
-      { name: 'Office', level: { es: 'Avanzado', en: 'Advanced' } },
+      { name: 'Microsoft Office' },
     ],
   },
   {
@@ -80,6 +83,8 @@ export const skillGroups: SkillGroup[] = [
     name: { es: 'Aprendiendo ahora', en: 'Currently learning' },
     color: '#FF39C6',
     items: [
+      { name: 'CompTIA Security+ (SY0-701)' },
+      { name: 'Google Cybersecurity Certificate' },
       { name: 'React' },
       { name: 'Next.js' },
       { name: 'Tailwind CSS' },

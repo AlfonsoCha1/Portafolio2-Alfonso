@@ -4,7 +4,7 @@
 
 | Fuente | Uso |
 | --- | --- |
-| `CV_Alfonso_Chavarin_Maestro.pdf` y `CV_Alfonso_Chavarin_Master_EN.pdf` | Experiencia, educación, habilidades, certificaciones, perfil y proyectos. Fuente principal. |
+| `CV_Alfonso_Chavarin_ES.pdf` y `CV_Alfonso_Chavarin_EN.pdf` (versión del 21 oct 2026, publicados en `public/cv/`) | Experiencia, educación, habilidades, certificaciones, perfil, disponibilidad y proyectos. Fuente principal. Sustituyen a los CV maestros anteriores. |
 | Portafolio anterior `portafolio-original-tau.vercel.app` (repo `portafolio-original`) | Fotografía (`Yo_uno.jpg`, la misma que se proporcionó), textos de perfil y lista de proyectos. |
 | README y `perfil.toml` de `github.com/AlfonsoCha1` | Proyectos con estado real, enlaces y lista de certificados. |
 | Repos públicos: `Herramientas_cyberseguridad`, `Tipos-de-Proyectos`, `CyberQuest-Academy`, `Chavarin_-_Said`, `CHAVAMON_BASICO`, `Tipos-bash`, `Java`, `SUMA`, `PROYECTOS`, `PROYECTO-INTERLIGENCIA-ARTIFICIAL`, `portafolio-alfonso`, `Portafolio` | Descripciones, tecnologías y funcionalidades. |

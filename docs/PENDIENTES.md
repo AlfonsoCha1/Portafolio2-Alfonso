@@ -5,7 +5,6 @@ Cada punto tiene un marcador visible o un valor vacío en el código hasta que l
 1. **Mi Vida Personal:** si tiene enlace público, compártelo para activar "Ver en vivo" (ahora se muestra como proyecto privado en desarrollo).
 2. **SUMA** (práctica en C#/ASP.NET): confirma si es tuya o si también se retira, como ESCUELA.
 3. **Capturas reales** de los proyectos sin página pública (ALBA, Cybersecurity Python Lab, CHAVAMON, NFC, scripts): siguen con portada animada. Los 8 proyectos con página ya muestran su captura real.
-4. **Disponibilidad profesional** (por ejemplo, "Remoto · Híbrido · Abierto a oportunidades"): está en `profile.availability = null` hasta que la confirmes.
 5. **EL CHAVATRIX:** confirma si quieres enlazar el canal (YouTube/TikTok/Instagram) en el portafolio profesional.
 6. **CHAVATRIX AEGIS:** tecnologías que se pueden divulgar y estado de la app de escritorio.
 7. **Certificados:** se muestran solo como texto (nombre, de qué trata, fecha y horas). Si conoces las horas de los cursos que no las tienen, agrégalas en `hours`.
@@ -17,3 +16,4 @@ Cada punto tiene un marcador visible o un valor vacío en el código hasta que l
 
 - Drones, satélites, Luna y Lumo y NEXO: confirmado que no son de Alfonso. La isla naranja ahora es **Redes y soporte TI** (Junta de Conciliación, BBVA, SEDAGRO y cursos Cisco) y las naves en órbita se cambiaron por paquetes de datos y candados.
 - ESCUELA: retirado (no es suyo).
+- CV actualizado (21 oct 2026): PDF ES/EN reemplazados y datos de la página sincronizados (inglés B1, disponibilidad inmediata, viñetas de Marelli, BBVA y la Junta, título expedido en sep 2026, Security+ y Google Cybersecurity en curso).

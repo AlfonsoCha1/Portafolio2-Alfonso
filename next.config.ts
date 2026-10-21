@@ -65,7 +65,8 @@ const nextConfig: NextConfig = {
       { source: '/:path*', headers: securityHeaders },
       {
         source: '/cv/:file*',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
+        // Sin caché larga: al actualizar el CV, los visitantes descargan siempre la versión nueva.
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }],
       },
     ];
   },
