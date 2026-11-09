@@ -400,12 +400,7 @@ export const projects: Project[] = [
       en: 'Founder and developer: brand, design, full-stack development, sales and operations.',
     },
     demo: 'https://smucky-s-by-chavamon.vercel.app/',
-    gallery: [
-      {
-        src: '/images/proyectos/smuckys-by-chavamon.webp',
-        alt: { es: 'Captura real de la tienda SMUCKY´s By CHAVAMON', en: 'Real screenshot of the SMUCKY´s By CHAVAMON store' },
-      },
-    ],
+    // Sin captura por ahora: la anterior era del sitio viejo. Tomar una nueva con "Capturas de proyectos".
     // Su configuración de seguridad (X-Frame-Options: DENY) impide mostrarla dentro de otra página.
     livePreview: false,
     note: {
