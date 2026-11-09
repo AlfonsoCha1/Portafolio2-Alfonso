@@ -352,7 +352,7 @@ export const projects: Project[] = [
   // ───────────────────────── Desarrollo web ─────────────────────────
   {
     slug: 'smuckys-by-chavamon',
-    name: "Smucky's by Chavamon",
+    name: 'SMUCKY´s By CHAVAMON',
     category: 'web',
     status: 'live',
     statusDetail: { es: 'Tienda en línea · en mejora continua', en: 'Online store · continuously improving' },
@@ -361,37 +361,57 @@ export const projects: Project[] = [
     order: 7,
     year: '2026',
     summary: {
-      es: 'Tienda en línea de mi marca de ropa deportiva y casual: playeras, blusas, playeras sin mangas y shorts.',
-      en: 'Online store for my sportswear and casual clothing brand: t-shirts, blouses, tank tops and shorts.',
+      es: 'Tienda en línea de mi propio negocio de ropa: pacas de piezas únicas y Línea Esencial, con carrito, favoritos, cuentas de cliente y pagos en línea.',
+      en: 'Online store for my own clothing business: one-of-a-kind secondhand pieces and the Essential Line, with cart, favorites, customer accounts and online payments.',
     },
     description: {
-      es: 'Marca y tienda propias. Las ventas se apoyan en Mercado Libre con tráfico desde Instagram y TikTok; el sitio usa Firebase, FastAPI y Mercado Pago, desplegado en Vercel y Render. Incluye diagnóstico del negocio y plan de 90 días con seguimiento en Excel.',
-      en: 'My own brand and store. Sales run through Mercado Libre with traffic from Instagram and TikTok; the site uses Firebase, FastAPI and Mercado Pago, deployed on Vercel and Render. Includes a business diagnostic and a 90-day plan tracked in Excel.',
+      es: 'Tienda y panel de administración hechos desde cero para mi marca de ropa. La tienda (Next.js + React) y el backend (API, pagos, pedidos e inventario) se publican por separado en Vercel. Los precios siempre los calcula el servidor y cada pago se confirma con el proveedor antes de marcar un pedido como pagado. Entrego en persona en Cuernavaca y envío por paquetería al resto del país.',
+      en: 'Store and admin panel built from scratch for my clothing brand. The storefront (Next.js + React) and the backend (API, payments, orders and inventory) are deployed separately on Vercel. Prices are always calculated by the server, and every payment is confirmed with the provider before an order is marked as paid. I deliver in person in Cuernavaca and ship to the rest of Mexico.',
     },
     features: [
-      { es: 'Catálogo por categorías con carrito y favoritos.', en: 'Catalog by category with cart and favorites.' },
       {
-        es: 'Cuenta de cliente con pedidos, entregas y devoluciones.',
-        en: 'Customer account with orders, deliveries and returns.',
+        es: 'Tres apartados: Pacas (piezas únicas), Línea Esencial y Línea Principal (próximamente), con búsqueda, guía de tallas y favoritos.',
+        en: 'Three sections: Pacas (one-of-a-kind pieces), Essential Line and Main Line (coming soon), with search, size guide and favorites.',
       },
       {
-        es: 'Pago con tarjeta y Mercado Pago.',
-        en: 'Card and Mercado Pago payments.',
+        es: 'Inventario real por talla: las piezas se apartan mientras el cliente paga y regresan solas si cancela o devuelve.',
+        en: 'Real per-size inventory: pieces are held while the customer pays and return automatically on cancellations or returns.',
+      },
+      {
+        es: 'Cuentas de cliente con Firebase: pedidos, datos personales, cambio de contraseña y eliminar la cuenta.',
+        en: 'Customer accounts with Firebase: orders, personal details, password change and account deletion.',
+      },
+      {
+        es: 'Pagos con PayPal y Mercado Pago confirmados en el servidor con avisos firmados, y efectivo en entregas en Cuernavaca.',
+        en: 'PayPal and Mercado Pago payments confirmed on the server with signed webhooks, plus cash for Cuernavaca deliveries.',
+      },
+      {
+        es: 'Panel de administración con roles, autorizaciones para cambios delicados y bitácora de quién cambió qué.',
+        en: 'Admin panel with roles, approvals for sensitive changes and a log of who changed what.',
+      },
+      {
+        es: 'Respaldo diario automático, cabeceras de seguridad y más de 100 pruebas automáticas en el backend.',
+        en: 'Automatic daily backup, security headers and over 100 automated backend tests.',
       },
     ],
-    tech: ['HTML', 'CSS', 'JavaScript', 'Firebase', 'FastAPI', 'Mercado Pago'],
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Firebase', 'Vercel', 'PayPal', 'Mercado Pago'],
     role: {
-      es: 'Fundador: marca, desarrollo del sitio, ventas y operación.',
-      en: 'Founder: brand, website development, sales and operations.',
+      es: 'Fundador y desarrollador: marca, diseño, desarrollo full stack, ventas y operación.',
+      en: 'Founder and developer: brand, design, full-stack development, sales and operations.',
     },
-    demo: 'https://smuckys-bychavamon.vercel.app/',
+    demo: 'https://smucky-s-by-chavamon.vercel.app/',
     gallery: [
       {
         src: '/images/proyectos/smuckys-by-chavamon.webp',
-        alt: { es: "Captura real de la página de Smucky's by Chavamon", en: "Real screenshot of the Smucky's by Chavamon page" },
+        alt: { es: 'Captura real de la tienda SMUCKY´s By CHAVAMON', en: 'Real screenshot of the SMUCKY´s By CHAVAMON store' },
       },
     ],
-    note: { es: 'Código privado: el enlace lleva a la tienda.', en: 'Private code: the link goes to the store.' },
+    // Su configuración de seguridad (X-Frame-Options: DENY) impide mostrarla dentro de otra página.
+    livePreview: false,
+    note: {
+      es: 'Código privado: el enlace lleva a la tienda. También vendo por publicaciones de Facebook y Mercado Libre.',
+      en: 'Private code: the link goes to the store. I also sell through Facebook posts and Mercado Libre.',
+    },
     cover: 'store',
   },
   {

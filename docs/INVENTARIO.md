@@ -28,7 +28,7 @@ La imagen de referencia incluía experiencia y estudios que no aparecen en ningu
 | Scripts PowerShell · Defender | Automatización | Personal | — |
 | SOPHYA | IA | Beta · privado | App |
 | English Speaking Coach | IA | Demo · privado | App |
-| Smucky's by Chavamon | Web | En línea · privado | Tienda |
+| SMUCKY´s By CHAVAMON | Web | En línea · privado | Tienda nueva (smucky-s-by-chavamon.vercel.app) |
 | Chavarín & Said — Lealtad | Web | Demo | Repo + demo |
 | Restaurante Smucky's | Web | Práctica | Repo + demo |
 | Portafolio anterior | Web | Archivo | Repo + sitio |
